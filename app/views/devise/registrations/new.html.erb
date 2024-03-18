@@ -1,4 +1,4 @@
-<div class="card w-50 m-auto p-5 rounded-5">
+<div class="card m-auto p-5 rounded-5 shadow", style="max-width: 500px;">
   <div class="card-body">
     <h2>Sign up</h2>
 
@@ -26,6 +26,22 @@
       <div class="actions">
         <%= f.submit "Sign up" %>
       </div>
+
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, autofocus: true %>
+
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+
+        <%= f.label :mobile_number %>
+        <%= f.text_field :mobile_number %>
+
+        <%= f.label :gender %>
+        <%= f.select :gender, ['Male', 'Female', 'Other'] %>
+
+        <%= f.label :birthday %>
+        <%= f.date_field :birthday %>
+
     <% end %>
 
     <%= render "devise/shared/links" %>
