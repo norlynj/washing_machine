@@ -1,3 +1,3 @@
 class Task < ApplicationRecord
-  belongs_to :assigned_staff
+  belongs_to :user
 end
