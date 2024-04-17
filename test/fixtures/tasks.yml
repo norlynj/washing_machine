@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  assigned_staff: one
+  date_range: MyString
+
+two:
+  assigned_staff: two
+  date_range: MyString
