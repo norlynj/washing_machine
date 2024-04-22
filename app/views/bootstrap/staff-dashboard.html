@@ -1,9 +1,43 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>152 UI</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/Fixed-navbar-starting-with-transparency-styles.css">
+    <link rel="stylesheet" href="assets/css/Fixed-navbar-starting-with-transparency-colors.css">
+    <link rel="stylesheet" href="assets/css/dh-navbar-inverse.css">
+    <link rel="stylesheet" href="assets/css/Latest-Events.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
+    <link rel="stylesheet" href="assets/css/Ludens-Users---3-Profile.css">
+    <link rel="stylesheet" href="assets/css/Multi-step-form.css">
+    <link rel="stylesheet" href="assets/css/Profile-Edit-Form-styles.css">
+    <link rel="stylesheet" href="assets/css/Profile-Edit-Form.css">
+</head>
 
+<body style="background: var(--bs-success-bg-subtle);">
     <!-- Start: dh-navbar-inverse -->
-    
+    <nav class="navbar navbar-expand-sm sticky-top shadow-sm navigation-clean navbar-inverse navbar-fixed-top navbar-light" style="background: var(--bs-secondary-bg);height: 77px;">
+        <div class="container-fluid">
+            <div><a class="navbar-brand" style="padding:0px;margin-left:0px;height:78px;" href="staff-dashboard.html"> <img src="assets/img/Wash-Up!.png" width="150" height="50"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
+            <div class="collapse navbar-collapse" id="navcol-1" style="color: var(--bs-navbar-brand-hover-color);background: var(--bs-secondary-bg);">
+                <ul class="navbar-nav ms-auto" style="margin-top: 0px;background: var(--bs-secondary-bg);">
+                    <li class="nav-item" style="color: var(--bs-emphasis-color);font-family: 'Poppins';background: var(--bs-secondary-bg);">
+                        <!-- Start: dasboard --><a class="nav-link text-end active" uk-scroll="offset:100" href="staff-dashboard.html" style="color: var(--bs-emphasis-color);font-family: 'Poppins';">Dashboard</a><!-- End: dasboard -->
+                    </li>
+                    <li class="nav-item" style="color: var(--bs-emphasis-color);font-family: 'Poppins';background: var(--bs-secondary-bg);">
+                        <!-- Start: logout --><a class="nav-link text-end" uk-scroll="offset:50" href="index.html" style="color: var(--bs-emphasis-color);font-family: 'Poppins';">Log out</a><!-- End: logout -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav><!-- End: dh-navbar-inverse -->
     <section style="margin-top: 34px;">
-        <i class="bi bi-x-lg"></i>
+        <div></div>
         <div>
             <!-- Start: 1 Row 2 Columns -->
             <div class="container">
@@ -13,9 +47,8 @@
                             <div class="card-body info" style="padding-bottom: 26px;">
                                 <div class="row" style="margin-top: -24px;">
                                     <div class="col-xl-12">
-                                        
                                         <div class="avatar-bg center" style="margin-bottom: 27px;margin-top: 28px;"></div>
-                                        <h2 style="color: var(--bs-green);font-family: 'Poppins';font-size: 21.384px;">Hello <strong><%=current_user.first_name%> <%=current_user.last_name%></strong></h2>
+                                        <h2 style="color: var(--bs-green);font-family: 'Poppins';font-size: 21.384px;">Hello,&nbsp;<strong>Juan</strong></h2>
                                     </div>
                                     <div class="col-md-12" style="margin-top: 22px;">
                                         <div class="row">
@@ -23,7 +56,7 @@
                                                 <p class="labels" style="font-family: 'Poppins';"><strong>Staff ID</strong></p>
                                             </div>
                                             <div class="col" style="text-align: right;">
-                                                <p class="labels" style="font-family: 'Poppins';">WU-<%=current_user.id%></p>
+                                                <p class="labels" style="font-family: 'Poppins';">001</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -31,7 +64,7 @@
                                                 <p class="labels" style="font-family: 'Poppins';"><strong>Name</strong></p>
                                             </div>
                                             <div class="col" style="text-align: right;">
-                                                <p class="labels" style="font-family: 'Poppins';"><%= current_user.first_name%> <%=current_user.last_name%></p>
+                                                <p class="labels" style="font-family: 'Poppins';">Juan de la Cruz</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -39,7 +72,7 @@
                                                 <p class="labels" style="font-family: 'Poppins';"><strong>Contact</strong></p>
                                             </div>
                                             <div class="col" style="text-align: right;">
-                                                <p class="labels" style="font-family: 'Poppins';"><%=current_user.mobile_number%></p>
+                                                <p class="labels" style="font-family: 'Poppins';">0917 123 1234</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -47,7 +80,7 @@
                                                 <p class="labels" style="font-family: 'Poppins';"><strong>Date Joined</strong></p>
                                             </div>
                                             <div class="col" style="text-align: right;">
-                                                <p class="labels" style="font-family: 'Poppins';"><%= current_user.created_at.strftime("%B %d, %Y") %></p>
+                                                <p class="labels" style="font-family: 'Poppins';">01/01/2023</p>
                                             </div>
                                         </div>
                                     </div>
@@ -123,3 +156,12 @@
             </div><!-- End: 1 Row 2 Columns -->
         </div>
     </section>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/-Animated-numbers-section-BS4--Animated-numbers-section.js"></script>
+    <script src="assets/js/Clock-Real-Time-real-time-clock.js"></script>
+    <script src="assets/js/Fixed-navbar-starting-with-transparency-script.js"></script>
+    <script src="assets/js/Multi-step-form-script.js"></script>
+    <script src="assets/js/Profile-Edit-Form-profile.js"></script>
+</body>
+
+</html>

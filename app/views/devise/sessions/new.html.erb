@@ -1,38 +1,46 @@
-<div class="row">
-    <div class="col-7"></div>
-    <div class="col-5">
-      <div class="card m-auto p-5 rounded-5 shadow", style="max-width: 500px;">
-  <div class="card-body">
-    <h1 class="pb-5">Log in</h1>
+<body style="background: var(--bs-success-bg-subtle);">
+    <section style="height: 97px;"></section>
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5" style="min-height: auto;">
+        <div class="row align-items-center g-lg-5 py-5">
+            <div class="col col-lg-7 text-center text-lg-start" style="margin-bottom: 25px;">
+                <h1 class="text-nowrap" style="font-family: Satisfy, serif;font-size: 134.88px;margin-top: auto;margin-bottom: auto;margin-right: auto;margin-left: auto;min-height: auto;">Wash-Up!</h1>
+                <p style="font-family: 'Poppins';font-size: 20px;">Wash your clothes with ease</p>
+            </div>
+            <div class="card m-auto p-5 rounded-5 shadow", style="max-width: 500px;">
+          <div class="card-body">
+            <h1 class="pb-5">Sign in</h1>
 
-    <div class="m-auto text-center">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="form-floating mb-3">
-          <%= f.email_field :email, class: "form-control", id: "floatingInput", placeholder: "name@example.com" %>
-          <%= f.label :email, "Email address", class: "form-label", for: "floatingInput" %>
+            <div class="m-auto text-center">
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="form-floating mb-3">
+                  <%= f.email_field :email, class: "form-control", id: "floatingInput", placeholder: "name@example.com" %>
+                  <%= f.label :email, "Email address", class: "form-label", for: "floatingInput" %>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <%= f.password_field :password, class: "form-control", id: "floatingInput", autocomplete: "current-password", placeholder: "password" %>
+                  <%= f.label :password, "Password", class: "form-label", for: "floatingInput" %><br />
+                </div>
+
+            
+
+                <div class="actions">
+                  <%= f.submit "Log in", class: "btn bg-primary text-white w-100" %>
+                </div>
+
+              <% end %>
+            </div>
+            
+            <div class="pt-4"><%= render "devise/shared/links" %></div>
+
+          </div>
+
+      </div>
+            
+            
         </div>
-
-        <div class="form-floating mb-3">
-          <%= f.password_field :password, class: "form-control", id: "floatingInput", autocomplete: "current-password", placeholder: "password" %>
-          <%= f.label :password, "Password", class: "form-label", for: "floatingInput" %><br />
-        </div>
-
-    
-
-        <div class="actions">
-          <%= f.submit "Log in", class: "btn bg-primary text-white w-100" %>
-        </div>
-
-      <% end %>
     </div>
     
-    <div class="pt-4"><%= render "devise/shared/links" %></div>
-
-  </div>
-
-</div>
-    </div>
-  </div>
-
-
+ 
+</body>
 

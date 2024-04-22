@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     root to: 'devise/sessions#new'
   end
 
-  get 'landing', to: "landing#index", as: :landing_page
+  get 'dashboard', to: "landing#index", as: :landing_page
   # root 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
