@@ -12,7 +12,7 @@
                 </li>
                 <li class="nav-item" style="font-family: 'Poppins'; background: var(--bs-secondary-bg);">
                     <% if user_signed_in? %>
-                        <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+                        <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
                     <% else %>
                         <%= link_to "Sign in", new_user_session_path, class: "btn btn-primary" %>
                     <% end %>
