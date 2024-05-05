@@ -26,30 +26,16 @@
                                 </tr>
                             </thead>
                             <tbody style="text-align: center;">
-                                <tr>
-                                    <td>01</td>
-                                    <td>Jane Garcia</td>
-                                    <td>Lorem Ipsum</td>
-                                    <td>01-01-2021</td>
-                                    <td>Marites Jane Garcia</td>
-                                    <td class="text-center" style="width: 66.1719px;"><a class="del-row" href="javascript:void(0);"><i class="fas fa-trash" style="font-size: 20px;margin-left: 9px;"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>05</td>
-                                    <td>Juan Santos</td>
-                                    <td>Lorem Ipsum</td>
-                                    <td>01-01-2023</td>
-                                    <td>Maria Santos</td>
-                                    <td class="text-center" style="width: 66.1719px;"><a class="del-row" href="javascript:void(0);"><i class="fas fa-trash" style="font-size: 20px;margin-left: 9px;"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>10</td>
-                                    <td>Juana Freeman</td>
-                                    <td>Lorem Ipsum</td>
-                                    <td>01-01-2024</td>
-                                    <td>Juan dela Cruz</td>
-                                    <td class="text-center" style="width: 66.1719px;"><a class="del-row" href="javascript:void(0);"><i class="fas fa-trash" style="font-size: 20px;margin-left: 9px;"></i></a></td>
-                                </tr>
+                                <% @orders.each do |order| %>
+                                    <tr>
+                                        <td><%= order.id %></td>
+                                        <td><%= order.customer.name %></td>
+                                        <td><%= order.status %></td>
+                                        <td><%= order.date_time.strftime('%m-%d-%Y') %></td>
+                                        <td><%#= order.staff_in_charge %><%= "Staff In Charge" %></td>
+                                        <td class="text-center" style="width: 66.1719px;"><a class="del-row" href="javascript:void(0);"><i class="fas fa-trash" style="font-size: 20px;margin-left: 9px;"></i></a></td>
+                                    </tr>
+                                <% end %>
                             </tbody>
                         </table>
                     </div>

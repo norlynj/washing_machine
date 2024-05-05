@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <%= stylesheet_link_tag 'flash_messages', media: 'all', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body style="background: var(--bs-success-bg-subtle);">
@@ -24,10 +26,23 @@
     <%= render partial: "layouts/navbar"%>
   <%end %>
 
-  <% if notice.present? or alert.present?%>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p> 
-  <%end%>
-    <%= yield %>
+  <div id="flash-messages">
+    <% flash.each do |key, value| %>
+    <div class="alert alert-<%= flash_class(key) %> alert-dismissible fade show" role="alert">
+      <%= value %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <% end %>
+  </div>
+  <%= yield %>
+  <%= javascript_include_tag 'application'%>
+  <!-- JavaScript to auto-hide flash messages after a brief period -->
+  <script>
+  setTimeout(function() {
+    document.querySelectorAll('.alert').forEach(function(alert) {
+      new bootstrap.Alert(alert).close();
+    });
+  }, 3000); // Adjust the time (in milliseconds) for how long the flash messages should be displayed
+  </script>
   </body>
 </html>

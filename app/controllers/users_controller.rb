@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
 
   def index
-    @users = User.all
+    @users = User.where(role: :staff)
   end
 
   def show
@@ -38,6 +40,11 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     redirect_to users_path, notice: 'User successfully deleted.'
+  end
+
+  def logout
+    sign_out(current_user) # Devise method to sign out the user
+    redirect_to new_user_session_path # Redirect to the sign-in page
   end
 
   private
