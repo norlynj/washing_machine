@@ -1,21 +1,31 @@
-<nav class="navbar navbar-expand-sm sticky-top shadow-sm navigation-clean navbar-inverse navbar-fixed-top navbar-light" style="background: var(--bs-secondary-bg); height: 77px;">
-    <div class="container-fluid d-flex justify-content-between align-items-center">
+<nav class="navbar navbar-expand-md sticky-top shadow-sm navigation-clean navbar-inverse navbar-fixed-top navbar-light" style="background: var(--bs-secondary-bg); height: 77px;">
+    <div class="container-fluid">
         <div>
-            <div class="col col-lg-7 text-center text-lg-start">
-                <h1 class="text-nowrap mb-0" style="font-family: Satisfy, serif; font-size: 30px;">Wash-Up!</h1>
-            </div>
+            <a class="navbar-brand" style="padding:0px;margin-left:0px;height:78px;" href="admin-dashboard.html"> 
+                <%= image_tag "Wash-Up!.png", width: 150, height: 50, alt: "Wash Up Logo" %>
+            </a>
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
+                <span class="visually-hidden">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
         </div>
-        <div class="collapse navbar-collapse" id="navcol-1" style="color: var(--bs-navbar-brand-hover-color); background: var(--bs-secondary-bg);">
-            <ul class="navbar-nav ms-auto" style="margin-top: 0px; background: var(--bs-secondary-bg);">
-                <li class="nav-item d-flex justify-content-center" style="font-family: 'Poppins'; background: var(--bs-secondary-bg);">
-                    <%= link_to "Dashboard", root_path, class:"nav-link text-decoration-none" %>
+        <div class="collapse navbar-collapse" id="navcol-1" style="color: var(--bs-navbar-brand-hover-color);background: var(--bs-secondary-bg);">
+            <ul class="navbar-nav text-truncate ms-auto" style="margin-top: 0px;background: var(--bs-secondary-bg);">
+                <% if current_user.manager? %>
+                    <li class="nav-item">
+                        <a class="nav-link text-end" uk-scroll="offset:50" href="edit-admin.html" style="color: var(--bs-emphasis-color);font-family: 'Poppins';" data-bs-target="edit-admin.html">Edit profile</a>
+                    </li>
+                <% end %>
+                <li class="nav-item" style="color: var(--bs-emphasis-color);font-family: 'Poppins';background: var(--bs-secondary-bg);">
+                    <%= link_to "Dashboard", landing_page_path, class: "nav-link text-end active", "uk-scroll": "offset:100", style: "color: var(--bs-emphasis-color); font-family: 'Poppins';" %>
                 </li>
-                <li class="nav-item" style="font-family: 'Poppins'; background: var(--bs-secondary-bg);">
-                    <% if user_signed_in? %>
-                        <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
-                    <% else %>
-                        <%= link_to "Sign in", new_user_session_path, class: "btn btn-primary" %>
-                    <% end %>
+                <% if current_user.manager? %>
+                    <li class="nav-item">
+                        <a class="nav-link text-end" uk-scroll="offset:50" href="manage-users.html" style="color: var(--bs-emphasis-color);font-family: 'Poppins';">Manage users</a>
+                    </li>
+                <% end %>
+                <li class="nav-item">
+                    <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link text-end", "uk-scroll": "offset:50", style: "color: var(--bs-emphasis-color); font-family: 'Poppins';" %>
                 </li>
             </ul>
         </div>

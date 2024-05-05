@@ -56,23 +56,30 @@
                         </div>
                     </div>
                     <div class="col-md-6" style="padding-left: 18px;width: 800px;padding-right: 0px;">
-                        <div class="row" style="margin-bottom: 20px;padding-left: 10px;padding-right: 10px;">
-                            <div class="col">
-                                <div class="card" style="border-radius: 30px;">
-                                    <div class="card-body" style="padding-bottom: 10px;padding-top: 15px;">
-                                        <h4 class="card-title" style="font-family: 'Poppins';font-style: italic;font-size: 17.376px;color: var(--bs-form-valid-color);margin-bottom: 6px;"><strong>Your Schedule</strong></h4>
-                                        <p class="card-text" style="font-family: 'Poppins';">Weekly Schedule</p><a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">View Calendar</a>
+                        <% if current_user.staff? %>
+                            <div class="row" style="margin-bottom: 20px;padding-left: 10px;padding-right: 10px;">
+                                <div class="col">
+                                    <div class="card" style="border-radius: 30px;">
+                                        <div class="card-body" style="padding-bottom: 10px;padding-top: 15px;">
+                                            <h4 class="card-title" style="font-family: 'Poppins';font-style: italic;font-size: 17.376px;color: var(--bs-form-valid-color);margin-bottom: 6px;"><strong>Your Schedule</strong></h4>
+                                            <p class="card-text" style="font-family: 'Poppins';">Weekly Schedule</p><a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">View Calendar</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        <% end %>
                         <div class="row" style="margin-bottom: 20px;padding-left: 10px;padding-right: 10px;">
                             <div class="col">
                                 <div class="card" style="border-radius: 30px;">
                                     <div class="card-body" style="padding-bottom: 10px;padding-top: 15px;">
                                         <h4 class="card-title" style="font-family: 'Poppins';font-style: italic;font-size: 17.376px;color: var(--bs-form-valid-color);margin-bottom: 6px;"><strong>Analytics</strong></h4>
                                         <p class="card-text" style="font-family: 'Poppins';text-align: center;">Loads washed today:&nbsp;<br></p>
-                                        <p class="card-text" style="font-family: 'Poppins';text-align: center;margin-top: -20px;font-weight: bold;"><span class="nbanimate nbreplay" style="font-family: 'Poppins';font-size: 37px;">15</span></p><a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">See More</a>
+                                        <p class="card-text" style="font-family: 'Poppins';text-align: center;margin-top: -20px;font-weight: bold;"><span class="nbanimate nbreplay" style="font-family: 'Poppins';font-size: 37px;">15</span></p>
+                                        <% if current_user.manager? %>
+                                            <a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">See More</a>
+                                        <% else %>
+                                            <a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">See More</a>
+                                        <% end %>
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +88,12 @@
                                     <div class="card-body" style="padding-bottom: 10px;padding-top: 15px;">
                                         <h4 class="card-title" style="font-family: 'Poppins';font-style: italic;font-size: 17.376px;color: var(--bs-form-valid-color);margin-bottom: 6px;"><strong>Transactions</strong></h4>
                                         <p class="card-text" style="font-family: 'Poppins';text-align: center;">Last Payment From</p>
-                                        <p class="card-text" style="font-family: 'Poppins';font-size: 30px;text-align: center;margin-top: -20px;font-weight: bold;"><%=Order.last.customer.name%></p><a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">See More</a>
+                                        <p class="card-text" style="font-family: 'Poppins';font-size: 30px;text-align: center;margin-top: -20px;font-weight: bold;"><%=Order.last.customer.name%></p>
+                                        <% if current_user.manager? %>
+                                            <a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">Manage Transactions</a>
+                                        <% else %>
+                                            <a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">See More</a>
+                                        <% end %>
                                     </div>
                                 </div>
                             </div>
@@ -89,11 +101,20 @@
                         <div class="row" style="margin-bottom: 20px;padding-left: 10px;padding-right: 10px;">
                             <div class="col">
                                 <div class="card" style="border-radius: 30px;">
-                                    <div class="card-body" style="padding-bottom: 10px;padding-top: 15px;">
-                                        <h4 class="card-title" style="font-family: 'Poppins';font-style: italic;font-size: 17.376px;color: var(--bs-form-valid-color);margin-bottom: 6px;"><strong>Orders</strong></h4>
-                                        <p class="card-text" style="font-family: 'Poppins';text-align: center;">Orders Placed Today</p>
-                                        <p class="card-text" style="font-family: 'Poppins';font-size: 30px;text-align: center;margin-top: -20px;"><span class="nbanimate nbreplay" style="font-family: 'Poppins';font-size: 37px;font-weight: bold;"><%=Order.count%></span></p><a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">See More</a>
-                                    </div>
+                                    <% if current_user.manager? %>
+                                        <div class="card-body" style="padding-bottom: 10px;padding-top: 15px;">
+                                            <h4 class="card-title" style="font-family: 'Poppins';font-style: italic;font-size: 17.376px;color: var(--bs-form-valid-color);margin-bottom: 6px;"><strong>Users</strong></h4>
+                                            <p class="card-text" style="font-family: 'Poppins';text-align: center;">Online Users Today</p>
+                                            <p class="card-text" style="font-family: 'Poppins';font-size: 30px;text-align: center;margin-top: -20px;"><span class="nbanimate nbreplay" style="font-family: 'Poppins';font-size: 37px;font-weight: bold;">5</span></p><a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">Manage Users</a>
+                                        </div>
+                                    <% else %>
+                                       <div class="card-body" style="padding-bottom: 10px;padding-top: 15px;">
+                                            <h4 class="card-title" style="font-family: 'Poppins';font-style: italic;font-size: 17.376px;color: var(--bs-form-valid-color);margin-bottom: 6px;"><strong>Orders</strong></h4>
+                                            <p class="card-text" style="font-family: 'Poppins';text-align: center;">Orders Placed Today</p>
+                                            <p class="card-text" style="font-family: 'Poppins';font-size: 30px;text-align: center;margin-top: -20px;"><span class="nbanimate nbreplay" style="font-family: 'Poppins';font-size: 37px;font-weight: bold;"><%=Order.count%></span></p>
+                                            <a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">See More</a>
+                                        </div>
+                                    <% end %>
                                 </div>
                             </div>
                             <div class="col">
@@ -101,7 +122,12 @@
                                     <div class="card-body" style="padding-bottom: 10px;padding-top: 15px;">
                                         <h4 class="card-title" style="font-family: 'Poppins';font-style: italic;font-size: 17.376px;color: var(--bs-form-valid-color);margin-bottom: 6px;"><strong>Inventory</strong></h4>
                                         <p class="card-text" style="font-family: 'Poppins';text-align: center;">Detergents Available</p>
-                                        <p class="card-text" style="font-family: 'Poppins';text-align: center;margin-top: -20px;"><span class="nbanimate nbreplay" style="font-family: 'Poppins';font-size: 37px;font-weight: bold;">15</span></p><a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">See More</a>
+                                        <p class="card-text" style="font-family: 'Poppins';text-align: center;margin-top: -20px;"><span class="nbanimate nbreplay" style="font-family: 'Poppins';font-size: 37px;font-weight: bold;">15</span></p>
+                                        <% if current_user.manager? %>
+                                            <a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">Manage Inventory</a>
+                                        <% else %>
+                                            <a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">See More</a>
+                                        <% end %>
                                     </div>
                                 </div>
                             </div>
@@ -112,11 +138,26 @@
                                     <div class="card-body" style="padding-bottom: 10px;padding-top: 15px;">
                                         <h4 class="card-title" style="font-family: 'Poppins';font-style: italic;font-size: 17.376px;color: var(--bs-form-valid-color);margin-bottom: 6px;"><strong>Customers</strong></h4>
                                         <p class="card-text" style="font-family: 'Poppins';text-align: center;">Customers Registered</p>
-                                        <p class="card-text" style="font-family: 'Poppins';text-align: center;margin-top: -20px;"><span class="nbanimate nbreplay" style="font-family: 'Poppins';font-size: 37px;font-weight: bold;"><%=Customer.count%></span></p><a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">See More</a>
+                                        <p class="card-text" style="font-family: 'Poppins';text-align: center;margin-top: -20px;"><span class="nbanimate nbreplay" style="font-family: 'Poppins';font-size: 37px;font-weight: bold;"><%=Customer.count%></span></p>
+                                        <% if current_user.manager? %>
+                                            <a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">Manage Customers</a>
+                                        <% else %>
+                                            <a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">See More</a>
+                                        <% end %>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col"></div>
+                            <% if current_user.manager? %>
+                                <div class="col">
+                                    <div class="card" style="border-radius: 30px;">
+                                        <div class="card-body" style="padding-bottom: 10px;padding-top: 15px;">
+                                            <h4 class="card-title" style="font-family: 'Poppins';font-style: italic;font-size: 17.376px;color: var(--bs-form-valid-color);margin-bottom: 6px;"><strong>Schedule Overview</strong></h4>
+                                            <p class="card-text" style="font-family: 'Poppins';text-align: center;">Total Staff</p>
+                                            <p class="card-text" style="font-family: 'Poppins';font-size: 30px;text-align: center;margin-top: -20px;"><span class="nbanimate nbreplay" style="font-family: 'Poppins';font-size: 37px;font-weight: bold;">23</span></p><a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">View Schedules</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% end %>
                         </div>
                     </div>
                 </div>
