@@ -1,0 +1,2 @@
+class SalesAnalytic < ApplicationRecord
+end
