@@ -1,15 +1,16 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+@import "bootstrap/";
+@import "bootstrap/dh-navbar-inverse.css";
+@import "bootstrap/Fixed-navbar-starting-with-transparency-colors.css";
+@import "bootstrap/Fixed-navbar-starting-with-transparency-styles.css";
+@import "bootstrap/Latest-Events.css";
+@import "bootstrap/Login-Form-Basic-icons.css";
+@import "bootstrap/Ludens-Users---3-Profile.css";
+@import "bootstrap/Multi-step-form.css";
+@import "bootstrap/Profile-Edit-Form-styles.css";
+@import "bootstrap/Profile-Edit-Form.css";
+@import "bootstrap/Data-Table-with-Search-Sort-Filter-and-Zoom-using-TableSorter";
+@import "bootstrap/Table-With-Search-search-table.css";
+@import "bootstrap/Table-With-Search.css";
+
+
+@import "font-awesome";

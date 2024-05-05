@@ -1,0 +1,81 @@
+<section class="position-relative py-4 py-xl-5">
+    <div id="profile" class="container profile profile-view">
+        <form class="shadow focus-ring" style="padding-right: 38px;padding-left: 38px;padding-bottom: 20px;background: var(--bs-body-bg);border-radius: 56px;border-style: none;padding-top: 12px;">
+            <div class="row profile-row">
+                <div class="col-md-4 relative">
+                    <h1 class="text-nowrap" style="font-family: Satisfy, serif;font-size: 51.88px;margin-top: auto;margin-bottom: auto;margin-right: auto;margin-left: auto;min-height: auto;text-align: center;">Wash Up!</h1>
+                    <div class="avatar">
+                        <div class="avatar-bg center" style="margin-bottom: 27px;margin-top: 28px;"></div>
+                    </div><input class="form-control form-control-sm form-control" type="file" name="avatar-file" style="background: var(--bs-success-bg-subtle);border-style: solid;border-color: var(--bs-emphasis-color);font-family: 'Poppins';margin-bottom: 8px;" />
+                </div>
+                <div class="col-md-8" style="padding: 28px;">
+                    <h1 style="font-family: 'Poppins';font-weight: bold;"><%= @user.full_name %></h1>
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group mb-3">
+                                <label class="form-label" style="font-family: 'Poppins';">Firstname </label>
+                                <input class="form-control" type="text" name="firstname" style="background: var(--bs-success-bg-subtle);border: 1px solid var(--bs-body-color);" value="<%= @user.first_name %>" />
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group mb-3">
+                                <label class="form-label" style="font-family: 'Poppins';">Lastname </label>
+                                <input class="form-control" type="text" name="lastname" style="border-style: solid;border-color: var(--bs-emphasis-color);background: var(--bs-success-bg-subtle);" value="<%= @user.last_name %>" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group mb-3">
+                                <label class="form-label" style="font-family: 'Poppins';">Email </label>
+                                <input class="form-control" type="email" autocomplete="off" required name="email" style="border-style: solid;border-color: var(--bs-emphasis-color);background: var(--bs-success-bg-subtle);" value="<%= @user.email %>" />
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group mb-3">
+                                <label class="form-label" style="font-family: 'Poppins';">Mobile number</label>
+                                <input class="form-control" type="text" name="mobile" style="border-style: solid;border-color: var(--bs-emphasis-color);background: var(--bs-success-bg-subtle);" value="<%= @user.mobile_number %>" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6" style="width: 131.656px;">
+                            <div class="form-group mb-3">
+                                <label class="form-label" style="font-family: 'Poppins';">Gender</label>
+                                <input class="form-control" type="email" autocomplete="off" required name="email" style="border-style: solid;border-color: var(--bs-emphasis-color);background: var(--bs-success-bg-subtle);min-width: auto;" value="<%= @user.gender %>" />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group mb-3">
+                                <label class="form-label" style="font-family: 'Poppins';">Birthday</label>
+                                <input class="form-control" type="date" style="background: var(--bs-success-bg-subtle);border-style: solid;border-color: var(--bs-emphasis-color);font-family: 'Poppins';" value="<%= @user.birthday %>" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group mb-3">
+                                <label class="form-label" style="font-family: 'Poppins';">Password </label>
+                                <input class="form-control" type="password" name="password" autocomplete="off" required style="border-style: solid;border-color: var(--bs-emphasis-color);background: var(--bs-success-bg-subtle);" />
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group mb-3">
+                                <label class="form-label" style="font-family: 'Poppins';">Confirm Password</label>
+                                <input class="form-control" type="password" name="confirmpass" autocomplete="off" required style="border-style: solid;border-color: var(--bs-emphasis-color);background: var(--bs-success-bg-subtle);" />
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-12 content-right">
+                            <button class="btn btn-primary form-btn" type="submit" style="font-family: 'Poppins';margin-top: 14px;">SAVE </button>
+                            <button class="btn btn-danger form-btn" type="reset" style="font-family: 'Poppins';margin-top: 14px;">CANCEL </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
