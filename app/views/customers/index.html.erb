@@ -32,33 +32,19 @@
                                 </tr>
                             </thead>
                             <tbody style="text-align: center;">
-                                <tr>
-                                    <td class="text-center"><a href="#"><svg class="bi bi-plus-circle-fill" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style="font-size: 20px;">
-                                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"></path>
-                                            </svg></a></td>
-                                    <td>Juan Santos</td>
-                                    <td>0917 1234 456</td>
-                                    <td>Blk 1 L 1 Kassel City Subdivision</td>
-                                    <td class="text-center" style="width: 66.1719px;"><a class="del-row" href="javascript:void(0);"><i class="fas fa-history" style="font-size: 20px;"></i></a><a class="del-row" href="javascript:void(0);"><i class="fas fa-edit" style="font-size: 20px;margin-left: 9px;"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center"><a href="#"><svg class="bi bi-plus-circle-fill" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style="font-size: 20px;">
-                                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"></path>
-                                            </svg></a></td>
-                                    <td>Juana Freeman</td>
-                                    <td>0917 1234 456</td>
-                                    <td>Blk 21 L 31 Kassel Homes Subdivision</td>
-                                    <td class="text-center" style="width: 66.1719px;"><a class="del-row" href="javascript:void(0);"><i class="fas fa-history" style="font-size: 20px;"></i></a><a class="del-row" href="javascript:void(0);"><i class="fas fa-edit" style="font-size: 20px;margin-left: 9px;"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center"><a href="#"><svg class="bi bi-plus-circle-fill" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style="font-size: 20px;">
-                                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"></path>
-                                            </svg></a></td>
-                                    <td>Jane Garcia</td>
-                                    <td>0917 1234 456</td>
-                                    <td>Abucay</td>
-                                    <td class="text-center" style="width: 66.1719px;"><a class="del-row" href="javascript:void(0);"><i class="fas fa-history" style="font-size: 20px;"></i></a><a class="del-row" href="javascript:void(0);"><i class="fas fa-edit" style="font-size: 20px;margin-left: 9px;"></i></a></td>
-                                </tr>
+                                <!-- Loop through customers and generate table rows -->
+                                <% @customers.each do |customer| %>
+                                    <tr>
+                                        <td class="text-center"><a href="#"><svg class="bi bi-plus-circle-fill" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style="font-size: 20px;">
+                                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"></path>
+                                                </svg></a></td>
+                                        <td><%= customer.name %></td>
+                                        <td><%= customer.contact_info %></td>
+                                        <td><%= customer.address %></td>
+                                        <td class="text-center" style="width: 66.1719px;"><a class="del-row" href="javascript:void(0);"><i class="fas fa-history" style="font-size: 20px;"></i></a><a class="del-row" href="javascript:void(0);"><i class="fas fa-edit" style="font-size: 20px;margin-left: 9px;"></i></a></td>
+                                    </tr>
+                                <% end %>
+                                <!-- End of customer loop -->
                             </tbody>
                         </table>
                     </div>
