@@ -90,7 +90,7 @@
                                         <p class="card-text" style="font-family: 'Poppins';text-align: center;">Last Payment From</p>
                                         <p class="card-text" style="font-family: 'Poppins';font-size: 30px;text-align: center;margin-top: -20px;font-weight: bold;"><%=Order.last.customer.name%></p>
                                         <% if current_user.manager? %>
-                                            <a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">Manage Transactions</a>
+                                            <%= link_to "Manage Transactions", transactions_path, class: "btn btn-primary", role: "button", style: "background: rgba(225,225,225,0); color: var(--bs-emphasis-color); border-width: 0px; border-style: none; display: block; font-style: italic; font-size: 14px;" %>
                                         <% else %>
                                             <a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">See More</a>
                                         <% end %>
@@ -105,7 +105,10 @@
                                         <div class="card-body" style="padding-bottom: 10px;padding-top: 15px;">
                                             <h4 class="card-title" style="font-family: 'Poppins';font-style: italic;font-size: 17.376px;color: var(--bs-form-valid-color);margin-bottom: 6px;"><strong>Users</strong></h4>
                                             <p class="card-text" style="font-family: 'Poppins';text-align: center;">Online Users Today</p>
-                                            <p class="card-text" style="font-family: 'Poppins';font-size: 30px;text-align: center;margin-top: -20px;"><span class="nbanimate nbreplay" style="font-family: 'Poppins';font-size: 37px;font-weight: bold;">5</span></p><a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">Manage Users</a>
+                                            <p class="card-text" style="font-family: 'Poppins'; font-size: 30px; text-align: center; margin-top: -20px;">
+                                                <span class="nbanimate nbreplay" style="font-family: 'Poppins'; font-size: 37px; font-weight: bold;">5</span>
+                                            </p>
+                                            <%= link_to "Manage Users", users_path, class: "btn btn-primary", role: "button", style: "background: rgba(225, 225, 225, 0); color: var(--bs-emphasis-color); border-width: 0px; border-style: none; display: block; font-style: italic; font-size: 14px;" %>
                                         </div>
                                     <% else %>
                                        <div class="card-body" style="padding-bottom: 10px;padding-top: 15px;">
@@ -124,7 +127,7 @@
                                         <p class="card-text" style="font-family: 'Poppins';text-align: center;">Detergents Available</p>
                                         <p class="card-text" style="font-family: 'Poppins';text-align: center;margin-top: -20px;"><span class="nbanimate nbreplay" style="font-family: 'Poppins';font-size: 37px;font-weight: bold;">15</span></p>
                                         <% if current_user.manager? %>
-                                            <a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">Manage Inventory</a>
+                                            <%= link_to "Manage Inventory", inventories_path, class: "btn btn-primary", role: "button", style: "background: rgba(225,225,225,0); color: var(--bs-emphasis-color); border-width: 0px; border-style: none; display: block; font-style: italic; font-size: 14px;" %>
                                         <% else %>
                                             <a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">See More</a>
                                         <% end %>
@@ -140,7 +143,7 @@
                                         <p class="card-text" style="font-family: 'Poppins';text-align: center;">Customers Registered</p>
                                         <p class="card-text" style="font-family: 'Poppins';text-align: center;margin-top: -20px;"><span class="nbanimate nbreplay" style="font-family: 'Poppins';font-size: 37px;font-weight: bold;"><%=Customer.count%></span></p>
                                         <% if current_user.manager? %>
-                                            <a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">Manage Customers</a>
+                                            <%= link_to "Manage Customers", customers_path, class: "btn btn-primary", role: "button", style: "background: rgba(225,225,225,0); color: var(--bs-emphasis-color); border-width: 0px; border-style: none; display: block; font-style: italic; font-size: 14px;" %>
                                         <% else %>
                                             <a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">See More</a>
                                         <% end %>

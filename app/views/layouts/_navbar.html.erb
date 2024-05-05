@@ -13,7 +13,7 @@
             <ul class="navbar-nav text-truncate ms-auto" style="margin-top: 0px;background: var(--bs-secondary-bg);">
                 <% if current_user.manager? %>
                     <li class="nav-item">
-                        <a class="nav-link text-end" uk-scroll="offset:50" href="edit-admin.html" style="color: var(--bs-emphasis-color);font-family: 'Poppins';" data-bs-target="edit-admin.html">Edit profile</a>
+                        <%= link_to "Edit profile", user_path(current_user), class: "nav-link text-end", "uk-scroll": "offset:50", style: "color: var(--bs-emphasis-color); font-family: 'Poppins';" %>
                     </li>
                 <% end %>
                 <li class="nav-item" style="color: var(--bs-emphasis-color);font-family: 'Poppins';background: var(--bs-secondary-bg);">
@@ -21,7 +21,7 @@
                 </li>
                 <% if current_user.manager? %>
                     <li class="nav-item">
-                        <a class="nav-link text-end" uk-scroll="offset:50" href="manage-users.html" style="color: var(--bs-emphasis-color);font-family: 'Poppins';">Manage users</a>
+                        <%= link_to "Manage users", users_path, class: "nav-link text-end", "uk-scroll": "offset:50", style: "color: var(--bs-emphasis-color); font-family: 'Poppins';" %>
                     </li>
                 <% end %>
                 <li class="nav-item">
