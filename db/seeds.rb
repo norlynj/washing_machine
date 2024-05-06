@@ -1,8 +1,8 @@
 # # Seed Users
-# User.create(email: 'staff1@example.com', password: 'password', role: :staff, first_name: 'John', last_name: 'Doe', mobile_number: '1234567890', gender: 'Male', birthday: Date.new(1990, 1, 1))
-# User.create(email: 'staff2@example.com', password: 'password', role: :staff, first_name: 'Jane', last_name: 'Smith', mobile_number: '9876543210', gender: 'Female', birthday: Date.new(1995, 5, 15))
-# User.create(email: 'manager1@example.com', password: 'password', role: :manager, first_name: 'Manager', last_name: 'One', mobile_number: '1112223333', gender: 'Male', birthday: Date.new(1985, 12, 10))
-# User.create(email: 'manager2@example.com', password: 'password', role: :manager, first_name: 'Manager', last_name: 'Two', mobile_number: '4445556666', gender: 'Female', birthday: Date.new(1978, 7, 20))
+User.create(email: 'staff1@example.com', password: 'password', role: :staff, first_name: 'John', last_name: 'Doe', mobile_number: '1234567890', gender: 'Male', birthday: Date.new(1990, 1, 1))
+User.create(email: 'staff2@example.com', password: 'password', role: :staff, first_name: 'Jane', last_name: 'Smith', mobile_number: '9876543210', gender: 'Female', birthday: Date.new(1995, 5, 15))
+User.create(email: 'manager1@example.com', password: 'password', role: :manager, first_name: 'Manager', last_name: 'One', mobile_number: '1112223333', gender: 'Male', birthday: Date.new(1985, 12, 10))
+User.create(email: 'manager2@example.com', password: 'password', role: :manager, first_name: 'Manager', last_name: 'Two', mobile_number: '4445556666', gender: 'Female', birthday: Date.new(1978, 7, 20))
 
 # # Seed Customers
 # Customer.create(name: 'John Doe', address: '123 Main St', contact_info: '123-456-7890')
