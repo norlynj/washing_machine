@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = User.where(role: :staff)
+    if params[:search].present?
+      @users = User.where("first_name LIKE ? OR last_name LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%").where(role: :staff)
+    else
+      @users = User.where(role: :staff)
+    end
   end
 
   def show
