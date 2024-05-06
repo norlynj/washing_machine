@@ -61,6 +61,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   gem 'chart-js-rails'
+  gem 'faker'
 end
 
 group :test do
