@@ -1,8 +1,12 @@
 class CustomersController < ApplicationController
 
   def index
-      @customers = Customer.all
-  end
+    @customers = if params[:search]
+                  Customer.where("name LIKE ?", "%#{params[:search]}%")
+                else
+                  Customer.all
+                end
+      end
 
 
 end

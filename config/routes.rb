@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   resources :inventories
   resources :customers
   resources :transactions
+  resources :analytics
 end
