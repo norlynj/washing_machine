@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>152 UI</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/Fixed-navbar-starting-with-transparency-styles.css">
+    <link rel="stylesheet" href="assets/css/Fixed-navbar-starting-with-transparency-colors.css">
+    <link rel="stylesheet" href="assets/css/Data-Table-with-Search-Sort-Filter-and-Zoom-using-TableSorter.css">
+    <link rel="stylesheet" href="assets/css/dh-navbar-inverse.css">
+    <link rel="stylesheet" href="assets/css/Filter.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="assets/css/Latest-Events.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
+    <link rel="stylesheet" href="assets/css/Ludens-Users---3-Profile.css">
+    <link rel="stylesheet" href="assets/css/Manage-Users.css">
+    <link rel="stylesheet" href="assets/css/Multi-step-form.css">
+    <link rel="stylesheet" href="assets/css/Profile-Edit-Form-styles.css">
+    <link rel="stylesheet" href="assets/css/Profile-Edit-Form.css">
+    <link rel="stylesheet" href="assets/css/Table-With-Search-search-table.css">
+    <link rel="stylesheet" href="assets/css/Table-With-Search.css">
+</head>
+
+<body style="background: var(--bs-success-bg-subtle);">
+    <!-- Start: dh-navbar-inverse -->
+    <nav class="navbar navbar-expand-sm sticky-top shadow-sm navigation-clean navbar-inverse navbar-fixed-top navbar-light" style="background: var(--bs-secondary-bg);height: 77px;">
+        <div class="container-fluid">
+            <div><a class="navbar-brand" style="padding:0px;margin-left:0px;height:78px;" href="manage-customers.html"> <img src="assets/img/Wash-Up!.png" width="150" height="50"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
+            <div class="collapse navbar-collapse" id="navcol-1" style="color: var(--bs-navbar-brand-hover-color);background: var(--bs-secondary-bg);">
+                <ul class="navbar-nav ms-auto" style="margin-top: 0px;background: var(--bs-secondary-bg);">
+                    <li class="nav-item" style="color: var(--bs-emphasis-color);font-family: 'Poppins';background: var(--bs-secondary-bg);">
+                        <!-- Start: dasboard --><a class="nav-link text-end" uk-scroll="offset:100" href="manage-customers.html" style="color: var(--bs-emphasis-color);font-family: 'Poppins';">Dashboard</a><!-- End: dasboard -->
+                    </li>
+                    <li class="nav-item" style="color: var(--bs-emphasis-color);font-family: 'Poppins';background: var(--bs-secondary-bg);">
+                        <!-- Start: logout --><a class="nav-link text-end" uk-scroll="offset:50" href="index.html" style="color: var(--bs-emphasis-color);font-family: 'Poppins';">Log out</a><!-- End: logout -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav><!-- End: dh-navbar-inverse -->
+    <section style="margin-top: 34px;">
+        <div></div>
+        <div>
+            <div class="container">
+                <h1 style="font-size: 29px;text-align: center;font-family: 'Poppins';font-weight: bold;margin-bottom: 33px;margin-right: -3px;color: var(--bs-emphasis-color);">All Transactions</h1>
+                <div class="row justify-content-center" style="margin-bottom: 10px;">
+                    <div class="col-9 col-sm-6 col-md-4 col-xl-3 col-xxl-2" style="padding-right: 1px;width: 221.5px;">
+                        <div style="min-width: auto;width: 192.5px;"><input class="shadow-sm form-control-sm" type="search" name="search customeer" placeholder="Search Transaction" autofocus="" style="border-width: 0px;border-radius: 14px;padding-left: 18px;min-width: auto;width: 201.5px;font-family: 'Poppins';"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="table-responsive shadow-sm" id="myTable" style="border-style: none;border-radius: 20px;min-width: auto;min-height: auto;margin-top: 9px;font-family: 'Poppins';">
+                            <table class="table table-striped table-hover table-sm table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 107.969px;text-align: center;">ID<a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M9.1716 6.45504L7.75739 5.04083L12 0.798187L16.2426 5.04083L14.8284 6.45504L13.0001 4.62667V19.3733L14.8284 17.5449L16.2426 18.9592L12 23.2018L7.75739 18.9592L9.1716 17.5449L11.0001 19.3734V4.62658L9.1716 6.45504Z" fill="currentColor"></path>
+                                                </svg></a></th>
+                                        <th style="text-align: center;min-width: auto;width: 318.141px;">CUSTOMER NAME<a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M9.1716 6.45504L7.75739 5.04083L12 0.798187L16.2426 5.04083L14.8284 6.45504L13.0001 4.62667V19.3733L14.8284 17.5449L16.2426 18.9592L12 23.2018L7.75739 18.9592L9.1716 17.5449L11.0001 19.3734V4.62658L9.1716 6.45504Z" fill="currentColor"></path>
+                                                </svg></a></th>
+                                        <th style="text-align: center;min-width: auto;width: 141.594px;">DATE<a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M9.1716 6.45504L7.75739 5.04083L12 0.798187L16.2426 5.04083L14.8284 6.45504L13.0001 4.62667V19.3733L14.8284 17.5449L16.2426 18.9592L12 23.2018L7.75739 18.9592L9.1716 17.5449L11.0001 19.3734V4.62658L9.1716 6.45504Z" fill="currentColor"></path>
+                                                </svg></a></th>
+                                        <th style="text-align: center;">RECEIPT (clickable)</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="text-align: center;">
+                                    <tr>
+                                        <td>01</td>
+                                        <td>Lorem Ipsum</td>
+                                        <td>01-01-2021</td>
+                                        <td>image here&nbsp;<br>(click to pop up)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>05</td>
+                                        <td>Lorem Ipsum</td>
+                                        <td>01-01-2023</td>
+                                        <td>image here</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10</td>
+                                        <td>Lorem Ipsum</td>
+                                        <td>01-01-2024</td>
+                                        <td>image here</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/-Animated-numbers-section-BS4--Animated-numbers-section.js"></script>
+    <script src="assets/js/Clock-Real-Time-real-time-clock.js"></script>
+    <script src="assets/js/Data-Table-with-Search-Sort-Filter-and-Zoom-using-TableSorter-tablesortermain.js"></script>
+    <script src="assets/js/Fixed-navbar-starting-with-transparency-script.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/jquery.tablesorter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-filter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-storage.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/Multi-step-form-script.js"></script>
+    <script src="assets/js/Profile-Edit-Form-profile.js"></script>
+    <script src="assets/js/Table-With-Search-search-table.js"></script>
+</body>
+
+</html>
