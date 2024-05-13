@@ -1,0 +1,46 @@
+customer transactions
+- order id
+- receipt (shows order details through order id)
+
+
+order
+- customer id
+- user id for staff
+- status
+- weight
+- payment: cash, gcash 
+- classification: regular clothes - 150, bed linens - 180
+- total
+note: once ma save an order
+
+
+
+customers
+- name
+- address
+- contact_info
+
+invoices
+- customer transaction id
+
+schedule
+- user id
+- data range
+- 
+
+users
+- email
+- first name
+- last name
+- mobile number
+- gender
+- role
+
+inventory
+- quantity (callback: when +1load order -quantity for detergent, fabcon
+- name
+
+
+analytics
+
+
