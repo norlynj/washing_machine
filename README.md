@@ -21,6 +21,6 @@ Run newB.py and the terminal will serve as the compiler
 - If-else and else-if statement
 - For and nested for loop
 
-  ## Documentation
+## Documentation
 
-  https://docs.google.com/document/d/1-3Sc8Z1PfOaEUusjcNu6_vIhBzCkStRYkok5SUgXiVA/edit?usp=sharing
+https://docs.google.com/document/d/1-3Sc8Z1PfOaEUusjcNu6_vIhBzCkStRYkok5SUgXiVA/edit?usp=sharing
