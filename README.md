@@ -1,24 +1,26 @@
-# README
+# newB
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A low-level programming language characterized by syntax tailored to our designed  grammar
 
-Things you may want to cover:
+## Deployment 
 
-* Ruby version
+Run newB.py and the terminal will serve as the compiler
 
-* System dependencies
+## Implemented features
 
-* Configuration
+- Recognizing valid variable naming
+- Binding variables to a data type and recognizing what valid values are accepted given the data type it is declared with
+- Type Checking
+- Recognizing valid expression syntax 
+- Evaluating expression in the correct precedence and associativity
+- Arithmetic operators
+- String concatenation
+- Relational operators
+- Logical Operators
+- Simple Assignment
+- If-else and else-if statement
+- For and nested for loop
 
-* Database creation
+  ## Documentation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  https://docs.google.com/document/d/1-3Sc8Z1PfOaEUusjcNu6_vIhBzCkStRYkok5SUgXiVA/edit?usp=sharing
