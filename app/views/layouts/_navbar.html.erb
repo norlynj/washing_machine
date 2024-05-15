@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-md sticky-top shadow-sm navigation-clean navbar-inverse navbar-fixed-top navbar-light" style="background: var(--bs-secondary-bg); height: 77px;">
     <div class="container-fluid">
         <div>
-            <a class="navbar-brand" style="padding:0px;margin-left:0px;height:78px;" href="admin-dashboard.html"> 
+            <%= link_to root_path, class: "navbar-brand", style: "padding:0px;margin-left:0px;height:78px;" do %>
                 <%= image_tag "Wash-Up!.png", width: 150, height: 50, alt: "Wash Up Logo" %>
-            </a>
+            <% end %>
             <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
                 <span class="visually-hidden">Toggle navigation</span>
                 <span class="navbar-toggler-icon"></span>
