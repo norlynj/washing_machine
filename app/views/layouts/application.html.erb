@@ -33,14 +33,7 @@
       <%= render partial: "layouts/navbar"%>
     <%end %>
 
-    <div id="flash-messages">
-      <% flash.each do |key, value| %>
-      <div class="alert alert-<%= flash_class(key) %> alert-dismissible fade show" role="alert">
-        <%= value %>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-      <% end %>
-    </div>
+    
 
     <%= yield %>
     <%= javascript_include_tag 'application'%>
