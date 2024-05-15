@@ -4,31 +4,6 @@ User.create(email: 'staff2@example.com', password: 'password', role: :staff, fir
 User.create(email: 'manager1@example.com', password: 'password', role: :manager, first_name: 'Manager', last_name: 'One', mobile_number: '1112223333', gender: 'Male', birthday: Date.new(1985, 12, 10))
 User.create(email: 'manager2@example.com', password: 'password', role: :manager, first_name: 'Manager', last_name: 'Two', mobile_number: '4445556666', gender: 'Female', birthday: Date.new(1978, 7, 20))
 
-# # Seed Customers
-# Customer.create(name: 'John Doe', address: '123 Main St', contact_info: '123-456-7890')
-# Customer.create(name: 'Jane Smith', address: '456 Elm St', contact_info: '987-654-3210')
-
-# # Seed Orders
-# Order.create(date_time: DateTime.now, customer: Customer.first, status: 'Pending')
-# Order.create(date_time: DateTime.now, customer: Customer.second, status: 'Completed')
-
-# # Seed Transactions
-# CustomerTransaction.create(date_time: DateTime.now, amount: 100.0, payment_method: 'Credit Card', order_status: 'Pending', customer: Customer.first)
-# CustomerTransaction.create(date_time: DateTime.now, amount: 150.0, payment_method: 'PayPal', order_status: 'Completed', customer: Customer.second)
-
-# # Seed Invoices
-# Invoice.create(date_time: DateTime.now, customer_transaction: CustomerTransaction.first)
-# Invoice.create(date_time: DateTime.now, customer_transaction: CustomerTransaction.second)
-
-# # Seed Payments
-# Payment.create(date_time: DateTime.now, total_amount: 100.0, payment_method: 'Credit Card', payment_status: 'Paid')
-# Payment.create(date_time: DateTime.now, total_amount: 150.0, payment_method: 'PayPal', payment_status: 'Pending')
-
-# # Seed Tasks
-# Task.create(user: User.where(role: :staff).first, date_range: '2024-04-15 to 2024-04-20')
-# Task.create(user: User.where(role: :staff).second, date_range: '2024-04-20 to 2024-04-25')
-
-
 require 'faker'
 
 # Seed Users
@@ -54,45 +29,41 @@ end
   )
 end
 
-# Seed Orders
+# Seed data for inventories table
 10.times do
-  Order.create!(
-    date_time: Faker::Time.between_dates(from: Date.today - 30, to: Date.today, period: :all),
-    customer: Customer.all.sample,
-    status: ['Pending', 'Completed'].sample
+  Inventory.create(
+    name: Faker::Commerce.product_name,
+    quantity: Faker::Number.between(from: 1, to: 100)
   )
 end
 
-# Seed Transactions
+# Seed data for orders table
 10.times do
-  CustomerTransaction.create!(
-    date_time: Faker::Time.between_dates(from: Date.today - 30, to: Date.today, period: :all),
-    amount: Faker::Number.decimal(l_digits: 2),
-    payment_method: ['Credit Card', 'PayPal', 'Cash'].sample,
-    order_status: ['Pending', 'Completed'].sample,
-    customer: Customer.all.sample
+  Order.create(
+    customer_id: Customer.pluck(:id).sample,
+    status: Faker::Lorem.word,
+    weight: Faker::Number.decimal(l_digits: 2),
+    payment_method: Faker::Commerce.product_name,
+    classification: Faker::Commerce.product_name,
+    total_amount: Faker::Number.decimal(l_digits: 2)
   )
 end
 
-# Seed Invoices
-CustomerTransaction.all.each do |transaction|
-  Invoice.create!(date_time: Faker::Time.between_dates(from: Date.today - 30, to: Date.today, period: :all), customer_transaction: transaction)
-end
-
-# Seed Payments
+# Seed data for customer_transactions table
 10.times do
-  Payment.create!(
-    date_time: Faker::Time.between_dates(from: Date.today - 30, to: Date.today, period: :all),
-    total_amount: Faker::Number.decimal(l_digits: 2),
-    payment_method: ['Credit Card', 'PayPal', 'Cash'].sample,
-    payment_status: ['Paid', 'Pending'].sample
+  CustomerTransaction.create(
+    customer_id: Customer.pluck(:id).sample,
+    order_id: Order.pluck(:id).sample,
+    receipt: Faker::Lorem.sentence
   )
 end
 
-# Seed Tasks
+# Seed data for schedules table
 10.times do
-  Task.create!(
-    user: User.where(role: :staff).sample,
-    date_range: "#{Faker::Date.between(from: Date.today - 30, to: Date.today)} to #{Faker::Date.between(from: Date.today, to: Date.today + 30)}"
+  Schedule.create(
+    user_id: User.pluck(:id).sample,
+    start_date: Faker::Date.backward(days: 30),
+    end_date: Faker::Date.forward(days: 30)
   )
 end
+
