@@ -65,7 +65,7 @@ group :development do
   gem 'bootstrap', '~> 5.1', '>= 5.1.3'
   gem 'jquery-rails'
   gem 'sassc-rails'
-  # gem 'dartsass-sprockets'
+  # gem 'dartsass-sprockets' uncomment this line once ran to local once
 end
 
 group :test do
