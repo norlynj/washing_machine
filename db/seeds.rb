@@ -54,7 +54,7 @@ end
   CustomerTransaction.create(
     customer_id: Customer.pluck(:id).sample,
     order_id: Order.pluck(:id).sample,
-    receipt: Faker::Lorem.sentence
+    receipt: Faker::LoremFlickr.image(size: "300x300")
   )
 end
 
@@ -66,4 +66,5 @@ end
     end_date: Faker::Date.forward(days: 30)
   )
 end
+
 
