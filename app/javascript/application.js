@@ -2,3 +2,5 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 //= require Chart.min
+//= require bootstrap
+//= require jquery

@@ -12,6 +12,12 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <%= javascript_include_tag 'jquery' %>
+    <%= javascript_include_tag 'popper' %>
+    <%= javascript_include_tag 'bootstrap' %>
+
+
     <!-- Option 1: Include in HTML -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css">
@@ -23,27 +29,28 @@
   </head>
 
   <body style="background: var(--bs-success-bg-subtle);">
-  <%if user_signed_in? %>
-    <%= render partial: "layouts/navbar"%>
-  <%end %>
+    <%if user_signed_in? %>
+      <%= render partial: "layouts/navbar"%>
+    <%end %>
 
-  <div id="flash-messages">
-    <% flash.each do |key, value| %>
-    <div class="alert alert-<%= flash_class(key) %> alert-dismissible fade show" role="alert">
-      <%= value %>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div id="flash-messages">
+      <% flash.each do |key, value| %>
+      <div class="alert alert-<%= flash_class(key) %> alert-dismissible fade show" role="alert">
+        <%= value %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <% end %>
     </div>
-    <% end %>
-  </div>
-  <%= yield %>
-  <%= javascript_include_tag 'application'%>
-  <!-- JavaScript to auto-hide flash messages after a brief period -->
-  <script>
-  setTimeout(function() {
-    document.querySelectorAll('.alert').forEach(function(alert) {
-      new bootstrap.Alert(alert).close();
-    });
-  }, 3000); // Adjust the time (in milliseconds) for how long the flash messages should be displayed
-  </script>
+
+    <%= yield %>
+    <%= javascript_include_tag 'application'%>
+    <!-- JavaScript to auto-hide flash messages after a brief period -->
+    <script>
+    setTimeout(function() {
+      document.querySelectorAll('.alert').forEach(function(alert) {
+        new bootstrap.Alert(alert).close();
+      });
+    }, 3000); // Adjust the time (in milliseconds) for how long the flash messages should be displayed
+    </script>
   </body>
 </html>

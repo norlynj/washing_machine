@@ -62,6 +62,10 @@ group :development do
   # gem "spring"
   gem 'chart-js-rails'
   gem 'faker'
+  gem 'bootstrap', '~> 5.1', '>= 5.1.3'
+  gem 'jquery-rails'
+  gem 'sassc-rails'
+  gem 'dartsass-sprockets'
 end
 
 group :test do
