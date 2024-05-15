@@ -41,6 +41,7 @@ end
 10.times do
   Order.create(
     customer_id: Customer.pluck(:id).sample,
+    staff_id: User.pluck(:id).sample,
     status: Faker::Lorem.word,
     weight: Faker::Number.decimal(l_digits: 2),
     payment_method: Faker::Commerce.product_name,
@@ -66,5 +67,3 @@ end
     end_date: Faker::Date.forward(days: 30)
   )
 end
-
-

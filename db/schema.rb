@@ -50,7 +50,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_15_153437) do
     t.string "payment_method"
     t.string "classification"
     t.decimal "total_amount", precision: 10, scale: 2
+    t.integer "staff_id"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
+    t.index ["staff_id"], name: "index_orders_on_staff_id"
   end
 
   create_table "sales_analytics", force: :cascade do |t|
@@ -94,5 +96,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_15_153437) do
 
   add_foreign_key "customer_transactions", "customers"
   add_foreign_key "orders", "customers"
+  add_foreign_key "orders", "users", column: "staff_id"
   add_foreign_key "tasks", "users"
 end

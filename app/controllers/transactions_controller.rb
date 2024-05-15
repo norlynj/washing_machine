@@ -1,6 +1,6 @@
 class TransactionsController < ApplicationController
 
   def index
-      @orders = Order.all
+      @transactions = CustomerTransaction.all
   end
 end
