@@ -8,9 +8,9 @@ order
 - user id for staff
 - status
 - weight
-- payment: cash, gcash 
+- payment method: cash, gcash 
 - classification: regular clothes - 150, bed linens - 180
-- total
+- total amount
 note: once ma save an order
 
 
@@ -20,15 +20,13 @@ customers
 - address
 - contact_info
 
-invoices
-- customer transaction id
 
 schedule
 - user id
-- data range
-- 
+- start date
+- end date
 
-users
+users - preserve all
 - email
 - first name
 - last name
