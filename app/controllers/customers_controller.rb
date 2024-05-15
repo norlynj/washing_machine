@@ -6,7 +6,7 @@ class CustomersController < ApplicationController
                 else
                   Customer.all
                 end
-      end
+    end
 
 
 end
