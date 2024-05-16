@@ -25,7 +25,7 @@
                     </li>
                 <% end %>
                 <li class="nav-item">
-                    <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link text-end", "uk-scroll": "offset:50", style: "color: var(--bs-emphasis-color); font-family: 'Poppins';" %>
+                    <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link text-end", "uk-scroll": "offset:50", style: "color: var(--bs-emphasis-color); font-family: 'Poppins';" %>
                 </li>
             </ul>
         </div>
