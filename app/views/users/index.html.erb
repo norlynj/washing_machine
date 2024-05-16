@@ -8,7 +8,7 @@
                     <div style="margin: auto;min-width: auto;width: 30px;"><a href="#"><i class="fa fa-filter" style="font-size: 25px;min-width: auto;margin: auto;"></i></a></div>
                 </div>
                 <div class="col-9 col-sm-6 col-md-4 col-xl-3 col-xxl-2" style="padding-right: 1px;width: 221.5px;">
-                    <%= form_tag(users_path, method: :get, class: "form-inline") do %>
+                    <%= form_tag(user_crew_index_path, method: :get, class: "form-inline") do %>
                         <%= text_field_tag :search, params[:search], class: "shadow-sm form-control-sm", placeholder: "Search Staff", autofocus: true, style: "border-width: 0px;border-radius: 14px;padding-left: 18px;min-width: auto;width: 201.5px;font-family: 'Poppins';" %>
                     <% end %>
                 </div>
@@ -63,7 +63,7 @@
 <div id="modal-1" class="modal fade" role="dialog" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <%= form_with(url: users_path, method: :post, class: "form") do |form| %>
+            <%= form_with(url: user_crew_index_path, method: :post, class: "form") do |form| %>
                 <div class="modal-header">
                     <h4 class="modal-title">Add New Staff</h4>
                     <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>

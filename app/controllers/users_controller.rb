@@ -16,14 +16,13 @@ class UsersController < ApplicationController
 
   # creates user using the permitted params
   def create
-    print "I'm here====================================="
-    @user = User.new(user_params)
+    @user = User.new(user_params.merge(role: 0))
     if @user.save
       # Handle successful user creation
-      redirect_to users_path, notice: 'User was successfully created.'
+      redirect_to user_crew_index_path, notice: 'User was successfully created.'
     else
       # Handle validation errors
-      redirect_to users_path, alert: 'Failed to create user.'
+      redirect_to user_crew_index_path, alert: 'Failed to create user.'
     end
   end
 
@@ -32,18 +31,18 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       # Handle successful user update
-      redirect_to users_path, notice: 'User was successfully updated.'
+      redirect_to user_crew_index_path, notice: 'User was successfully updated.'
     else
       # Handle validation errors
       flash.now[:alert] = 'Failed to update user.'
-      redirect_to users_path
+      redirect_to user_crew_index_path
     end
   end
 
   # deletes a user
   def destroy
     User.find(params[:id]).destroy
-    redirect_to users_path, notice: 'User successfully deleted.'
+    redirect_to user_crew_index_path, notice: 'User successfully deleted.'
   end
 
   def logout

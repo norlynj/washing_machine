@@ -12,16 +12,16 @@
         <div class="collapse navbar-collapse" id="navcol-1" style="color: var(--bs-navbar-brand-hover-color);background: var(--bs-secondary-bg);">
             <ul class="navbar-nav text-truncate ms-auto" style="margin-top: 0px;background: var(--bs-secondary-bg);">
                 <% if current_user.manager? %>
-                    <li class="nav-item <%= 'active' if current_page?(user_path(current_user)) %>">
-                        <%= link_to "Edit profile", user_path(current_user), class: "nav-link text-end", "uk-scroll": "offset:50", style: "color: var(--bs-emphasis-color); font-family: 'Poppins';" %>
+                    <li class="nav-item <%= 'active' if current_page?(user_crew_path(current_user)) %>">
+                        <%= link_to "Edit profile", user_crew_path(current_user), class: "nav-link text-end", "uk-scroll": "offset:50", style: "color: var(--bs-emphasis-color); font-family: 'Poppins';" %>
                     </li>
                 <% end %>
                 <li class="nav-item <%= 'active' if current_page?(landing_page_path) %>">
                     <%= link_to "Dashboard", landing_page_path, class: "nav-link text-end", "uk-scroll": "offset:100", style: "color: var(--bs-emphasis-color); font-family: 'Poppins';" %>
                 </li>
                 <% if current_user.manager? %>
-                    <li class="nav-item <%= 'active' if current_page?(users_path) %>">
-                        <%= link_to "Manage users", users_path, class: "nav-link text-end", "uk-scroll": "offset:50", style: "color: var(--bs-emphasis-color); font-family: 'Poppins';" %>
+                    <li class="nav-item <%= 'active' if current_page?(user_crew_index_path) %>">
+                        <%= link_to "Manage users", user_crew_index_path, class: "nav-link text-end", "uk-scroll": "offset:50", style: "color: var(--bs-emphasis-color); font-family: 'Poppins';" %>
                     </li>
                 <% end %>
                 <li class="nav-item">
