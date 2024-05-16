@@ -63,49 +63,78 @@
 <div id="modal-1" class="modal fade" role="dialog" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Add New Staff</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <form class="focus-ring" style="border-radius: 56px;border-style: none;">
+            <%= form_with(url: users_path, method: :post, class: "form") do |form| %>
+                <div class="modal-header">
+                    <h4 class="modal-title">Add New Staff</h4>
+                    <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
                     <div class="avatar">
                         <div class="avatar-bg center" style="margin-bottom: 27px;margin-top: 28px;"></div>
-                    </div><input class="form-control form-control-sm form-control" type="file" name="avatar-file" style="font-family: 'Poppins';margin-bottom: 8px;border-style: solid;" />
+                    </div>
+                    <%= form.file_field :avatar_file, class: "form-control form-control-sm form-control", style: "font-family: 'Poppins';margin-bottom: 8px;border-style: solid;" %>
                     <div class="row">
                         <div class="col-sm-12 col-md-6">
-                            <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Firstname </label><input class="form-control" type="text" name="firstname" style="border-width: 1px;border-style: solid;" /></div>
+                            <div class="form-group mb-3">
+                                <%= form.label :first_name, class: "form-label", style: "font-family: 'Poppins';" %>
+                                <%= form.text_field :first_name, class: "form-control", style: "border-width: 1px;border-style: solid;" %>
+                            </div>
                         </div>
                         <div class="col-sm-12 col-md-6">
-                            <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Lastname </label><input class="form-control" type="text" name="lastname" style="border-style: solid;" /></div>
+                            <div class="form-group mb-3">
+                                <%= form.label :last_name, class: "form-label", style: "font-family: 'Poppins';" %>
+                                <%= form.text_field :last_name, class: "form-control", style: "border-style: solid;" %>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12 col-md-6">
-                            <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Email </label><input class="form-control" type="email" autocomplete="off" required name="email" style="border-style: solid;" /></div>
+                            <div class="form-group mb-3">
+                                <%= form.label :email, class: "form-label", style: "font-family: 'Poppins';" %>
+                                <%= form.email_field :email, class: "form-control", style: "border-width: 1px;border-style: solid;" %>
+                            </div>
                         </div>
                         <div class="col-sm-12 col-md-6">
-                            <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Mobile number</label><input class="form-control" type="text" name="mobile" style="border-style: solid;" /></div>
+                            <div class="form-group mb-3">
+                                <%= form.label :mobile_number, class: "form-label", style: "font-family: 'Poppins';" %>
+                                <%= form.telephone_field :mobile_number, class: "form-control", style: "border-style: solid;" %>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12 col-md-6" style="width: 131.656px;">
-                            <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Gender</label><input class="form-control" type="email" autocomplete="off" required name="email" style="min-width: auto;border-style: solid;" /></div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group mb-3">
+                                <%= form.label :gender, class: "form-label", style: "font-family: 'Poppins';" %>
+                                <%= form.text_field :gender, class: "form-control", style: "border-width: 1px;border-style: solid;" %>
+                            </div>
                         </div>
-                        <div class="col">
-                            <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Birthday</label><input class="form-control" type="date" style="font-family: 'Poppins';border-style: solid;" /></div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group mb-3">
+                                <%= form.label :birthday, class: "form-label", style: "font-family: 'Poppins';" %>
+                                <%= form.date_field :birthday, class: "form-control", style: "border-style: solid;" %>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12 col-md-6">
-                            <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Password </label><input class="form-control" type="password" name="password" autocomplete="off" required style="border-style: solid;" /></div>
+                            <div class="form-group mb-3">
+                                <%= form.label :password, class: "form-label", style: "font-family: 'Poppins';" %>
+                                <%= form.password_field :password, class: "form-control", style: "border-width: 1px;border-style: solid;" %>
+                            </div>
                         </div>
                         <div class="col-sm-12 col-md-6">
-                            <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Confirm Password</label><input class="form-control" type="password" name="confirmpass" autocomplete="off" required style="border-style: solid;" /></div>
+                            <div class="form-group mb-3">
+                                <%= form.label :password_confirmation, class: "form-label", style: "font-family: 'Poppins';" %>
+                                <%= form.password_field :password_confirmation, class: "form-control", style: "border-style: solid;" %>
+                            </div>
                         </div>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button><button class="btn btn-primary" type="button">Add New Staff</button></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button>
+                    <%= form.submit "Add New Staff", class: "btn btn-primary", style: "font-family: 'Poppins';" %>
+                </div>
+            <% end %>
         </div>
     </div>
 </div>

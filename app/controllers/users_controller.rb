@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  # before_action :authenticate_user!, except: [:index]
 
 
   def index
@@ -16,8 +16,8 @@ class UsersController < ApplicationController
 
   # creates user using the permitted params
   def create
-    @password = generate_password
-    @user = User.new(name: user_params[:name], email: user_params[:email], password: @password, role: user_params[:role], label_id: user_params[:label_id])
+    print "I'm here====================================="
+    @user = User.new(user_params)
     if @user.save
       # Handle successful user creation
       redirect_to users_path, notice: 'User was successfully created.'
@@ -60,6 +60,6 @@ class UsersController < ApplicationController
 
  # Permits the name, email, and password parameters for user creation and update
   def user_params
-    params.permit(:name, :email, :authenticity_token, :role, :label_id)
+    params.permit(:first_name, :last_name, :password, :password_confirmation, :email, :mobile_number, :birthday, :gender)
   end
 end
