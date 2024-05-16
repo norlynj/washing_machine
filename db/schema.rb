@@ -10,15 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_17_231152) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_15_153437) do
   create_table "customer_transactions", force: :cascade do |t|
-    t.datetime "date_time"
-    t.decimal "amount"
-    t.string "payment_method"
-    t.string "order_status"
     t.integer "customer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order_id"
+    t.string "receipt"
     t.index ["customer_id"], name: "index_customer_transactions_on_customer_id"
   end
 
@@ -30,15 +28,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_17_231152) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "invoices", force: :cascade do |t|
-    t.datetime "date_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "customer_transaction_id"
-    t.index ["customer_transaction_id"], name: "index_invoices_on_customer_transaction_id"
-  end
-
-  create_table "managers", force: :cascade do |t|
+  create_table "inventories", force: :cascade do |t|
+    t.integer "quantity"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -55,16 +46,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_17_231152) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_orders_on_customer_id"
-  end
-
-  create_table "payments", force: :cascade do |t|
-    t.datetime "date_time"
-    t.decimal "total_amount"
+    t.decimal "weight", precision: 10, scale: 2
     t.string "payment_method"
-    t.string "payment_status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "classification"
+    t.decimal "total_amount", precision: 10, scale: 2
+    t.integer "staff_id"
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
+    t.index ["staff_id"], name: "index_orders_on_staff_id"
   end
 
   create_table "sales_analytics", force: :cascade do |t|
@@ -72,8 +60,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_17_231152) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "staffs", force: :cascade do |t|
-    t.string "name"
+  create_table "schedules", force: :cascade do |t|
+    t.integer "user_id"
+    t.date "start_date"
+    t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -105,7 +95,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_17_231152) do
   end
 
   add_foreign_key "customer_transactions", "customers"
-  add_foreign_key "invoices", "customer_transactions"
   add_foreign_key "orders", "customers"
+  add_foreign_key "orders", "users", column: "staff_id"
   add_foreign_key "tasks", "users"
 end

@@ -60,6 +60,12 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'chart-js-rails'
+  gem 'faker'
+  gem 'bootstrap', '~> 5.1', '>= 5.1.3'
+  gem 'jquery-rails'
+  gem 'sassc-rails'
+  # gem 'dartsass-sprockets' uncomment this line once ran to local once
 end
 
 group :test do
