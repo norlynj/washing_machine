@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>152 UI</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/Fixed-navbar-starting-with-transparency-styles.css">
+    <link rel="stylesheet" href="assets/css/Fixed-navbar-starting-with-transparency-colors.css">
+    <link rel="stylesheet" href="assets/css/Data-Table-with-Search-Sort-Filter-and-Zoom-using-TableSorter.css">
+    <link rel="stylesheet" href="assets/css/dh-navbar-inverse.css">
+    <link rel="stylesheet" href="assets/css/Filter.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="assets/css/Latest-Events.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
+    <link rel="stylesheet" href="assets/css/Ludens-Users---3-Profile.css">
+    <link rel="stylesheet" href="assets/css/Manage-Users.css">
+    <link rel="stylesheet" href="assets/css/Multi-step-form.css">
+    <link rel="stylesheet" href="assets/css/Profile-Edit-Form-styles.css">
+    <link rel="stylesheet" href="assets/css/Profile-Edit-Form.css">
+    <link rel="stylesheet" href="assets/css/Table-With-Search-search-table.css">
+    <link rel="stylesheet" href="assets/css/Table-With-Search.css">
+</head>
+
+<body style="background: var(--bs-success-bg-subtle);">
+    <!-- Start: dh-navbar-inverse -->
+    <nav class="navbar navbar-expand-md sticky-top shadow-sm navigation-clean navbar-inverse navbar-fixed-top navbar-light" style="background: var(--bs-secondary-bg);height: 77px;">
+        <div class="container-fluid">
+            <div><a class="navbar-brand" style="padding:0px;margin-left:0px;height:78px;" href="admin-dashboard.html"> <img src="assets/img/Wash-Up!.png" width="150" height="50"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
+            <div class="collapse navbar-collapse" id="navcol-1" style="color: var(--bs-navbar-brand-hover-color);background: var(--bs-secondary-bg);">
+                <ul class="navbar-nav text-truncate ms-auto" style="margin-top: 0px;background: var(--bs-secondary-bg);">
+                    <li class="nav-item"><a class="nav-link text-end" uk-scroll="offset:50" href="edit-admin.html" style="color: var(--bs-emphasis-color);font-family: 'Poppins';" data-bs-target="edit-admin.html">Edit profile</a></li>
+                    <li class="nav-item" style="color: var(--bs-emphasis-color);font-family: 'Poppins';background: var(--bs-secondary-bg);">
+                        <!-- Start: dasboard --><a class="nav-link text-end" uk-scroll="offset:100" href="admin-dashboard.html" style="color: var(--bs-emphasis-color);font-family: 'Poppins';">Dashboard</a><!-- End: dasboard -->
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-end" uk-scroll="offset:50" href="manage-users.html" style="color: var(--bs-emphasis-color);font-family: 'Poppins';">Manage users</a></li>
+                    <li class="nav-item" style="color: var(--bs-emphasis-color);font-family: 'Poppins';background: var(--bs-secondary-bg);">
+                        <!-- Start: logout --><a class="nav-link text-end" uk-scroll="offset:50" href="index.html" style="color: var(--bs-emphasis-color);font-family: 'Poppins';">Log out</a><!-- End: logout -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav><!-- End: dh-navbar-inverse -->
+    <section style="margin-top: 34px;">
+        <div></div>
+        <div>
+            <div class="container">
+                <h1 style="font-size: 29px;text-align: center;font-family: 'Poppins';font-weight: bold;margin-bottom: 33px;margin-right: -3px;">Manage Staff</h1>
+                <div class="row justify-content-center">
+                    <div class="col-9 col-sm-6 col-md-4 col-xl-3 col-xxl-2" style="padding-right: 1px;width: 221.5px;">
+                        <div style="min-width: auto;width: 192.5px;"><input class="shadow-sm form-control-sm" type="search" name="search customeer" placeholder="Search Staff" autofocus="" style="border-width: 0px;border-radius: 14px;padding-left: 18px;min-width: auto;width: 201.5px;font-family: 'Poppins';"></div>
+                    </div>
+                    <div class="col-md-2 col-lg-2 col-xl-1 col-xxl-1 text-center" style="width: 146px;">
+                        <div style="height: 34px;"><button class="btn btn-outline-light btn-sm shadow-sm float-end mb-3 add-row" type="button" style="background: var(--bs-primary);font-family: 'Poppins';font-size: 11px;border-radius: 30px;" data-bs-target="#modal-1" data-bs-toggle="modal"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style="font-size: 17px;">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8 11C10.2091 11 12 9.20914 12 7C12 4.79086 10.2091 3 8 3C5.79086 3 4 4.79086 4 7C4 9.20914 5.79086 11 8 11ZM8 9C9.10457 9 10 8.10457 10 7C10 5.89543 9.10457 5 8 5C6.89543 5 6 5.89543 6 7C6 8.10457 6.89543 9 8 9Z" fill="currentColor"></path>
+                                    <path d="M11 14C11.5523 14 12 14.4477 12 15V21H14V15C14 13.3431 12.6569 12 11 12H5C3.34315 12 2 13.3431 2 15V21H4V15C4 14.4477 4.44772 14 5 14H11Z" fill="currentColor"></path>
+                                    <path d="M18 7H20V9H22V11H20V13H18V11H16V9H18V7Z" fill="currentColor"></path>
+                                </svg><strong>&nbsp;Add Staff</strong></button></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="table-responsive shadow-sm" id="myTable" style="border-style: none;border-radius: 20px;min-width: auto;min-height: auto;margin-top: 9px;font-family: 'Poppins';">
+                            <table class="table table-striped table-hover table-sm table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" style="min-width: auto;">ID<a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M9.1716 6.45504L7.75739 5.04083L12 0.798187L16.2426 5.04083L14.8284 6.45504L13.0001 4.62667V19.3733L14.8284 17.5449L16.2426 18.9592L12 23.2018L7.75739 18.9592L9.1716 17.5449L11.0001 19.3734V4.62658L9.1716 6.45504Z" fill="currentColor"></path>
+                                                </svg></a></th>
+                                        <th style="text-align: center;min-width: auto;width: 220.141px;">NAME<a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M9.1716 6.45504L7.75739 5.04083L12 0.798187L16.2426 5.04083L14.8284 6.45504L13.0001 4.62667V19.3733L14.8284 17.5449L16.2426 18.9592L12 23.2018L7.75739 18.9592L9.1716 17.5449L11.0001 19.3734V4.62658L9.1716 6.45504Z" fill="currentColor"></path>
+                                                </svg></a></th>
+                                        <th style="text-align: center;min-width: auto;width: 141.594px;">CONTACT<a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M9.1716 6.45504L7.75739 5.04083L12 0.798187L16.2426 5.04083L14.8284 6.45504L13.0001 4.62667V19.3733L14.8284 17.5449L16.2426 18.9592L12 23.2018L7.75739 18.9592L9.1716 17.5449L11.0001 19.3734V4.62658L9.1716 6.45504Z" fill="currentColor"></path>
+                                                </svg></a></th>
+                                        <th style="text-align: center;min-width: auto;">DATE JOINED<a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M9.1716 6.45504L7.75739 5.04083L12 0.798187L16.2426 5.04083L14.8284 6.45504L13.0001 4.62667V19.3733L14.8284 17.5449L16.2426 18.9592L12 23.2018L7.75739 18.9592L9.1716 17.5449L11.0001 19.3734V4.62658L9.1716 6.45504Z" fill="currentColor"></path>
+                                                </svg></a></th>
+                                        <th class="text-center" style="width: 451px;min-width: auto;">ACTIONS</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="text-align: center;">
+                                    <tr>
+                                        <td>01</td>
+                                        <td>Juan dela Cruz</td>
+                                        <td>0917 1234 456</td>
+                                        <td>3-13-2024</td>
+                                        <td class="text-center" style="width: 66.1719px;"><button class="btn btn-success" type="button" style="font-size: 10px;border-radius: 20px;margin-right: 5px;margin-top: 2px;margin-bottom: 2px;" data-bs-target="#modal-2" data-bs-toggle="modal">Edit Profile</button><button class="btn btn-dark" type="button" style="font-size: 10px;border-radius: 20px;margin-right: 5px;margin-top: 2px;margin-bottom: 2px;" data-bs-target="#modal-4" data-bs-toggle="modal">Overview</button><button class="btn btn-danger" type="button" style="font-size: 10px;border-radius: 20px;margin-right: 5px;margin-top: 2px;margin-bottom: 2px;" data-bs-target="#modal-3" data-bs-toggle="modal">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>02</td>
+                                        <td>Maria Santos</td>
+                                        <td>0917 1234 456</td>
+                                        <td>3-13-2024</td>
+                                        <td class="text-center" style="width: 66.1719px;"><button class="btn btn-success" type="button" style="font-size: 10px;border-radius: 20px;margin-right: 5px;margin-top: 2px;margin-bottom: 2px;" data-bs-target="#modal-2" data-bs-toggle="modal">Edit Profile</button><button class="btn btn-dark" type="button" style="font-size: 10px;border-radius: 20px;margin-right: 5px;margin-top: 2px;margin-bottom: 2px;" data-bs-target="#modal-4" data-bs-toggle="modal">Overview</button><button class="btn btn-danger" type="button" style="font-size: 10px;border-radius: 20px;margin-right: 5px;margin-top: 2px;margin-bottom: 2px;" data-bs-target="#modal-3" data-bs-toggle="modal">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>03</td>
+                                        <td>Marites Jane Garcia</td>
+                                        <td>0917 1234 456</td>
+                                        <td>3-13-2024</td>
+                                        <td class="text-center" style="width: 66.1719px;"><button class="btn btn-success" type="button" style="font-size: 10px;border-radius: 20px;margin-right: 5px;margin-top: 2px;margin-bottom: 2px;" data-bs-target="#modal-2" data-bs-toggle="modal">Edit Profile</button><button class="btn btn-dark" type="button" style="font-size: 10px;border-radius: 20px;margin-right: 5px;margin-top: 2px;margin-bottom: 2px;" data-bs-target="#modal-4" data-bs-toggle="modal">Overview</button><button class="btn btn-danger" type="button" style="font-size: 10px;border-radius: 20px;margin-right: 5px;margin-top: 2px;margin-bottom: 2px;" data-bs-target="#modal-3" data-bs-toggle="modal">Delete</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- Start: add new staff modal -->
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add New Staff</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="focus-ring" style="border-radius: 56px;border-style: none;">
+                        <div class="avatar">
+                            <div class="avatar-bg center" style="margin-bottom: 27px;margin-top: 28px;"></div>
+                        </div><input class="form-control form-control-sm form-control" type="file" name="avatar-file" style="font-family: 'Poppins';margin-bottom: 8px;border-style: solid;"><!-- Start: name -->
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Firstname </label><input class="form-control" type="text" name="firstname" style="border-width: 1px;border-style: solid;"></div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Lastname </label><input class="form-control" type="text" name="lastname" style="border-style: solid;"></div>
+                            </div>
+                        </div><!-- End: name -->
+                        <!-- Start: email - num -->
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Email </label><input class="form-control" type="email" autocomplete="off" required="" name="email" style="border-style: solid;"></div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Mobile number</label><input class="form-control" type="text" name="mobile" style="border-style: solid;"></div>
+                            </div>
+                        </div><!-- End: email - num -->
+                        <!-- Start: gender-bday -->
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6" style="width: 131.656px;">
+                                <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Gender</label><input class="form-control" type="email" autocomplete="off" required="" name="email" style="min-width: auto;border-style: solid;"></div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Birthday</label><input class="form-control" type="date" style="font-family: 'Poppins';border-style: solid;"></div>
+                            </div>
+                        </div><!-- End: gender-bday -->
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Password </label><input class="form-control" type="password" name="password" autocomplete="off" required="" style="border-style: solid;"></div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Confirm Password</label><input class="form-control" type="password" name="confirmpass" autocomplete="off" required="" style="border-style: solid;"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button><button class="btn btn-primary" type="button">Add New Staff</button></div>
+            </div>
+        </div>
+    </div><!-- End: add new staff modal -->
+    <!-- Start: edit staff modal -->
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal-2">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Staff Profile</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="focus-ring" style="border-radius: 56px;border-style: none;">
+                        <div class="avatar">
+                            <div class="avatar-bg center" style="margin-bottom: 27px;margin-top: 28px;"></div>
+                        </div><input class="form-control form-control-sm form-control" type="file" name="avatar-file" style="font-family: 'Poppins';margin-bottom: 8px;border-style: solid;"><!-- Start: name -->
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Firstname </label><input class="form-control" type="text" name="firstname" style="border-width: 1px;border-style: solid;"></div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Lastname </label><input class="form-control" type="text" name="lastname" style="border-style: solid;"></div>
+                            </div>
+                        </div><!-- End: name -->
+                        <!-- Start: email - num -->
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Email </label><input class="form-control" type="email" autocomplete="off" required="" name="email" style="border-style: solid;"></div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Mobile number</label><input class="form-control" type="text" name="mobile" style="border-style: solid;"></div>
+                            </div>
+                        </div><!-- End: email - num -->
+                        <!-- Start: gender-bday -->
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6" style="width: 131.656px;">
+                                <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Gender</label><input class="form-control" type="email" autocomplete="off" required="" name="email" style="min-width: auto;border-style: solid;"></div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Birthday</label><input class="form-control" type="date" style="font-family: 'Poppins';border-style: solid;"></div>
+                            </div>
+                        </div><!-- End: gender-bday -->
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Password </label><input class="form-control" type="password" name="password" autocomplete="off" required="" style="border-style: solid;"></div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group mb-3"><label class="form-label" style="font-family: 'Poppins';">Confirm Password</label><input class="form-control" type="password" name="confirmpass" autocomplete="off" required="" style="border-style: solid;"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button><button class="btn btn-primary" type="button">Update Staff Profile</button></div>
+            </div>
+        </div>
+    </div><!-- End: edit staff modal -->
+    <!-- Start: delete conf -->
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal-3">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" style="font-family: 'Poppins';font-weight: bold;">Delete Staff</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center" style="font-family: 'Poppins';">Are you sure you want to delete &lt;staff name&gt;?</p>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button><button class="btn btn-primary" type="button">Confirm</button></div>
+            </div>
+        </div>
+    </div><!-- End: delete conf -->
+    <!-- Start: staff overview -->
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal-4">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" style="font-family: 'Poppins';font-weight: bold;">&lt;Staff Name&gt;'s Overview</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive shadow-sm" id="myTable-1" style="border-style: none;border-radius: 20px;min-width: auto;min-height: auto;margin-top: 9px;font-family: 'Poppins';">
+                        <table class="table table-striped table-hover table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width: 107.969px;text-align: center;">ID<a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
+                                                <path d="M9.1716 6.45504L7.75739 5.04083L12 0.798187L16.2426 5.04083L14.8284 6.45504L13.0001 4.62667V19.3733L14.8284 17.5449L16.2426 18.9592L12 23.2018L7.75739 18.9592L9.1716 17.5449L11.0001 19.3734V4.62658L9.1716 6.45504Z" fill="currentColor"></path>
+                                            </svg></a></th>
+                                    <th style="text-align: center;min-width: auto;width: 318.141px;">CUSTOMER<a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
+                                                <path d="M9.1716 6.45504L7.75739 5.04083L12 0.798187L16.2426 5.04083L14.8284 6.45504L13.0001 4.62667V19.3733L14.8284 17.5449L16.2426 18.9592L12 23.2018L7.75739 18.9592L9.1716 17.5449L11.0001 19.3734V4.62658L9.1716 6.45504Z" fill="currentColor"></path>
+                                            </svg></a></th>
+                                    <th style="text-align: center;min-width: auto;width: 141.594px;">DATE<a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
+                                                <path d="M9.1716 6.45504L7.75739 5.04083L12 0.798187L16.2426 5.04083L14.8284 6.45504L13.0001 4.62667V19.3733L14.8284 17.5449L16.2426 18.9592L12 23.2018L7.75739 18.9592L9.1716 17.5449L11.0001 19.3734V4.62658L9.1716 6.45504Z" fill="currentColor"></path>
+                                            </svg></a></th>
+                                    <th class="text-center" style="width: 165px;">STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align: center;">
+                                <tr>
+                                    <td>01</td>
+                                    <td>Lorem Ipsum</td>
+                                    <td>01-01-2021</td>
+                                    <td class="text-center" style="width: 66.1719px;">for pickup</td>
+                                </tr>
+                                <tr>
+                                    <td>05</td>
+                                    <td>Lorem Ipsum</td>
+                                    <td>01-01-2023</td>
+                                    <td class="text-center" style="width: 66.1719px;">completed</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>Lorem Ipsum</td>
+                                    <td>01-01-2024</td>
+                                    <td class="text-center" style="width: 66.1719px;">completed</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div><!-- End: staff overview -->
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/-Animated-numbers-section-BS4--Animated-numbers-section.js"></script>
+    <script src="assets/js/Clock-Real-Time-real-time-clock.js"></script>
+    <script src="assets/js/Data-Table-with-Search-Sort-Filter-and-Zoom-using-TableSorter-tablesortermain.js"></script>
+    <script src="assets/js/Fixed-navbar-starting-with-transparency-script.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/jquery.tablesorter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-filter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-storage.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/Multi-step-form-script.js"></script>
+    <script src="assets/js/Profile-Edit-Form-profile.js"></script>
+    <script src="assets/js/Table-With-Search-search-table.js"></script>
+</body>
+
+</html>
