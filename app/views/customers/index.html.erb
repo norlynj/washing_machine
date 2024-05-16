@@ -4,9 +4,6 @@
         <div class="container">
             <h1 style="font-size: 29px;text-align: center;font-family: 'Poppins';font-weight: bold;margin-bottom: 33px;margin-right: -3px;">Manage Customers</h1>
             <div class="row justify-content-center">
-                <div class="col-md-4 col-xxl-1" style="height: 31px;margin-top: 3px;margin-right: -10px;width: 42.656px;">
-                    <div style="margin: auto;min-width: auto;width: 30px;"><a href="#"><i class="fa fa-filter" style="font-size: 25px;min-width: auto;margin: auto;"></i></a></div>
-                </div>
                 <div class="col-9 col-sm-6 col-md-4 col-xl-3 col-xxl-2" style="padding-right: 1px;width: 221.5px;">
                     <%= form_tag(customers_path, method: :get, class: "form-inline") do %>
                         <%= text_field_tag :search, params[:search], class: "shadow-sm form-control-sm", placeholder: "Search Customer", autofocus: true, style: "border-width: 0px;border-radius: 14px;padding-left: 18px;min-width: auto;width: 201.5px;font-family: 'Poppins';" %>
@@ -213,11 +210,11 @@
                             <div class="form-floating mb-3">
                                 <div class="row">
                                     <div class="col-xl-3">
-                                        <div style="text-align: right;"><a href="#"><i class="icon ion-minus-circled" style="font-size: 30px;"></i></a></div>
+                                        <div style="text-align: right;"><a href="#"><i class="fa fa-minus-circle" style="font-size: 40px;"></i></a></div>
                                     </div>
                                     <div class="col-xl-4"><input id="textInput-4" class="form-control" type="number" disabled /></div>
                                     <div class="col-xl-2">
-                                        <div style="text-align: left;"><a href="#"><i class="icon ion-plus-circled" style="font-size: 30px;"></i></a></div>
+                                        <div style="text-align: left;"><a href="#"><i class="fa fa-plus-circle" style="font-size: 40px;"></i></a></div>
                                     </div>
                                 </div>
                             </div>
