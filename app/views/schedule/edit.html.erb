@@ -1,7 +1,6 @@
 <%= form_with(model: @user, url: schedule_path(@user), method: :patch) do |form| %>
-
   <!-- Edit schedule array -->
- <section class="position-relative py-4 py-xl-5">
+  <section class="position-relative py-4 py-xl-5">
     <div id="profile" class="container profile profile-view">
         <div class="shadow focus-ring" style="padding-right: 38px;padding-left: 38px;padding-bottom: 20px;background: var(--bs-body-bg);border-radius: 56px;border-style: none;padding-top: 12px;">
             <div class="row profile-row">
@@ -16,17 +15,18 @@
                     <hr />
                     <div class="m-auto">
                         <% @weekdays.each_with_index do |day, index| %>
-                            <%= form.check_box :schedule_array, { multiple: true, checked: @user.schedule_array[index] == 1 }, @user.schedule_array[index], class: "btn bg-primary" %>
-                            <%= label_tag nil, day %>
+                            <div class="form-check">
+                                <%= check_box_tag "user[schedule_array][#{index}]", 1, @user.schedule_array[index] == 1, class: "form-check-input" %>
+                                <%= label_tag "user_schedule_array_#{index}", day, class: "form-check-label" %>
+                            </div>
                         <% end %>
                     </div>
                 </div>
                 <div>
-                    <%= form.submit "Update", class: " w-100 float-end btn btn-primary" %>
+                    <%= form.submit "Update", class: "w-100 float-end btn btn-primary" %>
                 </div>
             </div>
         </div>
     </div>
-    
-</section>
+  </section>
 <% end %>

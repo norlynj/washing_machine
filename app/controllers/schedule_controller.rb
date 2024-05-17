@@ -14,9 +14,9 @@ class ScheduleController < ApplicationController
 
     def update
         @user = User.find(params[:id])
-        if @user.update(schedule_array: user_params[:schedule_array].to_a)
+        if @user.update(schedule_array: schedule_array.to_a)
         # Handle successful update
-            redirect_to edit_schedule_path(@user.id)
+            redirect_to schedule_index_path
         else
         # Handle validation errors
             puts @user.errors.full_messages
@@ -25,6 +25,15 @@ class ScheduleController < ApplicationController
 
     def user_params
         params.permit(:id, :first_name, :last_name, :password, :password_confirmation, :email, :mobile_number, :birthday, :gender, :schedule_array, :schedule)
+    end
+
+    def schedule_array
+        schedule_array = [0, 0, 0, 0, 0, 0, 0]
+        schedule_params = params.dig("user", "schedule_array")
+        schedule_params.each do |index, value|
+            schedule_array[index.to_i] = 1 if value == "1"
+        end
+        schedule_array
     end
 end
 
