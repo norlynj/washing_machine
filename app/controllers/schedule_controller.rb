@@ -1,5 +1,6 @@
 class ScheduleController < ApplicationController
     def index
-        @Schedule = Schedule.all
+        @schedules = Schedule.all
+        @users = User.all
     end
 end

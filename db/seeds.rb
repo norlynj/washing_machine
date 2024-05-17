@@ -30,6 +30,7 @@ User.create!(
     mobile_number: Faker::PhoneNumber.phone_number,
     gender: Faker::Gender.binary_type,
     birthday: Faker::Date.birthday(min_age: 18, max_age: 65)
+    sched_array: = [0, 0, 0, 0, 0, 0, 0]
   )
 end
 
@@ -74,10 +75,10 @@ end
   )
 end
 
-# Seed data for schedules table
-10.times do
-  Schedule.create(
-    user_id: User.pluck(:id).sample,
-    user_sched_array: = [0, 0, 0, 0, 0, 0, 0]
-  )
-end
+# # Seed data for schedules table
+# 10.times do
+#   Schedule.create(
+#     user_id: User.pluck(:id).sample,
+#     user_sched_array: = [0, 0, 0, 0, 0, 0, 0]
+#   )
+# end

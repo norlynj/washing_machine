@@ -20,4 +20,17 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def schedule_array
+    schedule.to_s(2).rjust(7, '0').chars.map(&:to_i)
+  end
+
+  # Method to set the weekdays from an array of integers
+  def schedule_array=(array)
+    self.schedule = array.join.to_i(2)
+  end
+
 end
+
+
+
