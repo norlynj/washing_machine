@@ -30,6 +30,7 @@ class ScheduleController < ApplicationController
     def schedule_array
         schedule_array = [0, 0, 0, 0, 0, 0, 0]
         schedule_params = params.dig("user", "schedule_array")
+        return schedule_array if schedule_params.nil? 
         schedule_params.each do |index, value|
             schedule_array[index.to_i] = 1 if value == "1"
         end

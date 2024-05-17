@@ -14,12 +14,17 @@
                     <h1 style="font-family: 'Poppins';font-weight: bold;"><%= @user.full_name %></h1>
                     <hr />
                     <div class="m-auto">
-                        <% @weekdays.each_with_index do |day, index| %>
                             <div class="form-check">
-                                <%= check_box_tag "user[schedule_array][#{index}]", 1, @user.schedule_array[index] == 1, class: "form-check-input" %>
-                                <%= label_tag "user_schedule_array_#{index}", day, class: "form-check-label" %>
-                            </div>
+
+                        <% @weekdays.each_with_index do |day, index| %>
+                               
+
+                                
+                                <input type="checkbox" class="btn-check" id="user_schedule_array_<%= index %>" name="user[schedule_array][<%= index %>]" value="1" <%= 'checked' if @user.schedule_array[index] == 1 %> autocomplete="off">
+                                <label class="btn btn-outline-primary" for="user_schedule_array_<%= index %>"><%= day %></label>
                         <% end %>
+                            </div>
+
                     </div>
                 </div>
                 <div>
