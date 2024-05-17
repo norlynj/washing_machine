@@ -1,0 +1,14 @@
+<%= form_with(model: @user, url: schedule_path(@user), method: :patch, class: "row g-3") do |form| %>
+
+  <!-- Edit schedule array -->
+  <% @weekdays.each_with_index do |day, index| %>
+    <div class="col-md-1">
+      <%= form.check_box :schedule_array, { multiple: true, checked: @user.schedule_array[index] == 1 }, @user.schedule_array[index], id: "schedule_array_#{index}", class:'btn-check bg-danger' %>
+      <%= label_tag "schedule_array_#{index}", day, class: "form-check-label" %>
+    </div>
+  <% end %>
+
+  <div class="col-12">
+    <%= form.submit "Update", class: "btn btn-primary" %>
+  </div>
+<% end %>

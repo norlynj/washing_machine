@@ -64,18 +64,19 @@
                                             <h4 class="card-title" style="font-family: 'Poppins';font-style: italic;font-size: 17.376px;color: var(--bs-form-valid-color);margin-bottom: 6px;"><strong>Your Schedule</strong></h4>
                                             <p class="card-text" style="font-family: 'Poppins';">Weekly Schedule</p>
 
-                                               
-                                            <% current_user.schedule_array.each_with_index do |day, index| %>
-                                                <%if day == 1%>
-                                                    <input type="checkbox" class="btn-lg btn-check bg-danger disabled" id="btncheck_<%=current_user.id%>_<%=index%>" checked=true >
-                                                     <label class="btn btn-outline-secondary" for="btncheck_<%=current_user.id%>_<%=index%>"><%=@weekdays[index]%></label>
-                                                <%else%>
-                                                    <input type="checkbox" class="btn-lg btn-check bg-danger" id="btncheck_<%=current_user.id%>_<%=index%>">
-                                                    <label class="btn btn-outline-secondary" for="btncheck_<%=current_user.id%>_<%=index%>"><%=@weekdays[index]%></label>
-                                                <%end%>
-
-                                            <%end%> 
-                                 
+                                                <div class="w-auto m-auto d-flex justify-content-center align-items-center flex-column">
+                                                    <div class="d-flex align-items-center mb-2">
+                                                    <% current_user.schedule_array.each_with_index do |day, index| %>
+                                                        <% if day == 1 %>
+                                                            <input type="checkbox" class="btn btn-check" disabled id="btncheck_<%= current_user.id %>_<%= index %>" checked=true>
+                                                            <label class="btn btn-outline-dark btn-lg ms-2" for="btncheck_<%= current_user.id %>_<%= index %>"><%= @weekdays[index] %></label>
+                                                        <% else %>
+                                                            <input type="checkbox" class="btn btn-check" disabled id="btncheck_<%= current_user.id %>_<%= index %>">
+                                                            <label class="btn btn-outline-dark btn-lg ms-2" for="btncheck_<%= current_user.id %>_<%= index %>"><%= @weekdays[index] %></label>
+                                                        <% end %>
+                                                    <% end %>
+                                                    </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
@@ -186,3 +187,4 @@
             </div><!-- End: 1 Row 2 Columns -->
         </div>
     </section>
+

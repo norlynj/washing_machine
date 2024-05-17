@@ -59,6 +59,6 @@ class UsersController < ApplicationController
 
  # Permits the name, email, and password parameters for user creation and update
   def user_params
-    params.permit(:first_name, :last_name, :password, :password_confirmation, :email, :mobile_number, :birthday, :gender)
+    params.permit(:first_name, :last_name, :password, :password_confirmation, :email, :mobile_number, :birthday, :gender, :schedule_array, :schedule)
   end
 end

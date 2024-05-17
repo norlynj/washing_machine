@@ -47,15 +47,15 @@
                                         <td class="text-center" style="width: 66.1719px;">
 
                                             <% user.schedule_array.each_with_index do |day, index| %>
-
                                                 <%if day == 1%>
-                                                    <input type="checkbox" class="btn-check bg-danger" id="btncheck_<%=user.id%>_<%=index%>" checked=true >
+                                                    <input type="checkbox" class="btn-check bg-danger" disabled id="btncheck_<%=user.id%>_<%=index%>" checked=true >
                                                 <%else%>
-                                                    <input type="checkbox" class="btn-check bg-danger" id="btncheck_<%=user.id%>_<%=index%>">
+                                                    <input type="checkbox" class="btn-check bg-danger" disabled id="btncheck_<%=user.id%>_<%=index%>">
                                                 <%end%>
-                                                <label class="btn btn-outline-primary" for="btncheck_<%=user.id%>_<%=index%>"><%=@weekdays[index]%></label>
+                                                <label class="btn btn-outline-primary"  for="btncheck_<%=user.id%>_<%=index%>"><%=@weekdays[index]%></label>
                                             <%end%>
-                                            
+                                             <%= link_to "text", edit_schedule_path(user) %>
+
                                         </td>
                                     </tr>
                                 <% end %>
@@ -261,6 +261,17 @@
                 </div>
             </div>
             <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-edit-schedule" class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+      
+            
+            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button><button class="btn btn-primary" type="button">Confirm</button></div>
         </div>
     </div>
 </div>
