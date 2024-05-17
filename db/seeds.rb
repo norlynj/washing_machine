@@ -6,6 +6,19 @@ User.create(email: 'manager2@example.com', password: 'password', role: :manager,
 
 require 'faker'
 
+# I am everywhere
+User.create!(
+    email: 'francis@mail.com',
+    password: 'password',
+    role: :manager,
+    first_name: 'Francis Lorenzo',
+    last_name: 'Espina',
+    mobile_number: Faker::PhoneNumber.phone_number,
+    gender: Faker::Gender.binary_type,
+    birthday: Faker::Date.birthday(min_age: 18, max_age: 65)
+  )
+
+
 # Seed Users
 10.times do
   User.create!(
@@ -19,6 +32,8 @@ require 'faker'
     birthday: Faker::Date.birthday(min_age: 18, max_age: 65)
   )
 end
+
+
 
 # Seed Customers
 10.times do
