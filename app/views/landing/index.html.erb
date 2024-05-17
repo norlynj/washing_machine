@@ -118,8 +118,8 @@
                                             <p class="card-text" style="font-family: 'Poppins';text-align: center;">Orders Placed Today</p>
                                             <p class="card-text" style="font-family: 'Poppins';font-size: 30px;text-align: center;margin-top: -20px;"><span class="nbanimate nbreplay" style="font-family: 'Poppins';font-size: 37px;font-weight: bold;"><%=Order.count%></span></p>
                                             
-                                            <%= link_to "See More", model %>
-                                            <a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">See More</a>
+                                            <%= link_to "See More", orders_path, class: "btn btn-primary", style: "background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;" %>
+                                          
 
                                         </div>
                                     <% end %>
