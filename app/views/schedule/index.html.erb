@@ -45,7 +45,17 @@
                                         <td><%= user.mobile_number %></td>
                                         <td><%= user.created_at.strftime('%m-%d-%Y') %></td>
                                         <td class="text-center" style="width: 66.1719px;">
-                                            <%=user.schedule_array%>
+
+                                            <% user.schedule_array.each_with_index do |day, index| %>
+
+                                                <%if day == 1%>
+                                                    <input type="checkbox" class="btn-check bg-danger" id="btncheck_<%=user.id%>_<%=index%>" checked=true >
+                                                <%else%>
+                                                    <input type="checkbox" class="btn-check bg-danger" id="btncheck_<%=user.id%>_<%=index%>">
+                                                <%end%>
+                                                <label class="btn btn-outline-primary" for="btncheck_<%=user.id%>_<%=index%>"><%=@weekdays[index]%></label>
+                                            <%end%>
+                                            
                                         </td>
                                     </tr>
                                 <% end %>
