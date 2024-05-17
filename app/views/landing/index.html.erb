@@ -130,7 +130,7 @@
                                         <% if current_user.manager? %>
                                             <%= link_to "Manage Inventory", inventories_path, class: "btn btn-primary", role: "button", style: "background: rgba(225,225,225,0); color: var(--bs-emphasis-color); border-width: 0px; border-style: none; display: block; font-style: italic; font-size: 14px;" %>
                                         <% else %>
-                                            <a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">See More</a>
+                                            <%= link_to "See More", inventories_path, class: "btn btn-primary", role: "button", style: "background: rgba(225,225,225,0); color: var(--bs-emphasis-color); border-width: 0px; border-style: none; display: block; font-style: italic; font-size: 14px;" %>
                                         <% end %>
                                     </div>
                                 </div>
@@ -146,7 +146,7 @@
                                         <% if current_user.manager? %>
                                             <%= link_to "Manage Customers", customers_path, class: "btn btn-primary", role: "button", style: "background: rgba(225,225,225,0); color: var(--bs-emphasis-color); border-width: 0px; border-style: none; display: block; font-style: italic; font-size: 14px;" %>
                                         <% else %>
-                                            <a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">See More</a>
+                                            <%= link_to "See More", customers_path, class: "btn btn-primary", role: "button", style: "background: rgba(225,225,225,0); color: var(--bs-emphasis-color); border-width: 0px; border-style: none; display: block; font-style: italic; font-size: 14px;" %>
                                         <% end %>
                                     </div>
                                 </div>
