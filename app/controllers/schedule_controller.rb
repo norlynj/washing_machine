@@ -14,7 +14,7 @@ class ScheduleController < ApplicationController
 
     def update
         @user = User.find(params[:id])
-        if @user.update(user_params)
+        if @user.update(schedule_array: user_params[:schedule_array].to_a)
         # Handle successful update
             redirect_to edit_schedule_path(@user.id)
         else
