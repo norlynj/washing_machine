@@ -78,7 +78,6 @@ end
 10.times do
   Schedule.create(
     user_id: User.pluck(:id).sample,
-    start_date: Faker::Date.backward(days: 30),
-    end_date: Faker::Date.forward(days: 30)
+    user_sched_array: = [0, 0, 0, 0, 0, 0, 0]
   )
 end
