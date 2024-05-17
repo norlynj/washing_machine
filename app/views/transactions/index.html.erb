@@ -29,7 +29,9 @@
                                                 <path d="M9.1716 6.45504L7.75739 5.04083L12 0.798187L16.2426 5.04083L14.8284 6.45504L13.0001 4.62667V19.3733L14.8284 17.5449L16.2426 18.9592L12 23.2018L7.75739 18.9592L9.1716 17.5449L11.0001 19.3734V4.62658L9.1716 6.45504Z" fill="currentColor"></path>
                                             </svg></a></th>
                                     <th style="text-align: center;width: 219.125px;">RECEIPT</th>
-                                    <th class="text-center" style="width: 96px;min-width: auto;">ACTION</th>
+                                    <% if current_user.manager? %>
+                                        <th class="text-center" style="width: 96px;min-width: auto;">ACTION</th>
+                                    <% end %>
                                 </tr>
                             </thead>
                             <tbody style="text-align: center;">
@@ -40,7 +42,10 @@
                                     <td><%= transaction.order.staff.full_name if transaction.order.staff.staff? %></td>
                                     <td><%= transaction.created_at.strftime("%d-%m-%Y") %></td>
                                     <td><button class="btn btn-primary" type="button" style="font-size: 10px;" data-bs-target="#modal-2" data-bs-toggle="modal">View <i class="typcn typcn-eye"></i></i></button></td>
-                                    <td class="text-center" style="width: 66.1719px;"><a class="del-row" href="javascript:void(0);" data-bs-target="#modal-1" data-bs-toggle="modal"><i class="fas fa-trash" style="font-size: 20px;margin-left: 9px;"></i></a></td>
+                                    <% if current_user.manager? %>
+                                        <td class="text-center" style="width: 66.1719px;"><a class="del-row" href="javascript:void(0);" data-bs-target="#modal-1" data-bs-toggle="modal"><i class="fas fa-trash" style="font-size: 20px;margin-left: 9px;"></i></a></td>
+                                    <% end %>
+
                                 </tr>
                                 <% end %>
                             </tbody>
