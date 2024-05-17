@@ -54,7 +54,7 @@
                                                 <%end%>
                                                 <label class="btn btn-outline-primary"  for="btncheck_<%=user.id%>_<%=index%>"><%=@weekdays[index]%></label>
                                             <%end%>
-                                             <%= link_to "text", edit_schedule_path(user) %>
+                                             <%= link_to "Edit", edit_schedule_path(user), class:"btn bg-warning"%>
 
                                         </td>
                                     </tr>

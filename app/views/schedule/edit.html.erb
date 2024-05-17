@@ -1,14 +1,32 @@
-<%= form_with(model: @user, url: schedule_path(@user), method: :patch, class: "row g-3") do |form| %>
+<%= form_with(model: @user, url: schedule_path(@user), method: :patch) do |form| %>
 
   <!-- Edit schedule array -->
-  <% @weekdays.each_with_index do |day, index| %>
-    <div class="col-md-1">
-      <%= form.check_box :schedule_array, { multiple: true, checked: @user.schedule_array[index] == 1 }, @user.schedule_array[index], id: "schedule_array_#{index}", class:'btn-check bg-danger' %>
-      <%= label_tag "schedule_array_#{index}", day, class: "form-check-label" %>
+ <section class="position-relative py-4 py-xl-5">
+    <div id="profile" class="container profile profile-view">
+        <div class="shadow focus-ring" style="padding-right: 38px;padding-left: 38px;padding-bottom: 20px;background: var(--bs-body-bg);border-radius: 56px;border-style: none;padding-top: 12px;">
+            <div class="row profile-row">
+                <div class="col-md-4 relative">
+                    <h1 class="text-nowrap" style="font-family: Satisfy, serif;font-size: 51.88px;margin-top: auto;margin-bottom: auto;margin-right: auto;margin-left: auto;min-height: auto;text-align: center;">Wash Up!</h1>
+                    <div class="avatar">
+                        <div class="avatar-bg center" style="margin-bottom: 27px;margin-top: 28px;"></div>
+                    </div>
+                </div>
+                <div class="col-md-8" style="padding: 28px;">
+                    <h1 style="font-family: 'Poppins';font-weight: bold;"><%= @user.full_name %></h1>
+                    <hr />
+                    <div class="m-auto">
+                        <% @weekdays.each_with_index do |day, index| %>
+                            <%= form.check_box :schedule_array, { multiple: true, checked: @user.schedule_array[index] == 1 }, @user.schedule_array[index], class: "btn bg-primary" %>
+                            <%= label_tag nil, day %>
+                        <% end %>
+                    </div>
+                </div>
+                <div>
+                    <%= form.submit "Update", class: " w-100 float-end btn btn-primary" %>
+                </div>
+            </div>
+        </div>
     </div>
-  <% end %>
-
-  <div class="col-12">
-    <%= form.submit "Update", class: "btn btn-primary" %>
-  </div>
+    
+</section>
 <% end %>

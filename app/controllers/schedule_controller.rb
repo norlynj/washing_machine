@@ -13,7 +13,7 @@ class ScheduleController < ApplicationController
 
             if @user.update(user_params)
             # Handle successful update
-            puts "successfully updated"
+            # redirect_to schedule_index_path
             else
             # Handle validation errors
             puts @user.errors.full_messages
