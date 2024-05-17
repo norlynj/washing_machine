@@ -7,4 +7,9 @@ class TransactionsController < ApplicationController
       CustomerTransaction.all
     end
   end
+
+  def destroy
+    Transaction.find(params[:id]).destroy
+    redirect_to transaction_crew_index_path, notice: 'Transaction successfully deleted.'
+  end
 end
