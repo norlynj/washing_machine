@@ -10,14 +10,17 @@ class ScheduleController < ApplicationController
     def edit
         @user = User.find(params[:id])
         @weekdays = ['S', 'M', 'T', 'W', 'Th', 'F', 'S']
+    end
 
-            if @user.update(user_params)
-            # Handle successful update
-            # redirect_to schedule_index_path
-            else
-            # Handle validation errors
+    def update
+        @user = User.find(params[:id])
+        if @user.update(user_params)
+        # Handle successful update
+            redirect_to edit_schedule_path(@user.id)
+        else
+        # Handle validation errors
             puts @user.errors.full_messages
-            end
+        end
     end
 
     def user_params
