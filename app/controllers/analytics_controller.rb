@@ -18,6 +18,24 @@ class AnalyticsController < ApplicationController
     @unique_years_o = @years_o.uniq
 
     @orders_today = Order.created_today.count
+
+    @orders_by_week = Order.group_by_week(:created_at).count
+    @most_frequent_week = @orders_by_week.max_by { |week, count| count }
+    @highest_order_in_a_day = @most_frequent_week.last
+
+    @gender_demographics = User.group(:gender).count
+    @orders_by_weekday = Order.group_by_day_of_week(:created_at, format: "%A").count
+
+    
   end
 
+
+
 end
+
+
+
+   
+
+
+

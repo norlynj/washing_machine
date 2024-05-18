@@ -1,15 +1,14 @@
 
-  
-  <div class="p-3 w-75 m-auto">
+    <div class="p-3 w-75 m-auto">
     <div class="text-center">
       <div class="row align-items-start">
       <h1 class="m-5"style="font-size: 50px;text-align: left;font-family: 'Poppins';font-weight: bold;margin-bottom: 33px;margin-right: -3px;">Analytics</h1>
         <div class="col">
-              <div class="card mb-2 p-5 rounded-5">
-                
+
+         
+              <div class="card mb-4 p-5 rounded-5">
                 <h3>Daily Records</h3>
                 <br/>
-
 
                 <div class="col">
                   <h5 class="float-start">Loads Washed Today</h5>
@@ -23,21 +22,51 @@
                   <%=%>
                 </div>
 
+                <hr>
+
+                 <div class="col">
+                  <h5 class="float-start">Highest Recorded Orders in a Day</h5>
+                  <h1 class="float-end" style="font-size:72px"><%=@highest_order_in_a_day%></h1>
+                  <%=%>
+                </div>
+
               </div>
 
-             <div class="card mb-2 p-2 rounded-5">
+              <div class="card mb-4 p-2 rounded-5">
                 <div class="card-body p-5">
-                  <h3>Customers by Year</h3>
-                  <canvas id="customersByYearChart"></canvas>
+                  <h3>Orders by Year</h3>
+                  <canvas id="ordersByYearChart"></canvas>
                 </div>
               </div>
+
+              <div class="card mb-4 p-2 rounded-5">
+              <div class="card-body p-5">
+                <h3>Orders by Month</h3>
+                <div style="width:100px">
+                <select id="yearSelect_o" class="form-select form-select-lg mb-4" aria-label="Large select example">
+                  <% @unique_years_o.each do |year| %>
+                    <option value="<%= year %>"><%= year %></option>
+                  <% end %>
+                </select>
+                </div>
+                <canvas id="ordersByMonthChart" class="mt-4"></canvas>
+              </div>
+            </div>
         </div>
         <div class="col">
-            <div class="card mb-2 p-2 rounded-5">
+
+            <div class="card mb-4 p-2 rounded-5">
+              <div class="card-body p-5">
+                <h3>Customers by Year</h3>
+                <canvas id="customersByYearChart"></canvas>
+              </div>
+            </div>
+
+            <div class="card mb-4 p-2 rounded-5">
               <div class="card-body p-5">
                 <h3>Customers by Month</h3>
                 <div style="width:100px">
-                <select id="yearSelect" class="form-select form-select-lg mb-3" aria-label="Large select example">
+                <select id="yearSelect" class="form-select form-select-lg mb-4" aria-label="Large select example">
                   <% @unique_years.each do |year| %>
                     <option value="<%= year %>"><%= year %></option>
                   <% end %>
@@ -46,12 +75,71 @@
                 <canvas id="customersByMonthChart" class="mt-4"></canvas>
               </div>
             </div>
+
+              <div class="card mb-4 p-5 rounded-5">
+                <div class="card-body">
+                  <h3>Weekly Order Frequency</h1>
+                  <canvas id="ordersByWeekdayChart"></canvas>
+                </div>
+              </div>
+
+            
+
         </div>
       </div>
     </div>
 
       <script>
         document.addEventListener('turbo:load', function() {
+              
+          // Orders by Day of the Week Chart
+          var weekdayCtx = document.getElementById('ordersByWeekdayChart').getContext('2d');
+          var ordersByWeekdayChart = new Chart(weekdayCtx, {
+            type: 'pie',
+            data: {
+              labels: <%= raw @orders_by_weekday.keys.to_json %>,
+              datasets: [{
+                data: <%= raw @orders_by_weekday.values.to_json %>,
+                backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)',
+                  'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)',
+                  'rgba(201, 203, 207, 1)'
+                ],
+                borderWidth: 2
+              }]
+            },
+            options: {
+              responsive: true,
+              plugins: {
+                legend: {
+                  position: 'top',
+                },
+                tooltip: {
+                  callbacks: {
+                    label: function(context) {
+                      return context.label + ': ' + context.raw + ' orders';
+                    }
+                  }
+                }
+              }
+            }
+          });
+
+
+
           // Data for the "Customers by Year" chart
           var yearCtx = document.getElementById('customersByYearChart').getContext('2d');
           var customersByYearChart = new Chart(yearCtx, {
@@ -61,6 +149,28 @@
               datasets: [{
                 label: 'Number of Customers',
                 data: <%= raw @year_counts.to_json %>,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 3
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+          // Data for the "Orders by Year" chart
+          var yearCtx = document.getElementById('ordersByYearChart').getContext('2d');
+          var customersByYearChart = new Chart(yearCtx, {
+            type: 'bar',
+            data: {
+              labels: <%= raw @years_o.to_json %>,
+              datasets: [{
+                label: 'Number of Orders',
+                data: <%= raw @year_counts_o.to_json %>,
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 3
@@ -99,33 +209,95 @@
             }
           });
 
+           // Initial data for the "Customers by Month" chart
+          var monthCtx = document.getElementById('ordersByMonthChart').getContext('2d');
+          var ordersByMonthChart = new Chart(monthCtx, {
+            type: 'line',
+            data: {
+              labels: [],
+              datasets: [{
+                label: 'Number of Orders',
+                data: [],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 3,
+                fill: true
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+
+          
+
+          
           // Filter the month data based on selected year
-          var filterMonthDataByYear = function(year) {
+          var filterMonthDataByYear = function(year, model) {
             var filteredMonths = [];
             var filteredCounts = [];
+            
+            if (model == 'customer'){
+              <% @customers_by_month.each do |date, count| %>
+                if ("<%= date.year %>" === year) {
+                  filteredMonths.push("<%= date.strftime('%B %Y') %>");
+                  filteredCounts.push(<%= count %>);
+                }
+              <% end %>
+              customersByMonthChart.data.labels = filteredMonths;
+              customersByMonthChart.data.datasets[0].data = filteredCounts;
+              customersByMonthChart.update();
+            }
+            else{
+                <% @orders_by_month.each do |date, count| %>
+                if ("<%= date.year %>" === year) {
+                  filteredMonths.push("<%= date.strftime('%B %Y') %>");
+                  filteredCounts.push(<%= count %>);
+                }
+              <% end %>
+                ordersByMonthChart.data.labels = filteredMonths;
+                ordersByMonthChart.data.datasets[0].data = filteredCounts;
+                ordersByMonthChart.update();
+            }
+            
+            
 
-            <% @customers_by_month.each do |date, count| %>
-              if ("<%= date.year %>" === year) {
-                filteredMonths.push("<%= date.strftime('%B %Y') %>");
-                filteredCounts.push(<%= count %>);
-              }
-            <% end %>
-
-            customersByMonthChart.data.labels = filteredMonths;
-            customersByMonthChart.data.datasets[0].data = filteredCounts;
-            customersByMonthChart.update();
+            
           };
 
           // Update the month chart when a new year is selected
           document.getElementById('yearSelect').addEventListener('change', function() {
             var selectedYear = this.value;
-            filterMonthDataByYear(selectedYear);
+            filterMonthDataByYear(selectedYear, 'customer');
           });
 
           // Initialize the chart with the first year selected
           var initialYear = document.getElementById('yearSelect').value;
-          filterMonthDataByYear(initialYear);
+          filterMonthDataByYear(initialYear, 'customer');
+
+          
+          // Update the month chart when a new year is selected
+          document.getElementById('yearSelect_o').addEventListener('change', function() {
+            var selectedYear_o = this.value;
+            filterMonthDataByYear(selectedYear_o, 'orders');
+          });
+
+          // Initialize the chart with the first year selected
+          var initialYear_o = document.getElementById('yearSelect_o').value;
+          filterMonthDataByYear(initialYear_o, 'orders');
+
         });
+
+
+        
+
+        
+
+        
       </script>
   </div>
 
