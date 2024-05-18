@@ -1,8 +1,9 @@
-<h1 style="font-size: 29px;text-align: center;font-family: 'Poppins';font-weight: bold;margin-bottom: 33px;margin-right: -3px;">Manage Inventory</h1>
+
   
-  <div class="p-3">
+  <div class="p-3 w-75 m-auto">
     <div class="text-center">
       <div class="row align-items-start">
+      <h1 style="font-size: 29px;text-align: center;font-family: 'Poppins';font-weight: bold;margin-bottom: 33px;margin-right: -3px;">Analytics</h1>
         <div class="col">
              <div class="card mb-2 p-2 rounded-5">
                 <div class="card-body p-5">
@@ -29,86 +30,82 @@
       </div>
     </div>
 
-
-
-
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // Data for the "Customers by Year" chart
-        var yearCtx = document.getElementById('customersByYearChart').getContext('2d');
-        var customersByYearChart = new Chart(yearCtx, {
-          type: 'bar',
-          data: {
-            labels: <%= raw @years.to_json %>,
-            datasets: [{
-              label: 'Number of Customers',
-              data: <%= raw @year_counts.to_json %>,
-              backgroundColor: 'rgba(75, 192, 192, 0.2)',
-              borderColor: 'rgba(75, 192, 192, 1)',
-              borderWidth: 3
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
+      <script>
+        document.addEventListener('turbo:load', function() {
+          // Data for the "Customers by Year" chart
+          var yearCtx = document.getElementById('customersByYearChart').getContext('2d');
+          var customersByYearChart = new Chart(yearCtx, {
+            type: 'bar',
+            data: {
+              labels: <%= raw @years.to_json %>,
+              datasets: [{
+                label: 'Number of Customers',
+                data: <%= raw @year_counts.to_json %>,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 3
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
               }
             }
-          }
-        });
+          });
 
-        // Initial data for the "Customers by Month" chart
-        var monthCtx = document.getElementById('customersByMonthChart').getContext('2d');
-        var customersByMonthChart = new Chart(monthCtx, {
-          type: 'line',
-          data: {
-            labels: [],
-            datasets: [{
-              label: 'Number of Customers',
-              data: [],
-              backgroundColor: 'rgba(75, 192, 192, 0.2)',
-              borderColor: 'rgba(75, 192, 192, 1)',
-              borderWidth: 3,
-              fill: true
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
+          // Initial data for the "Customers by Month" chart
+          var monthCtx = document.getElementById('customersByMonthChart').getContext('2d');
+          var customersByMonthChart = new Chart(monthCtx, {
+            type: 'line',
+            data: {
+              labels: [],
+              datasets: [{
+                label: 'Number of Customers',
+                data: [],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 3,
+                fill: true
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
               }
             }
-          }
+          });
+
+          // Filter the month data based on selected year
+          var filterMonthDataByYear = function(year) {
+            var filteredMonths = [];
+            var filteredCounts = [];
+
+            <% @customers_by_month.each do |date, count| %>
+              if ("<%= date.year %>" === year) {
+                filteredMonths.push("<%= date.strftime('%B %Y') %>");
+                filteredCounts.push(<%= count %>);
+              }
+            <% end %>
+
+            customersByMonthChart.data.labels = filteredMonths;
+            customersByMonthChart.data.datasets[0].data = filteredCounts;
+            customersByMonthChart.update();
+          };
+
+          // Update the month chart when a new year is selected
+          document.getElementById('yearSelect').addEventListener('change', function() {
+            var selectedYear = this.value;
+            filterMonthDataByYear(selectedYear);
+          });
+
+          // Initialize the chart with the first year selected
+          var initialYear = document.getElementById('yearSelect').value;
+          filterMonthDataByYear(initialYear);
         });
-
-        // Filter the month data based on selected year
-        var filterMonthDataByYear = function(year) {
-          var filteredMonths = [];
-          var filteredCounts = [];
-
-          <% @customers_by_month.each do |date, count| %>
-            if ("<%= date.year %>" === year) {
-              filteredMonths.push("<%= date.strftime('%B %Y') %>");
-              filteredCounts.push(<%= count %>);
-            }
-          <% end %>
-
-          customersByMonthChart.data.labels = filteredMonths;
-          customersByMonthChart.data.datasets[0].data = filteredCounts;
-          customersByMonthChart.update();
-        };
-
-        // Update the month chart when a new year is selected
-        document.getElementById('yearSelect').addEventListener('change', function() {
-          var selectedYear = this.value;
-          filterMonthDataByYear(selectedYear);
-        });
-
-        // Initialize the chart with the first year selected
-        var initialYear = document.getElementById('yearSelect').value;
-        filterMonthDataByYear(initialYear);
-      });
-    </script>
+      </script>
   </div>
 
