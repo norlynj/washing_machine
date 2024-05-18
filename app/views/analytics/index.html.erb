@@ -3,14 +3,26 @@
   <div class="p-3 w-75 m-auto">
     <div class="text-center">
       <div class="row align-items-start">
-      <h1 style="font-size: 29px;text-align: center;font-family: 'Poppins';font-weight: bold;margin-bottom: 33px;margin-right: -3px;">Analytics</h1>
+      <h1 class="m-5"style="font-size: 50px;text-align: left;font-family: 'Poppins';font-weight: bold;margin-bottom: 33px;margin-right: -3px;">Analytics</h1>
         <div class="col">
-              <div class="card mb-2 p-2 rounded-5">
-                <div class="card-body p-5">
-                  <h3>Loads Washed Today</h3>
-                  <h1><%=@orders_today%></h1>
+              <div class="card mb-2 p-5 rounded-5">
+                
+                <h3>Daily Records</h3>
+                <br/>
+
+
+                <div class="col">
+                  <h5 class="float-start">Loads Washed Today</h5>
+                  <h1 class="float-end" style="font-size:72px"><%=@orders_today%></h1>
                   <%=%>
                 </div>
+
+                 <div class="col">
+                  <h5 class="float-start">New Customers Visited Today</h5>
+                  <h1 style="font-size:72px"class="float-end"><%=Customer.created_today.count%></h1>
+                  <%=%>
+                </div>
+
               </div>
 
              <div class="card mb-2 p-2 rounded-5">
