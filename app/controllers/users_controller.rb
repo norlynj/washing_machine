@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   # update user using the id
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
+    if @user.update(user_update_params)
       # Handle successful user update
       redirect_to user_crew_index_path, notice: 'User was successfully updated.'
     else
@@ -60,5 +60,9 @@ class UsersController < ApplicationController
  # Permits the name, email, and password parameters for user creation and update
   def user_params
     params.permit(:first_name, :last_name, :password, :password_confirmation, :email, :mobile_number, :birthday, :gender)
+  end
+
+  def user_update_params
+    params.permit(:first_name, :last_name, :email, :mobile_number, :birthday, :gender)
   end
 end
