@@ -25,8 +25,10 @@ class AnalyticsController < ApplicationController
 
     @gender_demographics = User.group(:gender).count
     @orders_by_weekday = Order.group_by_day_of_week(:created_at, format: "%A").count
+    @month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November','December']
+    @users = User.all
+    @customers = Customer.all
 
-    
   end
 
 
@@ -35,7 +37,6 @@ end
 
 
 
-   
 
 
 

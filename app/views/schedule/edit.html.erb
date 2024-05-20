@@ -1,0 +1,37 @@
+<%= form_with(model: @user, url: schedule_path(@user), method: :patch) do |form| %>
+  <!-- Edit schedule array -->
+  <section class="position-relative py-4 py-xl-5">
+    <div id="profile" class="container profile profile-view">
+        <div class="shadow focus-ring" style="padding-right: 38px;padding-left: 38px;padding-bottom: 20px;background: var(--bs-body-bg);border-radius: 56px;border-style: none;padding-top: 12px;">
+            <div class="row profile-row">
+                <div class="col-md-4 relative">
+                    <h1 class="text-nowrap" style="font-family: Satisfy, serif;font-size: 51.88px;margin-top: auto;margin-bottom: auto;margin-right: auto;margin-left: auto;min-height: auto;text-align: center;">Wash Up!</h1>
+                    <div class="avatar">
+                        <div class="avatar-bg center" style="margin-bottom: 27px;margin-top: 28px;"></div>
+                    </div>
+                </div>
+                <div class="col-md-8" style="padding: 28px;">
+                    <h1 style="font-family: 'Poppins';font-weight: bold;"><%= @user.full_name %></h1>
+                    <hr />
+                    <div class="m-auto">
+                            <div class="form-check">
+
+                        <% @weekdays.each_with_index do |day, index| %>
+                               
+
+                                
+                                <input type="checkbox" class="btn-check" id="user_schedule_array_<%= index %>" name="user[schedule_array][<%= index %>]" value="1" <%= 'checked' if @user.schedule_array[index] == 1 %> autocomplete="off">
+                                <label class="btn btn-outline-primary" for="user_schedule_array_<%= index %>"><%= day %></label>
+                        <% end %>
+                            </div>
+
+                    </div>
+                </div>
+                <div>
+                    <%= form.submit "Update", class: "w-100 float-end btn btn-primary" %>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+<% end %>
