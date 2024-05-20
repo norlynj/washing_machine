@@ -4,8 +4,8 @@
       <div class="row align-items-start">
       <h1 class="m-5"style="font-size: 50px;text-align: left;font-family: 'Poppins';font-weight: bold;margin-bottom: 33px;margin-right: -3px;">Analytics</h1>
         <div class="col">
-
-         
+ 
+              
               <div class="card mb-4 p-5 rounded-5">
                 <h3>Daily Records</h3>
                 <br/>
@@ -21,7 +21,6 @@
                   <h1 style="font-size:72px"class="float-end"><%=Customer.created_today.count%></h1>
                   <%=%>
                 </div>
-
                 <hr>
 
                  <div class="col">
@@ -31,6 +30,13 @@
                 </div>
 
               </div>
+
+                <div class="card mb-4 p-2 rounded-5">
+                  <div class="card-body p-5">
+                    <h3>Sales by Year</h3>
+                    <canvas canvas id="yearlySalesChart" class="mt-4"></canvas>
+                  </div>
+                </div>
 
               <div class="card mb-4 p-2 rounded-5">
                 <div class="card-body p-5">
@@ -83,6 +89,9 @@
                 </div>
               </div>
 
+                     
+              
+
             
 
         </div>
@@ -133,6 +142,33 @@
                       return context.label + ': ' + context.raw + ' orders';
                     }
                   }
+                }
+              }
+            }
+          });
+
+          //Sales Per year
+          var yearlySales = <%= @yearly_sales.to_json.html_safe %>;
+          var salesLabels = <%= raw @years_o.to_json %>;
+          var salesData = Object.values(yearlySales);
+
+          var salesCtx = document.getElementById('yearlySalesChart').getContext('2d');
+          var yearlySalesChart = new Chart(salesCtx, {
+            type: 'bar',
+            data: {
+              labels: salesLabels,
+              datasets: [{
+                label: 'Total Sales (in Pesos)',
+                data: salesData,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 3
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
                 }
               }
             }
