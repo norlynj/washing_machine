@@ -22,5 +22,6 @@ Rails.application.routes.draw do
   resources :customers
   resources :transactions
   resources :analytics
+  resources :schedule
   resources :orders
 end
