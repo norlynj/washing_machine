@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
 
     def configure_permitted_parameters
         # Permit additional parameters for sign up (registration)
-        devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :mobile_number, :gender, :birthday])
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :mobile_number, :gender, :birthday, :schedule_array, :schedule])
     end
 end

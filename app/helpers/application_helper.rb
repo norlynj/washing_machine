@@ -6,5 +6,7 @@ module ApplicationHelper
     when 'alert'
       'danger'
     end
+
+
   end
 end

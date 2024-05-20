@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :customer
+  scope :created_today, -> { where("DATE(created_at) = ?", Date.today) }
   belongs_to :staff, class_name: 'User'
 
   validates :customer_id, presence: true
