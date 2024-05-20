@@ -123,6 +123,8 @@ GEM
     ffi (1.16.3-x64-mingw32)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    groupdate (6.4.0)
+      activesupport (>= 6.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.0.1)
@@ -291,6 +293,7 @@ DEPENDENCIES
   debug
   devise
   faker
+  groupdate
   importmap-rails
   jbuilder
   jquery-rails
