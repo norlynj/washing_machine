@@ -39,7 +39,7 @@
                                 <tr>
                                     <td><%= transaction.id %></td>
                                     <td><%= transaction.customer.name %></td>
-                                    <td><%= transaction.order.staff.full_name if transaction.order.staff.staff? %></td>
+                                    <td><%= transaction.staff.full_name if transaction.staff.staff? %></td>
                                     <td><%= transaction.created_at.strftime("%d-%m-%Y") %></td>
                                     <td><button class="btn btn-primary" type="button" style="font-size: 10px;" data-bs-target="#modal-2" data-bs-toggle="modal">View <i class="typcn typcn-eye"></i></i></button></td>
                                     <% if current_user.manager? %>
