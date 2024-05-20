@@ -1,10 +1,24 @@
 # # Seed Users
-User.create(email: 'staff1@example.com', password: 'password', role: :staff, first_name: 'John', last_name: 'Doe', mobile_number: '1234567890', gender: 'Male', birthday: Date.new(1990, 1, 1))
-User.create(email: 'staff2@example.com', password: 'password', role: :staff, first_name: 'Jane', last_name: 'Smith', mobile_number: '9876543210', gender: 'Female', birthday: Date.new(1995, 5, 15))
-User.create(email: 'manager1@example.com', password: 'password', role: :manager, first_name: 'Manager', last_name: 'One', mobile_number: '1112223333', gender: 'Male', birthday: Date.new(1985, 12, 10))
-User.create(email: 'manager2@example.com', password: 'password', role: :manager, first_name: 'Manager', last_name: 'Two', mobile_number: '4445556666', gender: 'Female', birthday: Date.new(1978, 7, 20))
+User.create(email: 'staff1@example.com', password: 'password', role: :staff, first_name: 'John', last_name: 'Doe', mobile_number: '1234567890', gender: 'Male', birthday: Date.new(1990, 1, 1), schedule_array: [0, 1, 1, 1, 1, 1, 0])
+User.create(email: 'staff2@example.com', password: 'password', role: :staff, first_name: 'Jane', last_name: 'Smith', mobile_number: '9876543210', gender: 'Female', birthday: Date.new(1995, 5, 15), schedule_array: [0, 1, 1, 1, 1, 1, 0])
+User.create(email: 'manager1@example.com', password: 'password', role: :manager, first_name: 'Manager', last_name: 'One', mobile_number: '1112223333', gender: 'Male', birthday: Date.new(1985, 12, 10), schedule_array: [0, 1, 1, 1, 1, 1, 0])
+User.create(email: 'manager2@example.com', password: 'password', role: :manager, first_name: 'Manager', last_name: 'Two', mobile_number: '4445556666', gender: 'Female', birthday: Date.new(1978, 7, 20), schedule_array: [0, 1, 1, 1, 1, 1, 0])
 
 require 'faker'
+
+# I am everywhere
+User.create!(
+    email: 'francis@mail.com',
+    password: 'password',
+    role: :manager,
+    first_name: 'Francis Lorenzo',
+    last_name: 'Espina',
+    mobile_number: Faker::PhoneNumber.phone_number,
+    gender: Faker::Gender.binary_type,
+    birthday: Faker::Date.birthday(min_age: 18, max_age: 65),
+    schedule_array: [0, 1, 1, 1, 1, 1, 0]
+  )
+
 
 # Seed Users
 10.times do
@@ -16,9 +30,11 @@ require 'faker'
     last_name: Faker::Name.last_name,
     mobile_number: Faker::PhoneNumber.phone_number,
     gender: Faker::Gender.binary_type,
-    birthday: Faker::Date.birthday(min_age: 18, max_age: 65)
+    birthday: Faker::Date.birthday(min_age: 18, max_age: 65),
+    schedule_array: [0, 1, 1, 1, 1, 1, 0]
   )
 end
+
 
 # Seed Customers
 10.times do
@@ -59,11 +75,10 @@ end
   )
 end
 
-# Seed data for schedules table
-10.times do
-  Schedule.create(
-    user_id: User.pluck(:id).sample,
-    start_date: Faker::Date.backward(days: 30),
-    end_date: Faker::Date.forward(days: 30)
-  )
-end
+# # Seed data for schedules table
+# 10.times do
+#   Schedule.create(
+#     user_id: User.pluck(:id).sample,
+#     user_sched_array: = [0, 0, 0, 0, 0, 0, 0]
+#   )
+# end

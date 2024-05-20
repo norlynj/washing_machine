@@ -1,12 +1,15 @@
 class UsersController < ApplicationController
-  # before_action :authenticate_user!, except: [:index]
+  before_action :set_user, only: [:update]
 
 
   def index
     if params[:search].present?
-      @users = User.where("first_name LIKE ? OR last_name LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%").where(role: :staff)
+      @users = User.where("first_name LIKE ? OR last_name LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+                   .where(role: :staff)
+                   .where.not(status: "deleted")
     else
       @users = User.where(role: :staff)
+                   .where.not(status: "deleted")
     end
   end
 
@@ -28,7 +31,6 @@ class UsersController < ApplicationController
 
   # update user using the id
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       # Handle successful user update
       redirect_to user_crew_index_path, notice: 'User was successfully updated.'
@@ -41,7 +43,7 @@ class UsersController < ApplicationController
 
   # deletes a user
   def destroy
-    User.find(params[:id]).destroy
+    User.find(params[:id]).update(status: "deleted")
     redirect_to user_crew_index_path, notice: 'User successfully deleted.'
   end
 
@@ -52,13 +54,12 @@ class UsersController < ApplicationController
 
   private
 
-  # Generate a secure random password using rails helper
-  def generate_password
-    @password = SecureRandom.alphanumeric(8)
+  def set_user
+    @user = User.find(params[:id])
   end
 
- # Permits the name, email, and password parameters for user creation and update
   def user_params
-    params.permit(:first_name, :last_name, :password, :password_confirmation, :email, :mobile_number, :birthday, :gender)
+    params.require(:user).permit(:first_name, :last_name, :email, :mobile_number, :gender, :birthday, :password, :password_confirmation, :avatar)
   end
+
 end

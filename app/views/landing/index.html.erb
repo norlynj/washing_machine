@@ -62,7 +62,21 @@
                                     <div class="card" style="border-radius: 30px;">
                                         <div class="card-body" style="padding-bottom: 10px;padding-top: 15px;">
                                             <h4 class="card-title" style="font-family: 'Poppins';font-style: italic;font-size: 17.376px;color: var(--bs-form-valid-color);margin-bottom: 6px;"><strong>Your Schedule</strong></h4>
-                                            <p class="card-text" style="font-family: 'Poppins';">Weekly Schedule</p><a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">View Calendar</a>
+                                            <p class="card-text" style="font-family: 'Poppins';">Weekly Schedule</p>
+
+                                                <div class="w-auto m-auto d-flex justify-content-center align-items-center flex-column">
+                                                    <div class="d-flex align-items-center mb-2">
+                                                    <% current_user.schedule_array.each_with_index do |day, index| %>
+                                                        <% if day == 1 %>
+                                                            <input type="checkbox" class="btn btn-check" disabled id="btncheck_<%= current_user.id %>_<%= index %>" checked=true>
+                                                            <label class="btn btn-outline-dark btn-lg ms-2" for="btncheck_<%= current_user.id %>_<%= index %>"><%= @weekdays[index] %></label>
+                                                        <% else %>
+                                                            <input type="checkbox" class="btn btn-check" disabled id="btncheck_<%= current_user.id %>_<%= index %>">
+                                                            <label class="btn btn-outline-dark btn-lg ms-2" for="btncheck_<%= current_user.id %>_<%= index %>"><%= @weekdays[index] %></label>
+                                                        <% end %>
+                                                    <% end %>
+                                                    </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
@@ -157,7 +171,10 @@
                                         <div class="card-body" style="padding-bottom: 10px;padding-top: 15px;">
                                             <h4 class="card-title" style="font-family: 'Poppins';font-style: italic;font-size: 17.376px;color: var(--bs-form-valid-color);margin-bottom: 6px;"><strong>Schedule Overview</strong></h4>
                                             <p class="card-text" style="font-family: 'Poppins';text-align: center;">Total Staff</p>
-                                            <p class="card-text" style="font-family: 'Poppins';font-size: 30px;text-align: center;margin-top: -20px;"><span class="nbanimate nbreplay" style="font-family: 'Poppins';font-size: 37px;font-weight: bold;"><%= User.where(role: :staff).count %></span></p><a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">View Schedules</a>
+                                            <p class="card-text" style="font-family: 'Poppins';font-size: 30px;text-align: center;margin-top: -20px;"><span class="nbanimate nbreplay" style="font-family: 'Poppins';font-size: 37px;font-weight: bold;"><%= User.where(role: :staff).count %></span>
+                                            <%if current_user.manager?%>
+                                            <%= link_to "View Schedules", schedule_index_path, class:"btn btn-primary", style:"background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;" %>
+                                            <%end%>
                                         </div>
                                     </div>
                                 </div>
@@ -170,3 +187,4 @@
             </div><!-- End: 1 Row 2 Columns -->
         </div>
     </section>
+
