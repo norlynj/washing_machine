@@ -10,7 +10,9 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button>
-                <button class="btn btn-primary" type="button">Confirm</button>
+                <%= form_with(model: transaction, url: transaction_path(transaction), method: :delete, local: true) do |form| %>
+                    <%= form.submit "Confirm", class: "btn btn-primary" %>
+                <% end %>
             </div>
         </div>
     </div>
