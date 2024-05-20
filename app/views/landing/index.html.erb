@@ -88,13 +88,10 @@
                                     <div class="card-body" style="padding-bottom: 10px;padding-top: 15px;">
                                         <h4 class="card-title" style="font-family: 'Poppins';font-style: italic;font-size: 17.376px;color: var(--bs-form-valid-color);margin-bottom: 6px;"><strong>Analytics</strong></h4>
                                         <p class="card-text" style="font-family: 'Poppins';text-align: center;">Loads washed today:&nbsp;<br></p>
-                                        <p class="card-text" style="font-family: 'Poppins';text-align: center;margin-top: -20px;font-weight: bold;"><span class="nbanimate nbreplay" style="font-family: 'Poppins';font-size: 37px;">15</span></p>
-                                        <% if current_user.manager? %>
+                                        <p class="card-text" style="font-family: 'Poppins';text-align: center;margin-top: -20px;font-weight: bold;"><span class="nbanimate nbreplay" style="font-family: 'Poppins';font-size: 37px;"><%=Order.created_today.count%></span></p>
+                                        
                                             <%= link_to "See More", analytics_path, class: "btn btn-primary", role: "button", style: "background: rgba(225,225,225,0); color: var(--bs-emphasis-color); border-width: 0px; border-style: none; display: block; font-style: italic; font-size: 14px;" %>
 
-                                        <% else %>
-                                            <a class="btn btn-primary" role="button" style="background: rgba(225,225,225,0);color: var(--bs-emphasis-color);border-width: 0px;border-style: none;display: block;font-style: italic;font-size: 14px;">See More</a>
-                                        <% end %>
                                     </div>
                                 </div>
                             </div>
