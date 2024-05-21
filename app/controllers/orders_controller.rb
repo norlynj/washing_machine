@@ -4,6 +4,26 @@ class OrdersController < ApplicationController
 
     def index
       @orders = Order.all
+
+      if params[:search_customer].present?
+        @orders = @orders.joins(:customer).where('customers.name LIKE ?', "%#{params[:search_customer]}%")
+      end
+
+      if params[:search_status].present?
+        @orders = @orders.where(status: params[:search_status])
+      end
+    end
+
+    def update
+      @order = Order.find_by(id: params[:id])
+
+      customer_id = @order.customer_id
+
+      if @order.update(order_params)
+        redirect_to orders_path, notice: 'Order status successfully updated.'
+      else
+        flash.now[:alert] = 'Failed to update status. Try again later.'
+      end
     end
 
     def create
@@ -12,7 +32,6 @@ class OrdersController < ApplicationController
       if @order.save
         redirect_to histories_path(customer_id: params[:customer_id]), notice: 'Order was successfully created.'
       else
-        p "#{@order.errors.full_messages}================================================================"
         redirect_to orders_path, notice: 'Order creation failed .'
       end
     end
