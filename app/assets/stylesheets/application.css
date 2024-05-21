@@ -14,3 +14,30 @@
 
 
 @import "font-awesome";
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.alert.fade-out {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.flash-message {
+  position: fixed;
+  top: 77px; /* Adjust this value based on the navbar height */
+  right: 10px;
+  z-index: 1050;
+  width: auto; /* Adjust the width as needed */
+  max-width: 300px; /* Optional: Limit the maximum width */
+}
+
