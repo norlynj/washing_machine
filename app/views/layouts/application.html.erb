@@ -36,8 +36,7 @@
       <%= render partial: "layouts/navbar"%>
     <%end %>
 
-    
-
+    <%= flash_messages %>
     <%= yield %>
     <%= javascript_include_tag 'application'%>
     <!-- JavaScript to auto-hide flash messages after a brief period -->

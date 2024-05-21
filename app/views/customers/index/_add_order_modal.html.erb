@@ -2,7 +2,8 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" style="font-family: 'Poppins';font-weight: bold;"><%= customer.name%>'s Order</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                <h4 class="modal-title" style="font-family: 'Poppins';font-weight: bold;"><%= customer.name%>'s Order</h4>
+                <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body focus-ring">
                 <!-- FORM STARTS HERE -->
@@ -11,30 +12,30 @@
                     <div class="row">
                         <div class="col">
                             <%= form.label :order_kg, "Order kg" %>
-                            <%= form.number_field :weight, class: "form-control", min: 0, step: 0.1, onchange: "calculateLoads(this)" %>
+                            <%= form.number_field :weight, class: "form-control", min: 0, step: 0.1, onchange: "calculateLoads(this, #{customer.id})" %>
                         </div>
                         <div class="col">
                             <%= form.label :load, "Load" %>
                             <!-- Load field is auto-calculated based on Order kg -->
-                            <%= form.text_field :load, class: "form-control", id: "load", disabled: true %>
+                            <%= form.text_field :load, class: "form-control", id: "load-#{customer.id}", disabled: true %>
                         </div>
                         <div class="col">
                             <label class="form-label">Detergents</label>
                             <div class="input-group">
-                                <button type="button" class="btn btn-outline-secondary minus-btn" onclick="decrementDetergent()" disabled>-</button>
-                                <%= form.number_field :num_detergents, class: "form-control", min: 0, step: 1, onchange: "calculateTotal()" %>
-                                <button type="button" class="btn btn-outline-secondary plus-btn" onclick="incrementDetergent()" disabled>+</button>
+                                <button type="button" class="btn btn-outline-secondary minus-btn" onclick="decrementDetergent(<%= customer.id %>)" id="minus-btn-<%= customer.id %>" disabled>-</button>
+                                <%= form.number_field :num_detergents, class: "form-control", min: 0, step: 1, id: "num_detergents-#{customer.id}", onchange: "calculateTotal(#{customer.id})" %>
+                                <button type="button" class="btn btn-outline-secondary plus-btn" onclick="incrementDetergent(<%= customer.id %>)" id="plus-btn-<%= customer.id %>" disabled>+</button>
                             </div>
-
                         </div>
+                    </div>
                     <div class="row">
                         <div class="col">
                             <%= form.label :classification, "Classification" %>
-                            <%= form.select :classification, options_for_select(["Regular", "Bed Linens"]), { include_blank: true }, class: "form-control", onchange: "calculateTotal()", required: true %>
+                            <%= form.select :classification, options_for_select(["Regular", "Bed Linens"]), { include_blank: true }, class: "form-control", id: "classification-#{customer.id}", onchange: "calculateTotal(#{customer.id})", required: true %>
                         </div>
                         <div class="col">
                             <%= form.label :mode_of_payment, "Mode of Payment" %>
-                            <%= form.select :payment_method, options_for_select(["Cash", "GCash"]), { include_blank: true }, class: "form-control", onchange: "calculateTotal()", required: true %>
+                            <%= form.select :payment_method, options_for_select(["Cash", "GCash"]), { include_blank: true }, class: "form-control", id: "payment_method-#{customer.id}", onchange: "calculateTotal(#{customer.id})", required: true %>
                         </div>
                     </div>
                     <div class="row">
@@ -45,7 +46,7 @@
                         <div class="col">
                             <%= form.label :total_amount, "Total (PHP)" %>
                             <!-- Total amount is auto-calculated based on the load and number of detergents -->
-                            <%= form.number_field :total_amount, class: "form-control", id: "total-amount", disabled: true %>
+                            <%= form.number_field :total_amount, class: "form-control", id: "total-amount-#{customer.id}", disabled: true %>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -57,89 +58,79 @@
                 <% end %>
 
                 <script>
-                function calculateLoads(input) {
-                    const orderKg = parseFloat(input.value);
-                    const loadField = document.getElementById("load");
-                    const numDetergentsField = document.getElementById("num_detergents");
+                    function calculateLoads(input, customerId) {
+                        const orderKg = parseFloat(input.value);
+                        const loadField = document.getElementById(`load-${customerId}`);
+                        const numDetergentsField = document.getElementById(`num_detergents-${customerId}`);
 
-                    if (!isNaN(orderKg)) {
-                    const loads = Math.ceil(orderKg / 7);
-                    loadField.value = loads;
+                        if (!isNaN(orderKg)) {
+                            const loads = Math.ceil(orderKg / 7);
+                            loadField.value = loads;
 
-                    // Automatically update number of detergents
-                    numDetergentsField.value = loads * 3;
+                            // Automatically update number of detergents
+                            numDetergentsField.value = loads * 3;
 
-                    document.querySelector('.plus-btn').disabled = false;
-                    } else {
-                    loadField.value = '';
-                    numDetergentsField.value = '';
+                            document.getElementById(`plus-btn-${customerId}`).disabled = false;
+                        } else {
+                            loadField.value = '';
+                            numDetergentsField.value = '';
 
-                    // Disable minus button
-                    document.querySelector('.minus-btn').disabled = true;
-                    document.querySelector('.plus-btn').disabled = true;
+                            // Disable minus button
+                            document.getElementById(`minus-btn-${customerId}`).disabled = true;
+                            document.getElementById(`plus-btn-${customerId}`).disabled = true;
+                        }
+
+                        calculateTotal(customerId);
                     }
 
-                    calculateTotal();
-                }
+                    function calculateTotal(customerId) {
+                        const load = parseInt(document.getElementById(`load-${customerId}`).value);
+                        const numDetergents = parseInt(document.getElementById(`num_detergents-${customerId}`).value);
+                        const totalAmountField = document.getElementById(`total-amount-${customerId}`);
+                        const classification = document.getElementById(`classification-${customerId}`).value;
 
-                function calculateTotal() {
-                    const load = parseInt(document.getElementById("load").value);
-                    const numDetergents = parseInt(document.getElementById("num_detergents").value);
-                    const totalAmountField = document.getElementById("total-amount");
-                    const classification = document.getElementById("classification").value;
-            
-                    // Log values for debugging
-                    // console.log("Load:", load);
-                    // console.log("# of Detergents:", numDetergents);
-                    // console.log("Classification:", classification);
-            
-                    // Perform calculations
-                    let basePrice;
-                    if (classification === "Bed Linens") {
-                        basePrice = 180;
-                    } else {
-                        basePrice = 150;
+                        let basePrice;
+                        if (classification === "Bed Linens") {
+                            basePrice = 180;
+                        } else {
+                            basePrice = 150;
+                        }
+
+                        // Calculate total without additional detergent fee if numDetergents is auto-calculated
+                        let total;
+                        if (numDetergents === load * 3) {
+                            total = load * basePrice;
+                        } else {
+                            const detergentPrice = 15;
+                            total = load * basePrice + (numDetergents - load * 3) * detergentPrice;
+                        }
+                        
+                        totalAmountField.value = total.toFixed(2);
                     }
-            
-                    // Calculate total without additional detergent fee if numDetergents is auto-calculated
-                    let total;
-                    if (numDetergents === load * 3) {
-                        total = load * basePrice;
-                    } else {
-                        const detergentPrice = 15;
-                        total = load * basePrice + (numDetergents - load * 3) * detergentPrice;
+
+                    function incrementDetergent(customerId) {
+                        const numDetergentsField = document.getElementById(`num_detergents-${customerId}`);
+                        const currentVal = parseInt(numDetergentsField.value);
+                        numDetergentsField.value = currentVal + 1;
+                        calculateTotal(customerId);
+                        document.getElementById(`minus-btn-${customerId}`).disabled = false;
                     }
-                    
-                    totalAmountField.value = total.toFixed(2);
-            
-                    // Log total for debugging
-                    // console.log("Total:", total);
-                }
-            
-            
-                function incrementDetergent() {
-                    const numDetergentsField = document.getElementById("num_detergents");
-                    const currentVal = parseInt(numDetergentsField.value);
-                    numDetergentsField.value = currentVal + 1;
-                    calculateTotal();
-                    document.querySelector('.minus-btn').disabled = false;
-                }
-            
-                function decrementDetergent() {
-                    const numDetergentsField = document.getElementById("num_detergents");
-                    const currentVal = parseInt(numDetergentsField.value);
-                    const load = parseInt(document.getElementById("load").value);
-                    const minDetergents = load * 3;
-            
-                    if (currentVal > minDetergents) {
-                    numDetergentsField.value = currentVal - 1;
-                    calculateTotal();
+
+                    function decrementDetergent(customerId) {
+                        const numDetergentsField = document.getElementById(`num_detergents-${customerId}`);
+                        const currentVal = parseInt(numDetergentsField.value);
+                        const load = parseInt(document.getElementById(`load-${customerId}`).value);
+                        const minDetergents = load * 3;
+
+                        if (currentVal > minDetergents) {
+                            numDetergentsField.value = currentVal - 1;
+                            calculateTotal(customerId);
+                        }
+
+                        if (currentVal === minDetergents + 1) { // Disable minus button when minimum is met
+                            document.getElementById(`minus-btn-${customerId}`).disabled = true;
+                        }
                     }
-            
-                    if (currentVal === minDetergents + 1) { // Disable minus button when minimum is met
-                    document.querySelector('.minus-btn').disabled = true;
-                    }
-                }
                 </script> 
             </div>
         </div>
