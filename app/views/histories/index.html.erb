@@ -40,9 +40,11 @@
                                     </td>
                                     <td class="text-center">
                                     <%= form_with url: history_path(order), method: :patch, remote: true, html: { class: "status-form" } do |f| %>
+                                        <%= f.hidden_field :customer_id, value: order.customer_id %>
                                         <%= f.select :status, options_for_select(["Not Started", "Ongoing", "For Pick-up", "Completed"], order.status), {}, { class: "status-dropdown form-control", onchange: 'this.form.submit()' } %>
                                     <% end %>
                                     </td>
+
 
                                 </tr>
                             <% end %>

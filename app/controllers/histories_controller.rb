@@ -5,17 +5,25 @@ class HistoriesController < ApplicationController
     end
   
     def update
-      @order = Order.find(params[:id])
-      if @order.update(order_params)
-        redirect_to histories_path, notice: 'Order status successfully updated.'
-      else
-        flash.now[:alert] = 'Failed to update status. Try again later.'
-        redirect_to histories_path
+        @order = Order.find_by(id: params[:id])
+        # if @order.nil?
+        #   flash.now[:alert] = 'Order not found.'
+        #   redirect_to histories_path
+        #   return
+        # end
+        
+        customer_id = @order.customer_id
+      
+        if @order.update(order_params)
+          redirect_to histories_path(customer_id: customer_id), notice: 'Order status successfully updated.'
+        else
+          flash.now[:alert] = 'Failed to update status. Try again later.'
+          render :index
+        end
       end
-    end
-  
-    private
-  
+      
+      
+    
     def order_params
       params.permit(:status)
     end
