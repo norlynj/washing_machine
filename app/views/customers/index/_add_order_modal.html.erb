@@ -16,7 +16,7 @@
                         <div class="col">
                             <%= form.label :load, "Load" %>
                             <!-- Load field is auto-calculated based on Order kg -->
-                            <input class="form-control" type="text" id="load" disabled>
+                            <%= form.text_field :load, class: "form-control", id: "load", disabled: true %>
                         </div>
                         <div class="col">
                             <label class="form-label">Detergents</label>
@@ -25,16 +25,16 @@
                                 <%= form.number_field :num_detergents, class: "form-control", min: 0, step: 1, onchange: "calculateTotal()" %>
                                 <button type="button" class="btn btn-outline-secondary plus-btn" onclick="incrementDetergent()" disabled>+</button>
                             </div>
-                           
+
                         </div>
                     <div class="row">
                         <div class="col">
                             <%= form.label :classification, "Classification" %>
-                            <%= form.select :classification, options_for_select(["Regular", "Bed Linens"]), { include_blank: true }, class: "form-control", onchange: "calculateTotal()" %>
+                            <%= form.select :classification, options_for_select(["Regular", "Bed Linens"]), { include_blank: true }, class: "form-control", onchange: "calculateTotal()", required: true %>
                         </div>
                         <div class="col">
                             <%= form.label :mode_of_payment, "Mode of Payment" %>
-                            <%= form.select :payment_method, options_for_select(["Cash", "GCash"]), { include_blank: true }, class: "form-control", onchange: "calculateTotal()" %>
+                            <%= form.select :payment_method, options_for_select(["Cash", "GCash"]), { include_blank: true }, class: "form-control", onchange: "calculateTotal()", required: true %>
                         </div>
                     </div>
                     <div class="row">
@@ -46,43 +46,42 @@
                             <%= form.label :total_amount, "Total (PHP)" %>
                             <!-- Total amount is auto-calculated based on the load and number of detergents -->
                             <%= form.number_field :total_amount, class: "form-control", id: "total-amount", disabled: true %>
-
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button>
                         <%= hidden_field_tag :customer_id, customer.id %>
                         <%= hidden_field_tag :status, "Not Started" %>
-                        <%= form.submit "Create Order", class: "btn btn-primary", style: "font-family: 'Poppins';" %>
+                        <%= form.submit "Create Order", class: "btn btn-primary", style: "font-family: 'Poppins';", required: true %>
                     </div>
                 <% end %>
-                
+
                 <script>
                 function calculateLoads(input) {
                     const orderKg = parseFloat(input.value);
                     const loadField = document.getElementById("load");
                     const numDetergentsField = document.getElementById("num_detergents");
-                    
+
                     if (!isNaN(orderKg)) {
                     const loads = Math.ceil(orderKg / 7);
                     loadField.value = loads;
-                    
+
                     // Automatically update number of detergents
                     numDetergentsField.value = loads * 3;
-            
+
                     document.querySelector('.plus-btn').disabled = false;
                     } else {
                     loadField.value = '';
                     numDetergentsField.value = '';
-                    
+
                     // Disable minus button
                     document.querySelector('.minus-btn').disabled = true;
                     document.querySelector('.plus-btn').disabled = true;
                     }
-            
+
                     calculateTotal();
                 }
-            
+
                 function calculateTotal() {
                     const load = parseInt(document.getElementById("load").value);
                     const numDetergents = parseInt(document.getElementById("num_detergents").value);
