@@ -32,3 +32,12 @@ input[type=number] {
   transition: opacity 1s;
 }
 
+.flash-message {
+  position: fixed;
+  top: 77px; /* Adjust this value based on the navbar height */
+  right: 10px;
+  z-index: 1050;
+  width: auto; /* Adjust the width as needed */
+  max-width: 300px; /* Optional: Limit the maximum width */
+}
+
