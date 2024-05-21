@@ -29,6 +29,10 @@ class AnalyticsController < ApplicationController
     @users = User.all
     @customers = Customer.all
 
+    @yearly_sales = Order.group_by_year(:created_at).sum(:total_amount)
+    @monthly_sales = Order.group_by_month(:created_at).sum(:total_amount)
+    
+
   end
 
 

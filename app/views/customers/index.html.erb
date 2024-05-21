@@ -2,7 +2,7 @@
     <div></div>
     <div>
         <div class="container">
-            <h1 style="font-size: 29px;text-align: center;font-family: 'Poppins';font-weight: bold;margin-bottom: 33px;margin-right: -3px;">Manage Customers</h1>
+            <h1 style="font-size: 29px;text-align: center;font-family: 'Poppins';font-weight: bold;margin-bottom: 33px;margin-right: -3px;"> <%if current_user.manager?%> Manage Customers <%else%> Customers <%end%></h1>
             <div class="row justify-content-center">
                 <div class="col-9 col-sm-6 col-md-4 col-xl-3 col-xxl-2" style="padding-right: 1px;width: 221.5px;">
                     <%= form_tag(customers_path, method: :get, class: "form-inline") do %>
@@ -38,7 +38,7 @@
                                     <th style="text-align: center;">ADDRESS<a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
                                                 <path d="M9.1716 6.45504L7.75739 5.04083L12 0.798187L16.2426 5.04083L14.8284 6.45504L13.0001 4.62667V19.3733L14.8284 17.5449L16.2426 18.9592L12 23.2018L7.75739 18.9592L9.1716 17.5449L11.0001 19.3734V4.62658L9.1716 6.45504Z" fill="currentColor"></path>
                                             </svg></a></th>
-                                    <th class="text-center" style="width: 88px;">Action</th>
+                                    <%if current_user.manager? %><th class="text-center" style="width: 88px;">Action</th> <%end%>
                                 </tr>
                             </thead>
                             <tbody style="text-align: center;">
@@ -51,7 +51,7 @@
                                         <td><%= customer.name %></td>
                                         <td><%= customer.contact_info %></td>
                                         <td><%= customer.address %></td>
-                                        <td class="text-center" style="width: 66.1719px;">
+                                        <%if current_user.manager?%><td class="text-center" style="width: 66.1719px;">
                                             <a class="del-row" href="javascript:void(0);">
                                                 <i class="fas fa-history" style="font-size: 20px;"></i>
                                             </a>
@@ -59,6 +59,7 @@
                                                 <i class="fas fa-edit" style="font-size: 20px;margin-left: 9px;" data-bs-target="#modal-1" data-bs-toggle="modal"></i>
                                             </a>
                                         </td>
+                                        <%end%>
                                     </tr>
                                 <% end %>
                                 <!-- End of customer loop -->

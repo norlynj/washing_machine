@@ -92,13 +92,13 @@
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group mb-3">
                                     <%= form.label :first_name, class: "form-label", style: "font-family: 'Poppins';" %>
-                                    <%= form.text_field :first_name, class: "form-control", style: "border-width: 1px;border-style: solid;" %>
+                                    <%= form.text_field :first_name, class: "form-control", style: "border-width: 1px;border-style: solid;", required: true %>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group mb-3">
                                     <%= form.label :last_name, class: "form-label", style: "font-family: 'Poppins';" %>
-                                    <%= form.text_field :last_name, class: "form-control", style: "border-style: solid;" %>
+                                    <%= form.text_field :last_name, class: "form-control", style: "border-style: solid;", required: true %>
                                 </div>
                             </div>
                         </div>
@@ -106,13 +106,13 @@
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group mb-3">
                                     <%= form.label :email, class: "form-label", style: "font-family: 'Poppins';" %>
-                                    <%= form.email_field :email, class: "form-control", style: "border-width: 1px;border-style: solid;" %>
+                                    <%= form.email_field :email, class: "form-control", style: "border-width: 1px;border-style: solid;", required: true %>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group mb-3">
                                     <%= form.label :mobile_number, class: "form-label", style: "font-family: 'Poppins';" %>
-                                    <%= form.telephone_field :mobile_number, class: "form-control", style: "border-style: solid;" %>
+                                    <%= form.telephone_field :mobile_number, class: "form-control", style: "border-style: solid;", required: true %>
                                 </div>
                             </div>
                         </div>
@@ -120,13 +120,13 @@
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group mb-3">
                                     <%= form.label :gender, class: "form-label", style: "font-family: 'Poppins';" %>
-                                    <%= form.text_field :gender, class: "form-control", style: "border-width: 1px;border-style: solid;" %>
+                                    <%= form.text_field :gender, class: "form-control", style: "border-width: 1px;border-style: solid;", required: true %>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group mb-3">
                                     <%= form.label :birthday, class: "form-label", style: "font-family: 'Poppins';" %>
-                                    <%= form.date_field :birthday, class: "form-control", style: "border-style: solid;" %>
+                                    <%= form.date_field :birthday, class: "form-control", style: "border-style: solid;", required: true %>
                                 </div>
                             </div>
                         </div>
@@ -134,13 +134,13 @@
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group mb-3">
                                     <%= form.label :password, class: "form-label", style: "font-family: 'Poppins';" %>
-                                    <%= form.password_field :password, class: "form-control", style: "border-width: 1px;border-style: solid;" %>
+                                    <%= form.password_field :password, class: "form-control", style: "border-width: 1px;border-style: solid;", required: true %>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group mb-3">
                                     <%= form.label :password_confirmation, class: "form-label", style: "font-family: 'Poppins';" %>
-                                    <%= form.password_field :password_confirmation, class: "form-control", style: "border-style: solid;" %>
+                                    <%= form.password_field :password_confirmation, class: "form-control", style: "border-style: solid;", required: true %>
                                 </div>
                             </div>
                         </div>

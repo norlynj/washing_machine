@@ -1,12 +1,13 @@
 class OrdersController < ApplicationController
-  
+    # before_action :set_order, only: [:edit, :update, :destroy]
+
     def index
       @orders = Order.all
     end
-  
+
     def create
       @order = Order.new(order_params.merge(staff_id: current_user.id))
-  
+
       if @order.save
         redirect_to orders_path, notice: 'Order was successfully created.'
       else
@@ -14,13 +15,13 @@ class OrdersController < ApplicationController
         redirect_to orders_path, notice: 'Order creation failed .'
       end
     end
-  
+
     private
-  
+
     def set_order
       @order = Order.find(params[:id])
     end
-  
+
     def set_total (classification, num_detergents, weight)
       # Perform calculations
       base_price = classification == "Bed Linens" ? 180 : 150
