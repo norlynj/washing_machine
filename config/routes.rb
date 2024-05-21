@@ -24,5 +24,5 @@ Rails.application.routes.draw do
   resources :analytics
   resources :schedule
   resources :orders
-  resources :histories
+  resources :histories 
 end

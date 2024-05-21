@@ -52,9 +52,10 @@
                                         <td><%= customer.contact_info %></td>
                                         <td><%= customer.address %></td>
                                         <%if current_user.manager?%><td class="text-center" style="width: 66.1719px;">
-                                            <a class="del-row" href="javascript:void(0);">
+                                            <%= link_to histories_path(customer_id: customer.id), class: 'del-row' do %>
                                                 <i class="fas fa-history" style="font-size: 20px;"></i>
-                                            </a>
+                                            <% end %>
+                                          
                                             <a class="del-row" href="javascript:void(0);">
                                                 <i class="fas fa-edit" style="font-size: 20px;margin-left: 9px;" data-bs-target="#modal-1-<%= customer.id %>" data-bs-toggle="modal"></i>
                                             </a>
