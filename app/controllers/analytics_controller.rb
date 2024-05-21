@@ -1,5 +1,6 @@
 class AnalyticsController < ApplicationController
   before_action :authenticate_user!
+  before_action :manager_signed_in?
 
   def index
       @customers_by_year = Customer.group_by_year(:created_at).count
@@ -36,7 +37,12 @@ class AnalyticsController < ApplicationController
     end
 
 
-
+    private
+    def manager_signed_in?
+      if current_user.staff?
+        redirect_to landing_page_path, alert: "You are not allowed to access the page"
+      end
+    end
 end
 
 

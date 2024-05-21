@@ -1,5 +1,6 @@
 class ScheduleController < ApplicationController
     before_action :authenticate_user!
+    before_action :manager_signed_in?
 
     def index
         @users = User.all
@@ -35,6 +36,13 @@ class ScheduleController < ApplicationController
             schedule_array[index.to_i] = 1 if value == "1"
         end
         schedule_array
+    end
+
+    private
+    def manager_signed_in?
+      if current_user.staff?
+        redirect_to landing_page_path, alert: "You are not allowed to access the page"
+      end
     end
 end
 
