@@ -8,7 +8,16 @@ class CustomersController < ApplicationController
                 end
   end
 
-  
+  def create
+    @customer = Customer.new(customer_create_params)
+
+      if @customer.save
+        redirect_to customers_path, notice: 'Customer was successfully created.'
+      else
+        redirect_to customers_path, error: 'Customer creation failed.'
+      end
+  end
+
   def edit
     @customer = Customer.find(params[:id])
   end
@@ -30,6 +39,10 @@ class CustomersController < ApplicationController
 
   def customer_params
     params.require(:customer).permit(:name, :contact_info, :address)
+  end
+
+  def customer_create_params
+    params.permit(:name, :contact_info, :address)
   end
 
 end
