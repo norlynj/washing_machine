@@ -67,6 +67,7 @@ group :development do
   gem 'bootstrap', '~> 5.1', '>= 5.1.3'
   gem 'jquery-rails'
   gem 'sassc-rails'
+  gem 'twilio-ruby'
   # gem 'dartsass-sprockets' uncomment this line once ran to local once
 end
 

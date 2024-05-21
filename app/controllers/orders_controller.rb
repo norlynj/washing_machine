@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
       @order = Order.new(order_params.merge(staff_id: current_user.id))
 
       if @order.save
-        redirect_to orders_path, notice: 'Order was successfully created.'
+        redirect_to histories_path(customer_id: params[:customer_id]), notice: 'Order was successfully created.'
       else
         p "#{@order.errors.full_messages}================================================================"
         redirect_to orders_path, notice: 'Order creation failed .'
