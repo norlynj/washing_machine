@@ -16,13 +16,13 @@
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group mb-3">
                                 <%= f.label :first_name, 'Firstname', class: 'form-label', style: 'font-family: Poppins;' %>
-                                <%= f.text_field :first_name, class: 'form-control', style: 'border-width: 1px;border-style: solid;' %>
+                                <%= f.text_field :first_name, class: 'form-control', style: 'border-width: 1px;border-style: solid;', required: true %>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group mb-3">
                                 <%= f.label :last_name, 'Lastname', class: 'form-label', style: 'font-family: Poppins;' %>
-                                <%= f.text_field :last_name, class: 'form-control', style: 'border-style: solid;' %>
+                                <%= f.text_field :last_name, class: 'form-control', style: 'border-style: solid;', required: true %>
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                         <div class="col">
                             <div class="form-group mb-3">
                                 <%= f.label :birthday, 'Birthday', class: 'form-label', style: 'font-family: Poppins;' %>
-                                <%= f.date_field :birthday, class: 'form-control', style: 'font-family: Poppins;border-style: solid;' %>
+                                <%= f.date_field :birthday, class: 'form-control', required: true, style: 'font-family: Poppins;border-style: solid;' %>
                             </div>
                         </div>
                     </div>

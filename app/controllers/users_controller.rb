@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
   # update user using the id
   def update
-    if @user.update(user_params)
+    if @user.update(update_user_params)
       # Handle successful user update
       redirect_to user_crew_index_path, notice: 'User was successfully updated.'
     else
@@ -60,6 +60,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.permit(:first_name, :last_name, :password, :password_confirmation, :email, :mobile_number, :birthday, :gender, :schedule_array, :schedule)
+  end
+
+  def update_user_params
+    params.require(:user).permit(:first_name, :last_name, :password, :password_confirmation, :email, :mobile_number, :birthday, :gender, :schedule_array, :schedule)
   end
 
 end
