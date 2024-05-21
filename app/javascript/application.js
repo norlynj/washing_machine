@@ -5,3 +5,7 @@ import "controllers"
 //= require jquery
 //= require popper
 //= require bootstrap
+
+$(document).on('shown.bs.modal', '.modal', function () {
+  $('.modal-backdrop').before($(this));
+});
