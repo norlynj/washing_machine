@@ -4,8 +4,8 @@
       <div class="row align-items-start">
       <h1 class="m-5"style="font-size: 50px;text-align: left;font-family: 'Poppins';font-weight: bold;margin-bottom: 33px;margin-right: -3px;">Analytics</h1>
         <div class="col">
-
-         
+ 
+              
               <div class="card mb-4 p-5 rounded-5">
                 <h3>Daily Records</h3>
                 <br/>
@@ -21,7 +21,6 @@
                   <h1 style="font-size:72px"class="float-end"><%=Customer.created_today.count%></h1>
                   <%=%>
                 </div>
-
                 <hr>
 
                  <div class="col">
@@ -31,6 +30,7 @@
                 </div>
 
               </div>
+
 
               <div class="card mb-4 p-2 rounded-5">
                 <div class="card-body p-5">
@@ -52,6 +52,13 @@
                 <canvas id="ordersByMonthChart" class="mt-4"></canvas>
               </div>
             </div>
+
+                <div class="card mb-4 p-2 rounded-5">
+                  <div class="card-body p-5">
+                    <h3>Sales by Year</h3>
+                    <canvas canvas id="yearlySalesChart" class="mt-4"></canvas>
+                  </div>
+                </div>
         </div>
         <div class="col">
 
@@ -82,6 +89,23 @@
                   <canvas id="ordersByWeekdayChart"></canvas>
                 </div>
               </div>
+
+              <div class="card mb-4 p-2 rounded-5">
+              <div class="card-body p-5">
+                <h3>Sales by Month</h3>
+                <div style="width:100px">
+                <select id="yearSelect_s" class="form-select form-select-lg mb-4" aria-label="Large select example">
+                  <% @unique_years.each do |year| %>
+                    <option value="<%= year %>"><%= year %></option>
+                  <% end %>
+                </select>
+                </div>
+                <canvas id="salesByMonthChart" class="mt-4"></canvas>
+              </div>
+            </div>
+
+
+              
 
             
 
@@ -133,6 +157,33 @@
                       return context.label + ': ' + context.raw + ' orders';
                     }
                   }
+                }
+              }
+            }
+          });
+
+          //Sales Per year
+          var yearlySales = <%= @yearly_sales.to_json.html_safe %>;
+          var salesLabels = <%= raw @years_o.to_json %>;
+          var salesData = Object.values(yearlySales);
+
+          var salesCtx = document.getElementById('yearlySalesChart').getContext('2d');
+          var yearlySalesChart = new Chart(salesCtx, {
+            type: 'bar',
+            data: {
+              labels: salesLabels,
+              datasets: [{
+                label: 'Total Sales (in Pesos)',
+                data: salesData,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 3
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
                 }
               }
             }
@@ -233,7 +284,28 @@
             }
           });
 
-          
+            var monthCtx = document.getElementById('salesByMonthChart').getContext('2d');
+            var salesByMonthChart = new Chart(monthCtx, {
+              type: 'line',
+              data: {
+                labels: [],
+                datasets: [{
+                  label: 'Toal Sales (in Pesos)',
+                  data: [],
+                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                  borderColor: 'rgba(75, 192, 192, 1)',
+                  borderWidth: 3,
+                  fill: true
+                }]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
 
           
           // Filter the month data based on selected year
@@ -251,6 +323,17 @@
               customersByMonthChart.data.labels = filteredMonths;
               customersByMonthChart.data.datasets[0].data = filteredCounts;
               customersByMonthChart.update();
+            }
+            else if (model == 'sales'){
+              <% @monthly_sales.each do |date, count| %>
+                if ("<%= date.year %>" === year) {
+                  filteredMonths.push("<%= date.strftime('%B %Y') %>");
+                  filteredCounts.push(<%= count %>);
+                }
+              <% end %>
+              salesByMonthChart.data.labels = filteredMonths;
+              salesByMonthChart.data.datasets[0].data = filteredCounts;
+              salesByMonthChart.update();
             }
             else{
                 <% @orders_by_month.each do |date, count| %>
@@ -289,6 +372,17 @@
           // Initialize the chart with the first year selected
           var initialYear_o = document.getElementById('yearSelect_o').value;
           filterMonthDataByYear(initialYear_o, 'orders');
+
+          document.getElementById('yearSelect_s').addEventListener('change', function() {
+            var selectedYear_s = this.value;
+            filterMonthDataByYear(selectedYear_s, 'sales');
+          });
+
+          // Initialize the chart with the first year selected
+          var initialYear_s = document.getElementById('yearSelect_s').value;
+          filterMonthDataByYear(initialYear_s, 'sales');
+
+          
 
         });
 
