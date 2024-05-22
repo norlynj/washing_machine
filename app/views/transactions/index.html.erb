@@ -42,13 +42,13 @@
                                     <td><%= transaction.staff.full_name if transaction.staff.staff? %></td>
                                     <td><%= transaction.created_at.strftime("%d-%m-%Y") %></td>
                                     <td>
-                                        <button class="btn btn-primary" type="button" style="font-size: 10px;" data-bs-target="#modal-2" data-bs-toggle="modal">
+                                        <button class="btn btn-primary" type="button" style="font-size: 10px;" data-bs-target="#modal-transactions-details-<%=transaction.id%>" data-bs-toggle="modal">
                                             View  <i class="typcn typcn-eye"></i>
                                         </button>
                                     </td>
-                                    <% if current_user.manager? %>                                
+                                    <% if current_user.manager? %>
                                         <td class="text-center" style="width: 66.1719px;">
-                                             <a class="del-row"  data-bs-target="#modal-1" data-bs-toggle="modal";>
+                                             <a class="del-row"  data-bs-target="#modal-delete-transaction-<%= transaction.id %>" data-bs-toggle="modal";>
                                                  <i class="fas fa-trash" style="font-size: 20px;margin-left: 9px;"></i>
                                              </a>
                                          </td>
@@ -57,11 +57,6 @@
                                 <% end %>
                             </tbody>
                         </table>
-                        <!-- Render the modals after the table to maintain layout -->
-                        <% @transactions.each do |transaction| %>
-                            <%= render 'transactions/index/delete_transaction_modal', transaction: transaction %>
-                            <%= render 'transactions/index/order_details_modal', transaction: transaction %>
-                        <% end %>
                     </div>
                 </div>
             </div>
@@ -71,3 +66,8 @@
 
 
 
+<!-- Render the modals after the table to maintain layout -->
+<% @transactions.each do |transaction| %>
+    <%= render 'transactions/index/delete_transaction_modal', transaction: transaction %>
+    <%= render 'transactions/index/order_details_modal', transaction: transaction %>
+<% end %>
