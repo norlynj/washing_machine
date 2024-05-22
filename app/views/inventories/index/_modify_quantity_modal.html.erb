@@ -8,18 +8,8 @@
       <div class="modal-body">
         <%= form_with(model: inventory, url: inventory_path(inventory), method: :patch, local: true) do |form| %>
           <div class="row" style="text-align: center;">
-            <div class="col-md-4">
-              <div style="text-align: right;">
-                <button type="button" class="btn btn-secondary decrement-btn" data-target="quantity_<%= inventory.id %>"><i class="fa fa-minus-circle" style="font-size: 40px;"></i></button>
-              </div>
-            </div>
             <div class="col-auto col-md-4">
               <%= form.number_field :quantity, class: "form-control form-control-lg quantity-field", id: "quantity_#{inventory.id}", min: 0, step: 1, required: true %>
-            </div>
-            <div class="col-md-4">
-              <div style="text-align: left;">
-                <button type="button" class="btn btn-secondary increment-btn" data-target="quantity_<%= inventory.id %>"><i class="fa fa-plus-circle" style="font-size: 40px;"></i></button>
-              </div>
             </div>
           </div>
           <div class="modal-footer">
