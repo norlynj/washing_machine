@@ -47,7 +47,7 @@
                                 <tr>
                                     <td><%= transaction.id %></td>
                                     <td><%= transaction.customer.name %></td>
-                                    <td><%= transaction.staff.full_name if transaction.staff.staff? %></td>
+                                    <td><%= transaction.staff.full_name %></td>
                                     <td><%= transaction.created_at.strftime("%d-%m-%Y") %></td>
                                     <td>
                                         <button class="btn btn-primary" type="button" style="font-size: 10px;" data-bs-target="#modal-transactions-details-<%=transaction.id%>" data-bs-toggle="modal">
