@@ -15,7 +15,7 @@ class CustomersController < ApplicationController
       if @customer.save
         redirect_to customers_path, notice: 'Customer was successfully created.'
       else
-        redirect_to customers_path, error: 'Customer creation failed.'
+        redirect_to customers_path, alert: "Customer creation failed. #{@customer.errors.full_messages.join(', ')}"
       end
   end
 
