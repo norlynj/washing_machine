@@ -18,7 +18,8 @@
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group mb-3">
                                 <%= form.label :mobile, "Mobile number", class: "form-label", style: "font-family: 'Poppins';" %>
-                                <%= form.telephone_field :contact_info, class: "form-control", style: "border-style: solid;", required: true %>
+                                <%= form.text_field :contact_info, class: "form-control", style: "border-style: solid;", maxlength: 11, pattern: "[0-9]{11}", title: "Phone number must be 11 digits", required: true %>
+
                             </div>
                         </div>
                     </div>
