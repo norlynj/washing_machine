@@ -12,13 +12,13 @@
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group mb-3">
                                 <%= form.label :name, class: "form-label", style: "font-family: 'Poppins';" %>
-                                <%= form.text_field :name, class: "form-control", style: "border-width: 1px; border-style: solid;" %>
+                                <%= form.text_field :name, class: "form-control", style: "border-width: 1px; border-style: solid;", required: true %>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group mb-3">
                                 <%= form.label :mobile, "Mobile number", class: "form-label", style: "font-family: 'Poppins';" %>
-                                <%= form.text_field :contact_info, class: "form-control", style: "border-style: solid;" %>
+                                <%= form.telephone_field :contact_info, class: "form-control", style: "border-style: solid;", required: true %>
                             </div>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                         <div class="col">
                             <div class="form-group mb-3">
                                 <%= form.label :address, "Address", class: "form-label", style: "font-family: 'Poppins';" %>
-                                <%= form.text_field :address, class: "form-control", style: "border-style: solid;" %>
+                                <%= form.text_field :address, class: "form-control", style: "border-style: solid;", required: true %>
                             </div>
                         </div>
                     </div>
