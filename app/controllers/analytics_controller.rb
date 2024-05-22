@@ -34,6 +34,12 @@ class AnalyticsController < ApplicationController
       @yearly_sales = Order.group_by_year(:created_at).sum(:total_amount)
       @monthly_sales = Order.group_by_month(:created_at).sum(:total_amount)
 
+      @loads = 0
+      @orders = Order.created_today.all
+      @orders.each do |order|
+        @loads = @loads + (order.weight.to_f / 7).ceil
+      end
+
     end
 
 
