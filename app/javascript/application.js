@@ -6,6 +6,9 @@ import "controllers"
 //= require popper
 //= require bootstrap
 
+$(document).on('shown.bs.modal', '.modal', function () {
+  $('.modal-backdrop').before($(this));
+});
 
 document.addEventListener('turbo:load', () => {
   setTimeout(() => {
