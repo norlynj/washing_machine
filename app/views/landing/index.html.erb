@@ -92,6 +92,8 @@
 
                                         <% if current_user.manager? %>
                                             <%= link_to "See More", analytics_path, class: "btn btn-primary", role: "button", style: "background: rgba(225,225,225,0); color: var(--bs-emphasis-color); border-width: 0px; border-style: none; display: block; font-style: italic; font-size: 14px;" %>
+                                        <% else %>
+                                            <div style="height: 36px;"></div>
                                         <% end %>
                                     </div>
                                 </div>
