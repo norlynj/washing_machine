@@ -8,6 +8,8 @@ class Order < ApplicationRecord
   validates :weight, presence: true, numericality: { greater_than: 0 }
   validates :total_amount, presence: true, numericality: { greater_than_or_equal_to: 0 }
   after_update :trigger_pickup_notification, if: :status_changed_to_for_pickup?
+  before_create :check_inventory
+  after_create :decrement_inventory
 
   # Other validations, associations, and methods can be added here
   def staff
@@ -38,4 +40,16 @@ class Order < ApplicationRecord
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
+  def decrement_inventory
+    @detergent = Inventory.find_by(name: "Detergent")
+    @detergent.update(quantity: @detergent.quantity - detergent)
+  end
+
+  def check_inventory
+    @detergent = Inventory.find_by(name: "Detergent")
+    if @detergent && @detergent.quantity < self.detergent
+      errors.add(:base, "No more detergent available")
+      throw(:abort)
+    end
+  end
 end

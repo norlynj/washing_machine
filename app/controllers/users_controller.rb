@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: [:update]
+  before_action :manager_signed_in?
+
 
 
   def index
@@ -67,4 +69,10 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :password, :password_confirmation, :email, :mobile_number, :birthday, :gender, :schedule_array, :schedule)
   end
 
+  private
+  def manager_signed_in?
+    if current_user.staff?
+      redirect_to landing_page_path, alert: "You are not allowed to access the page"
+    end
+  end
 end

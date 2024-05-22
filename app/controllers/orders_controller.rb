@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
       if @order.save
         redirect_to histories_path(customer_id: params[:customer_id]), notice: 'Order was successfully created.'
       else
-        redirect_to orders_path, notice: 'Order creation failed .'
+        redirect_to customers_path, alert: "Order creation failed. #{@order.errors.full_messages.join(', ')}"
       end
     end
 
@@ -60,8 +60,8 @@ class OrdersController < ApplicationController
     end
 
     def order_params
-      total_amount = set_total(params[:classification], params[:num_detergents], params[:weight])
-      params.permit(:customer_id, :status, :weight, :payment_method, :classification, :staff_id, :add_instructions).merge(total_amount: total_amount)
+      total_amount = set_total(params[:classification], params[:detergent], params[:weight])
+      params.permit(:customer_id, :status, :weight, :payment_method, :classification, :staff_id, :add_instructions, :detergent).merge(total_amount: total_amount)
     end
   end
   
