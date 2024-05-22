@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   # Add new attributes to the Devise permitted parameters
   validates :first_name, :last_name, :mobile_number, :gender, :birthday, presence: true
+  validates :mobile_number, format: { with: /\A\d{11}\z/, message: "must be 11 digits" }
+  validates :mobile_number, uniqueness: true
   enum role: { staff: 0, manager: 1 }, _prefix: true
   has_many :orders
 
