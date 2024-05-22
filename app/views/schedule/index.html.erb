@@ -4,9 +4,6 @@
         <div class="container">
             <h1 style="font-size: 29px;text-align: center;font-family: 'Poppins';font-weight: bold;margin-bottom: 33px;margin-right: -3px;">Manage Staff Schedules</h1>
             <div class="row justify-content-center">
-                <div class="col-md-4 col-xxl-1" style="height: 31px;margin-top: 3px;margin-right: -10px;width: 42.656px;">
-                    <div style="margin: auto;min-width: auto;width: 30px;"><a href="#"><i class="fa fa-filter" style="font-size: 25px;min-width: auto;margin: auto;"></i></a></div>
-                </div>
                 <div class="col-9 col-sm-6 col-md-4 col-xl-3 col-xxl-2" style="padding-right: 1px;width: 221.5px;">
                     <%= form_tag(schedule_index_path, method: :get, class: "form-inline") do %>
                         <%= text_field_tag :search, params[:search], class: "shadow-sm form-control-sm", placeholder: "Search Staff", autofocus: true, style: "border-width: 0px;border-radius: 14px;padding-left: 18px;min-width: auto;width: 201.5px;font-family: 'Poppins';" %>
