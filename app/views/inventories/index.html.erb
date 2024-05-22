@@ -48,7 +48,7 @@
                                         <%if current_user.manager?%>
                                         <td class="text-center" style="width: 66.1719px;">
                                             <button class="btn btn-success" type="button" style="font-size: 10px;border-radius: 20px;margin-right: 5px;margin-top: 2px;margin-bottom: 2px;" data-bs-target="#modal-2" data-bs-toggle="modal">+/-</button>
-                                            <button class="btn btn-danger" type="button" style="font-size: 10px;border-radius: 20px;margin-right: 5px;margin-top: 2px;margin-bottom: 2px;" data-bs-target="#modal-3" data-bs-toggle="modal">Delete</button>
+                                            <button class="btn btn-danger" type="button" style="font-size: 10px;border-radius: 20px;margin-right: 5px;margin-top: 2px;margin-bottom: 2px;" data-bs-target="#modal-delete-item-<%= inventory.id %>" data-bs-toggle="modal">Delete</button>
                                         </td>
                                         <%end%>
                                     </tr>

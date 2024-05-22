@@ -4,6 +4,11 @@ class InventoriesController < ApplicationController
   def index
     @inventories = Inventory.all
   end
+
+  def show
+    @inventory = Inventory.find(params[:id])
+  end
+  
   
   def create
     @inventory = Inventory.new(inventory_params)
@@ -14,6 +19,13 @@ class InventoriesController < ApplicationController
       redirect_to inventories_path, alert: "Item creation failed"
     end
   end
+
+  def destroy
+    @inventory = Inventory.find(params[:id]) # Fetch the inventory item
+    @inventory.destroy # Destroy the inventory item
+    redirect_to inventories_path, notice: "Item was successfully deleted"
+  end
+  
   
   private
   
