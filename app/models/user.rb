@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  after_create :initialize_schedule_array
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -29,6 +30,12 @@ class User < ApplicationRecord
   # Method to set the weekdays from an array of integers
   def schedule_array=(array)
     self.schedule = array.join.to_i(2)
+  end
+
+  private
+
+  def initialize_schedule_array
+    update(schedule_array: [0, 0, 0, 0, 0, 0, 0])
   end
 
 end
