@@ -33,3 +33,25 @@
 </div>
 
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // Increment button click handler
+    $('.increment-btn').click(function() {
+      var quantityField = $(this).closest('.row').find('.quantity-field');
+      var currentQuantity = parseInt(quantityField.val());
+      quantityField.val(currentQuantity + 1);
+    });
+
+    // Decrement button click handler
+    $('.decrement-btn').click(function() {
+      var quantityField = $(this).closest('.row').find('.quantity-field');
+      var currentQuantity = parseInt(quantityField.val());
+      if (currentQuantity > 0) {
+        quantityField.val(currentQuantity - 1);
+      }
+    });
+  });
+</script>
+
+

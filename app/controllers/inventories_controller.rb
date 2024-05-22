@@ -45,7 +45,11 @@ class InventoriesController < ApplicationController
   private
   
   def inventory_params
-    params.require(:inventory).permit(:quantity)
-  end
+    if params[:action] == 'update'
+      params.require(:inventory).permit(:quantity, :name)
+    elsif params[:action] == 'create'
+      params.permit(:quantity, :name)
+    end
+  end  
 
 end

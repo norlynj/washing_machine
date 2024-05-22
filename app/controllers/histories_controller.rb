@@ -8,12 +8,6 @@ class HistoriesController < ApplicationController
 
   def update
       @order = Order.find_by(id: params[:id])
-      # if @order.nil?
-      #   flash.now[:alert] = 'Order not found.'
-      #   redirect_to histories_path
-      #   return
-      # end
-      
       customer_id = @order.customer_id
     
       if @order.update(order_params)
