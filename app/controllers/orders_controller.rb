@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
       if @order.save
         redirect_to histories_path(customer_id: params[:customer_id]), notice: 'Order was successfully created.'
       else
-        redirect_to orders_path, notice: 'Order creation failed .'
+        redirect_to customers_path, alert: "Order creation failed. #{@order.errors.full_messages.join(', ')}"
       end
     end
 
