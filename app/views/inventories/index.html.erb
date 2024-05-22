@@ -48,7 +48,7 @@
                                         <%if current_user.manager?%>
                                         <td class="text-center" style="width: 66.1719px;">
                                             <button class="btn btn-success" type="button" style="font-size: 10px;border-radius: 20px;margin-right: 5px;margin-top: 2px;margin-bottom: 2px;" data-bs-target="#modal-2" data-bs-toggle="modal">+/-</button>
-                                            <button class="btn btn-danger" type="button" style="font-size: 10px;border-radius: 20px;margin-right: 5px;margin-top: 2px;margin-bottom: 2px;" data-bs-target="#modal-3" data-bs-toggle="modal">Delete</button>
+                                            <button class="btn btn-danger" type="button" style="font-size: 10px;border-radius: 20px;margin-right: 5px;margin-top: 2px;margin-bottom: 2px;" data-bs-target="#modal-delete-item-<%= inventory.id %>" data-bs-toggle="modal">Delete</button>
                                         </td>
                                         <%end%>
                                     </tr>
@@ -61,55 +61,10 @@
         </div>
     </div>
 </section>
-<div id="modal-1" class="modal fade" role="dialog" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" style="font-family: 'Poppins';font-weight: bold;">Add new item</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-floating mb-3"><input id="emailInput-1" class="focus-ring form-control" type="text" inputmode="email" name="item name" /><label class="form-label" for="emailInput" style="font-family: 'Poppins';color: var(--bs-body-color);">Item Name</label></div>
-                    <div class="form-floating mb-3"><input id="emailInput-2" class="focus-ring form-control" type="number" inputmode="email" name="qty" style="width: 125px;" /><label class="form-label" for="emailInput" style="font-family: 'Poppins';color: var(--bs-body-color);">Quantity</label></div>
-                </form>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button><button class="btn btn-primary" type="button">Add item</button></div>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="modal-2" class="modal fade" role="dialog" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" style="font-family: 'Poppins';font-weight: bold;">Add or deduct &lt;item&gt;</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="row" style="text-align: center;">
-                        <div class="col-md-4">
-                            <div style="text-align: right;"><a href="#"><i class="fa fa-minus-circle" style="font-size: 40px;"></i></a></div>
-                        </div>
-                        <div class="col-auto col-md-4"><input class="form-control form-control-lg" type="number" min="0" disabled /></div>
-                        <div class="col-md-4">
-                            <div style="text-align: left;"><a href="#"><i class="fa fa-plus-circle" style="font-size: 40px;"></i></a></div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
-        </div>
-    </div>
-</div>
-<div id="modal-3" class="modal fade" role="dialog" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Delete Inventory Item</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <p class="text-center">Are you sure you want to delete &lt;item&gt;?</p>
-            </div>
-            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button><button class="btn btn-primary" type="button">Confirm</button></div>
-        </div>
-    </div>
-</div>
+
+<!-- Render the modals after the table to maintain layout -->
+<% @inventories.each do |inventory| %>
+    <%= render 'inventories/index/delete_item_modal', inventory: inventory %>
+    <%= render 'inventories/index/modify_quantity_modal', inventory: inventory %>
+<% end %>
+<%= render 'inventories/index/add_item_modal' %>
