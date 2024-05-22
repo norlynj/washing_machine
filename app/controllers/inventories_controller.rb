@@ -20,16 +20,32 @@ class InventoriesController < ApplicationController
     end
   end
 
+  def update
+    @inventory = Inventory.find_by(id: params[:id])
+    
+    if @inventory.update(inventory_params)
+      redirect_back(fallback_location: root_path, notice: 'Inventory quantity updated successfully.')
+    else
+      flash.now[:alert] = 'Failed to update inventory quantity.'
+      render :edit
+    end
+  end
+  
+
+  def edit
+    @inventory = Inventory.find(params[:id])
+  end  
+
   def destroy
     @inventory = Inventory.find(params[:id]) # Fetch the inventory item
     @inventory.destroy # Destroy the inventory item
     redirect_to inventories_path, notice: "Item was successfully deleted"
   end
   
-  
   private
   
   def inventory_params
-    params.permit(:quantity, :name)
+    params.require(:inventory).permit(:quantity)
   end
+
 end

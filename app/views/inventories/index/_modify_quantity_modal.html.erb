@@ -1,24 +1,35 @@
-
-<div id="modal-2" class="modal fade" role="dialog" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" style="font-family: 'Poppins';font-weight: bold;">Add or deduct &lt;item&gt;</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+<div id="modal-edit-quantity-<%= inventory.id %>" class="modal fade" role="dialog" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" style="font-family: 'Poppins';font-weight: bold;"><%= inventory.name %> Stock</h4>
+        <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <%= form_with(model: inventory, url: inventory_path(inventory), method: :patch, local: true) do |form| %>
+          <div class="row" style="text-align: center;">
+            <div class="col-md-4">
+              <div style="text-align: right;">
+                <button type="button" class="btn btn-secondary decrement-btn" data-target="quantity_<%= inventory.id %>"><i class="fa fa-minus-circle" style="font-size: 40px;"></i></button>
+              </div>
             </div>
-            <div class="modal-body">
-                <form>
-                    <div class="row" style="text-align: center;">
-                        <div class="col-md-4">
-                            <div style="text-align: right;"><a href="#"><i class="fa fa-minus-circle" style="font-size: 40px;"></i></a></div>
-                        </div>
-                        <div class="col-auto col-md-4"><input class="form-control form-control-lg" type="number" min="0" disabled /></div>
-                        <div class="col-md-4">
-                            <div style="text-align: left;"><a href="#"><i class="fa fa-plus-circle" style="font-size: 40px;"></i></a></div>
-                        </div>
-                    </div>
-                </form>
+            <div class="col-auto col-md-4">
+              <%= form.number_field :quantity, class: "form-control form-control-lg quantity-field", id: "quantity_#{inventory.id}", min: 0, step: 1 %>
             </div>
-            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
-        </div>
+            <div class="col-md-4">
+              <div style="text-align: left;">
+                <button type="button" class="btn btn-secondary increment-btn" data-target="quantity_<%= inventory.id %>"><i class="fa fa-plus-circle" style="font-size: 40px;"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+            <%= form.submit "Save", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
     </div>
+  </div>
 </div>
+
+
