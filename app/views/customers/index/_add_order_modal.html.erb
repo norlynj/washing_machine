@@ -23,7 +23,7 @@
                             <label class="form-label">Detergents</label>
                             <div class="input-group">
                                 <button type="button" class="btn btn-outline-secondary minus-btn" onclick="decrementDetergent(<%= customer.id %>)" id="minus-btn-<%= customer.id %>" disabled>-</button>
-                                <%= form.number_field :num_detergents, class: "form-control", min: 0, step: 1, id: "num_detergents-#{customer.id}", onchange: "calculateTotal(#{customer.id})" %>
+                                <%= form.number_field :detergent, class: "form-control", min: 0, step: 1, id: "num_detergents-#{customer.id}", onchange: "calculateTotal(#{customer.id})" %>
                                 <button type="button" class="btn btn-outline-secondary plus-btn" onclick="incrementDetergent(<%= customer.id %>)" id="plus-btn-<%= customer.id %>" disabled>+</button>
                             </div>
                         </div>
