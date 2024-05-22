@@ -9,11 +9,11 @@
         <%= form_with(model: @inventory, url: inventories_path, local: true) do |form| %>
           <div class="form-floating mb-3">
             <%= form.text_field :name, id: "inventory_name", class: "focus-ring form-control", inputmode: "text" %>
-            <%= form.label :name, "Item Name", class: "form-label", style: "font-family: 'Poppins';color: var(--bs-body-color);" %>
+            <%= form.label :name, "Item Name", class: "form-label", style: "font-family: 'Poppins';color: var(--bs-body-color);", required: true %>
           </div>
           <div class="form-floating mb-3">
-            <%= form.number_field :quantity, id: "inventory_quantity", class: "focus-ring form-control", inputmode: "numeric", style: "width: 125px;" %>
-            <%= form.label :quantity, "Quantity", class: "form-label", style: "font-family: 'Poppins';color: var(--bs-body-color);" %>
+            <%= form.number_field :quantity, class: "form-control form-control-lg quantity-field", min: 0, step: 1, required: true %>
+            <%= form.label :quantity, "Quantity", class: "form-label", style: "font-family: 'Poppins';color: var(--bs-body-color);", required: true %>
           </div>
           <div class="modal-footer">
             <button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button>
