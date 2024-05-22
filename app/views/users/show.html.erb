@@ -9,71 +9,75 @@
                     </div><input class="form-control form-control-sm form-control" type="file" name="avatar-file" style="background: var(--bs-success-bg-subtle);border-style: solid;border-color: var(--bs-emphasis-color);font-family: 'Poppins';margin-bottom: 8px;" />
                 </div>
                 <div class="col-md-8" style="padding: 28px;">
-                    <h1 style="font-family: 'Poppins';font-weight: bold;"><%= @user.full_name %></h1>
-                    <hr />
-                    <div class="row">
-                        <div class="col-sm-12 col-md-6">
-                            <div class="form-group mb-3">
-                                <label class="form-label" style="font-family: 'Poppins';">Firstname </label>
-                                <input class="form-control" type="text" name="firstname" style="background: var(--bs-success-bg-subtle);border: 1px solid var(--bs-body-color);" value="<%= @user.first_name %>" />
+                    <% @user = current_user%>
+                    <%= form_with(model: @user, url: user_crew_path(@user), method: :patch, html: { class: 'shadow focus-ring' }) do |form| %>
+                        <h1 style="font-family: 'Poppins';font-weight: bold;"><%= @user
+                        .full_name %></h1>
+                        <hr />
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" style="font-family: 'Poppins';">Firstname </label>
+                                    <%= form.text_field :first_name, class: "form-control", style: "background: var(--bs-success-bg-subtle);border: 1px solid var(--bs-body-color);", required: true %>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" style="font-family: 'Poppins';">Lastname </label>
+                                    <%= form.text_field :last_name, class: "form-control", style: "border-style: solid;border-color: var(--bs-emphasis-color);background: var(--bs-success-bg-subtle);", required: true %>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-6">
-                            <div class="form-group mb-3">
-                                <label class="form-label" style="font-family: 'Poppins';">Lastname </label>
-                                <input class="form-control" type="text" name="lastname" style="border-style: solid;border-color: var(--bs-emphasis-color);background: var(--bs-success-bg-subtle);" value="<%= @user.last_name %>" />
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" style="font-family: 'Poppins';">Email </label>
+                                    <%= form.email_field :email, class: "form-control", style: "border-style: solid;border-color: var(--bs-emphasis-color);background: var(--bs-success-bg-subtle);", required: true %>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" style="font-family: 'Poppins';">Mobile number</label>
+                                    <%= form.text_field :mobile_number, class: "form-control", style: "border-style: solid;border-color: var(--bs-emphasis-color);background: var(--bs-success-bg-subtle);", required: true %>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-md-6">
-                            <div class="form-group mb-3">
-                                <label class="form-label" style="font-family: 'Poppins';">Email </label>
-                                <input class="form-control" type="email" autocomplete="off" required name="email" style="border-style: solid;border-color: var(--bs-emphasis-color);background: var(--bs-success-bg-subtle);" value="<%= @user.email %>" />
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6" style="width: 131.656px;">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" style="font-family: 'Poppins';">Gender</label>
+                                    <%= form.text_field :gender, class: "form-control", style: "border-style: solid;border-color: var(--bs-emphasis-color);background: var(--bs-success-bg-subtle);min-width: auto;", required: true %>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" style="font-family: 'Poppins';">Birthday</label>
+                                    <%= form.date_field :birthday, class: "form-control", style: "background: var(--bs-success-bg-subtle);border-style: solid;border-color: var(--bs-emphasis-color);font-family: 'Poppins';", required: true %>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-6">
-                            <div class="form-group mb-3">
-                                <label class="form-label" style="font-family: 'Poppins';">Mobile number</label>
-                                <input class="form-control" type="text" name="mobile" style="border-style: solid;border-color: var(--bs-emphasis-color);background: var(--bs-success-bg-subtle);" value="<%= @user.mobile_number %>" />
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" style="font-family: 'Poppins';">Password </label>
+                                    <%= form.password_field :password, class: "form-control", style: "border-style: solid;border-color: var(--bs-emphasis-color);background: var(--bs-success-bg-subtle);", required: true %>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" style="font-family: 'Poppins';">Confirm Password</label>
+                                    <%= form.password_field :password_confirmation, class: "form-control", style: "border-style: solid;border-color: var(--bs-emphasis-color);background: var(--bs-success-bg-subtle);", required: true %>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-md-6" style="width: 131.656px;">
-                            <div class="form-group mb-3">
-                                <label class="form-label" style="font-family: 'Poppins';">Gender</label>
-                                <input class="form-control" type="email" autocomplete="off" required name="email" style="border-style: solid;border-color: var(--bs-emphasis-color);background: var(--bs-success-bg-subtle);min-width: auto;" value="<%= @user.gender %>" />
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12 content-right">
+                                <%= form.submit "SAVE", class: "btn btn-primary form-btn", style: "font-family: 'Poppins';margin-top: 14px;" %>
+                                <button class="btn btn-danger form-btn" type="reset" style="font-family: 'Poppins';margin-top: 14px;">CANCEL </button>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="form-group mb-3">
-                                <label class="form-label" style="font-family: 'Poppins';">Birthday</label>
-                                <input class="form-control" type="date" style="background: var(--bs-success-bg-subtle);border-style: solid;border-color: var(--bs-emphasis-color);font-family: 'Poppins';" value="<%= @user.birthday %>" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-md-6">
-                            <div class="form-group mb-3">
-                                <label class="form-label" style="font-family: 'Poppins';">Password </label>
-                                <input class="form-control" type="password" name="password" autocomplete="off" required style="border-style: solid;border-color: var(--bs-emphasis-color);background: var(--bs-success-bg-subtle);" />
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-6">
-                            <div class="form-group mb-3">
-                                <label class="form-label" style="font-family: 'Poppins';">Confirm Password</label>
-                                <input class="form-control" type="password" name="confirmpass" autocomplete="off" required style="border-style: solid;border-color: var(--bs-emphasis-color);background: var(--bs-success-bg-subtle);" />
-                            </div>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col-md-12 content-right">
-                            <button class="btn btn-primary form-btn" type="submit" style="font-family: 'Poppins';margin-top: 14px;">SAVE </button>
-                            <button class="btn btn-danger form-btn" type="reset" style="font-family: 'Poppins';margin-top: 14px;">CANCEL </button>
-                        </div>
-                    </div>
+                    <% end %>
                 </div>
             </div>
         </form>
