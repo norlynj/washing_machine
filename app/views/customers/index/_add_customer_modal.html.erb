@@ -9,24 +9,17 @@
                 <%= form_with(url: customers_path, method: :post, class: "focus-ring", style: "border-radius: 56px; border-style: none;", local: true) do |form| %>
                     <div class="avatar"></div>
                     <div class="row">
-                        <div class="col-sm-12 col-md-12">
-                            <div class="form-group mb-3">
-                                <%= form.label :name, class: "form-label", style: "font-family: 'Poppins';" %>
-                                <%= form.text_field :name, class: "form-control", style: "border-width: 1px; border-style: solid;" %>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group mb-3">
-                                <%= form.label :email, "Email", class: "form-label", style: "font-family: 'Poppins';" %>
-                                <%= form.email_field :email, autocomplete: "off", required: true, class: "form-control", style: "border-style: solid;" %>
+                                <%= form.label :name, class: "form-label", style: "font-family: 'Poppins';" %>
+                                <%= form.text_field :name, class: "form-control", style: "border-width: 1px; border-style: solid;", required: true %>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group mb-3">
                                 <%= form.label :mobile, "Mobile number", class: "form-label", style: "font-family: 'Poppins';" %>
-                                <%= form.text_field :contact_info, class: "form-control", style: "border-style: solid;" %>
+                                <%= form.text_field :contact_info, class: "form-control", style: "border-style: solid;", maxlength: 11, pattern: "[0-9]{11}", title: "Phone number must be 11 digits", required: true %>
+
                             </div>
                         </div>
                     </div>
@@ -34,7 +27,7 @@
                         <div class="col">
                             <div class="form-group mb-3">
                                 <%= form.label :address, "Address", class: "form-label", style: "font-family: 'Poppins';" %>
-                                <%= form.text_field :address, class: "form-control", style: "border-style: solid;" %>
+                                <%= form.text_field :address, class: "form-control", style: "border-style: solid;", required: true %>
                             </div>
                         </div>
                     </div>

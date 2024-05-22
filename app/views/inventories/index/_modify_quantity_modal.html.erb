@@ -14,7 +14,7 @@
               </div>
             </div>
             <div class="col-auto col-md-4">
-              <%= form.number_field :quantity, class: "form-control form-control-lg quantity-field", id: "quantity_#{inventory.id}", min: 0, step: 1 %>
+              <%= form.number_field :quantity, class: "form-control form-control-lg quantity-field", id: "quantity_#{inventory.id}", min: 0, step: 1, required: true %>
             </div>
             <div class="col-md-4">
               <div style="text-align: left;">

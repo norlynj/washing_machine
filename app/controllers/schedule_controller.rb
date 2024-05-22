@@ -3,7 +3,7 @@ class ScheduleController < ApplicationController
     before_action :manager_signed_in?
 
     def index
-        @users = User.all
+        @users = User.where(role: :staff).where.not(status: "deleted")
         @weekdays = ['S', 'M', 'T', 'W', 'Th', 'F', 'S']
         @find_user = User.find_by(params[:user_id])
 

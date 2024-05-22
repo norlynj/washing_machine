@@ -16,7 +16,7 @@ class InventoriesController < ApplicationController
     if @inventory.save
       redirect_to inventories_path, notice: "Item was successfully added"
     else
-      redirect_to inventories_path, alert: "Item creation failed"
+      redirect_to inventories_path, alert: "Item creation failed. #{@inventory.errors.full_messages.join(', ')}"
     end
   end
 
